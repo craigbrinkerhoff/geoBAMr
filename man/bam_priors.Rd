@@ -4,13 +4,21 @@
 \alias{bam_priors}
 \title{Establish prior hyperparameters for BAM estimation}
 \usage{
-bam_priors(bamdata, variant = c("manning_amhg", "manning", "amhg"), ...)
+bam_priors(
+  bamdata,
+  variant = c("manning_amhg", "manning", "amhg"),
+  classification = c("expert", "unsupervised"),
+  ...
+)
 }
 \arguments{
 \item{bamdata}{An object of class bamdata, as returned by \code{bam_data}}
 
 \item{variant}{Which BAM variant to use. Options are "manning_amhg" (default),
 "manning", or "amhg".}
+
+\item{classification}{Which classification framework to use. Options are 'expert' (default),
+or 'unsupervised'.}
 
 \item{...}{Optional manually set parameters. Unquoted expressions are allowed,
 e.g. \code{logQ_sd = cv2sigma(0.8)}. Additionally, any variables present in

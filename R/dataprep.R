@@ -157,6 +157,8 @@ bam_check_nas <- function(datalist) {
 #' @param bamdata An object of class bamdata, as returned by \code{bam_data}
 #' @param variant Which BAM variant to use. Options are "manning_amhg" (default),
 #'   "manning", or "amhg".
+#' @param classification Which classification framework to use. Options are 'expert' (default),
+#'   or 'unsupervised'.
 #' @param ... Optional manually set parameters. Unquoted expressions are allowed,
 #'   e.g. \code{logQ_sd = cv2sigma(0.8)}. Additionally, any variables present in
 #'   \code{bamdata} may be referenced, e.g. \code{lowerbound_logQ = log(mean(Wobs)) + log(5)}
@@ -164,8 +166,10 @@ bam_check_nas <- function(datalist) {
 
 bam_priors <- function(bamdata,
                        variant = c("manning_amhg", "manning", "amhg"),
+                       classification = c('expert', 'unsupervised'),
                        ...) {
   variant <- match.arg(variant)
+  classification <- match.arg(classification)
   if (variant != "amhg" && !attr(bamdata, "manning_ready"))
     stop("bamdata must have slope and dA data for non-amhg variants.")
 
@@ -178,6 +182,17 @@ bam_priors <- function(bamdata,
 
   quoparams <- myparams()[-1] # first one is parameter set
   params <- lapply(quoparams, rlang::eval_tidy, data = bamdata)
+
+  if (classification == 'unsupervised'){ #recalculate parameter set if classification switched to unsupervised
+    paramset <- bam_settings_unsupervised("paramnames")
+
+    myparams0 <- rlang::quos(..., .named = TRUE)
+    myparams <- do.call(settings::clone_and_merge,
+                        args = c(list(options = bam_settings_unsupervised), myparams0))
+
+    quoparams <- myparams()[-1] # first one is parameter set
+    params <- lapply(quoparams, rlang::eval_tidy, data = bamdata)
+  }
 
   if (!length(params[["logQ_sd"]]) == bamdata$nt)
     params$logQ_sd <- rep(params$logQ_sd, length.out = bamdata$nt)
