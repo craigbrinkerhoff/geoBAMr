@@ -9,7 +9,7 @@
 #'
 #' Produces a bamdata object that can be passed to bam_estimate function
 #'
-#' @useDynLib geoBAM, .registration = TRUE
+#' @useDynLib geoBAMr, .registration = TRUE
 #' @param w Matrix (or data frame) of widths: time as columns, space as rows
 #' @param s Matrix of slopes: time as columns, space as rows
 #' @param dA Matrix of area above base area: time as columns, space as rows
@@ -153,7 +153,7 @@ bam_check_nas <- function(datalist) {
 #'
 #' Produces a bampriors object that can be passed to bam_estimate function
 #'
-#' @useDynLib geoBAM, .registration = TRUE
+#' @useDynLib geoBAMr, .registration = TRUE
 #' @param bamdata An object of class bamdata, as returned by \code{bam_data}
 #' @param variant Which BAM variant to use. Options are "manning_amhg" (default),
 #'   "manning", or "amhg".

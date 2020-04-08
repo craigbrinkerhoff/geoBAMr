@@ -1,7 +1,7 @@
-# Functions to plot geoBAM objects
+# Functions to plot geoBAMr objects
 
 
-#' Plot a geoBAM-created object
+#' Plot a geoBAMr-created object
 #'
 #' @param bamobj Currently supported objects are bamdata objects (created by
 #'   \code{bam_data()}) and bamval objects (created by \code{bam_validate()}).
