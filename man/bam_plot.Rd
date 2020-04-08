@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotting.R
 \name{bam_plot}
 \alias{bam_plot}
-\title{Plot a geoBAM-created object}
+\title{Plot a geoBAMr-created object}
 \usage{
 bam_plot(bamobj)
 }
@@ -11,5 +11,5 @@ bam_plot(bamobj)
 \code{bam_data()}) and bamval objects (created by \code{bam_validate()}).}
 }
 \description{
-Plot a geoBAM-created object
+Plot a geoBAMr-created object
 }
