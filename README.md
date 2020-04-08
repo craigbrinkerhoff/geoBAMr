@@ -26,10 +26,14 @@ if (!require("devtools")) {
 #Then install from github
 devtools:: install_github("craigbrinkerhoff/geoBAMr", force=TRUE)
 ```
+Note that if you need to reinstall this package, uninstall the current version first.  Also, check if R has created the folder '~R/win-library/3.6/00LOCK-geoBAMr'. If so, delete it and reinstall.
 
 ## Usage
 The best way to get started is to follow the examples in the included vignettes, now located at the [**bamr** website](https://markwh.github.io/bamr/index.html)
 
+geoBAMr is packaged with two approaches to defining prior river knowledge: 1) an expert geomorphology framework or 2) an unsupervised one.  The assigned priors will be different, depending on which is chosen. 'Expert' is default and accounts for both really big rivers and 'highly width variable' ones.  The unsupervised approach is purely statistical and implicitly accounts for edge cases like these, but was not explictly designed to do so.
+
+Regardless of classification chosen, resulting river types are accessible using the bam_priors() object$river_type.  For a read on what these river types qualitvately represent, follow this link: ().
 
 ## Notes
 

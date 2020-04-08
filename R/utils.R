@@ -36,12 +36,24 @@ classify_func <- function(Wobs) {
   lwsd <- sd(log(Wobs), na.rm= TRUE)#apply(log(Wobs), 1, sd, na.rm = TRUE)
 
   maxWidth = 6.5
-  classes <- c(2.641197894, 3.143289838,3.376904689,
-               3.548754946,3.823191792,4.150094577,
-               4.626687029,5.248706866) #median width of each river type
+  classes <- c(2.476118144,
+               2.864001065,
+               3.103015939,
+               3.249308032,
+               3.284178964,
+               3.371669039,
+               3.56827873,
+               3.664586762,
+               3.683922384,
+               4.002696788,
+               4.031559142,
+               4.357733942,
+               4.436574004,
+               4.921166637,
+               5.287893051) #median width of each river type
 
-  ifelse(lwbar > maxWidth, 100,
-         ifelse(lwsd >= 0.45, 9, which.min(abs(classes-lwbar)))) #100 for big rivers, 9 for width-variable rivers
+  ifelse(lwbar > maxWidth, 17,
+         ifelse(lwsd >= 0.45, 16, which.min(abs(classes-lwbar)))) #17 for big rivers, 16 for width-variable rivers
 }
 
 #'Classify river for unsupervised framework
