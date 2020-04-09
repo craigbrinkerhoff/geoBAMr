@@ -1,0 +1,28 @@
+---
+title: "geoBAMr river classification frameworks"
+author: "Craig Brinkerhoff"
+date: 2020/04/09
+output: rmarkdown::html_vignette
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7)
+options("mc.cores" = 2)
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+The `bamr` package facilitates Bayesian AMHG + Manning discharge estimation using stream slope, width, and partial cross-section area. It includes functions to preprocess and visualize data, perform Bayesian inference using Hamiltonian Monte Carlo (via models pre-written in the Stan language), and analyze the results. See the [website](https://markwh.github.io/bamr/index.html) for `bamr` vignettes on how to use BAM to estimate river discharge
+
+`geoBAMr` expands upon BAM by using geomorphic river classifications to better assign Bayesian priors.  This document walks through the two river classification frameworks within geoBAMr: the Expert framework and the Unsupervised framework.  To select which framework to use when deriving priors for your river, simply set classification to 'expert' or 'unsupervised':
+
+```{r}
+
+priors <- bam_priors(bamdata = bam_data, variant = 'amhg', classification = 'expert')
+
+```
+
+## 1. Expert Classification Framework
+
+
+## 2. Unsupervised Classification Framework
+
