@@ -1,15 +1,6 @@
-//Craig BAM stan model
-//Interventions from Mark's model:
-  //1) Uses AMHG flow law from https://10.1029/2019GL084529, reformatted to derive a likelihood function for Bayesian inference.
-  //2) Manning's n prior is space-varying
-  //3) '_sd' priors are space varying
-
-//line 227 must be set to inc_a to run amhg and to inc_m to run mannings.... I need someway to switch this
-
 functions {
   // Conversion from array to vector takes place by row.
   // Nested elements are appended in sequence.
-
 
   // Convert an array to a vector based on a binary matrix
   // indicating non-missing data
@@ -27,6 +18,7 @@ functions {
         }
       }
     }
+
     // print(out);
     return(out[1:(ind - 1)]);
   }
@@ -48,6 +40,7 @@ functions {
     return(out[1:ind]);
   }
 
+
   // Repeat elements of a "column" vector to match with 2-D array vectorization
   vector ragged_col(vector x, int[,] bin) {
     vector[num_elements(bin)] out;
@@ -64,6 +57,7 @@ functions {
     }
     return(out[1:ind]);
   }
+
 
   // indices of vectorized bin1 that are also in vectorized bin2
   int[] commoninds(int[,] bin1, int[,] bin2) {
@@ -95,13 +89,12 @@ functions {
   }
 }
 
-data {
 
+data {
   // Options
   int<lower=0, upper=1> inc_m; // Include Manning? 0=no; 1=yes;
   int<lower=0, upper=1> inc_a; // Include AMHG? 0=no; 1=yes;
   int<lower=0, upper=1> meas_err; // 0=no; 1=yes;
-
 
   // Dimensions
   int<lower=0> nx; // number of reaches
@@ -109,7 +102,7 @@ data {
   int<lower=0> ntot_man; // total number of non-missing Manning observations
   int<lower=0> ntot_amhg; // number of non-missing width observations
 
-  // // Missing data
+  // Missing data
   int<lower=0,upper=1> hasdat_man[nx, nt]; // matrix of 0 (missing), 1 (not missing)
   int<lower=0,upper=1> hasdat_amhg[nx, nt];
 
@@ -118,7 +111,6 @@ data {
   vector[nt] Sobs[nx]; // measured slopes
   vector[nt] dAobs[nx]; // measured partial area
   vector[nx] dA_shift; // adjustment from min to median
-
 
   real<lower=0> Werr_sd;
   real<lower=0> Serr_sd;
@@ -132,25 +124,22 @@ data {
   real upperbound_A0;
   real lowerbound_logn;
   real upperbound_logn;
-
   real lowerbound_logQc;
   real upperbound_logQc;
   real lowerbound_logWc;
   real upperbound_logWc;
   real lowerbound_b;
   real upperbound_b;
-
+  real lowerbound_logr;
+  real upperbound_logr;
   real lowerbound_logWb;
   real upperbound_logWb;
   real lowerbound_logDb;
   real upperbound_logDb;
-  real lowerbound_logr;
-  real upperbound_logr;
 
   // *Known* likelihood parameters
   vector<lower=0>[nt] sigma_man[nx]; // Manning error standard deviation
   vector<lower=0>[nt] sigma_amhg[nx]; // AMHG error standard deviation
-
 
   // Hyperparameters
   vector[nt] logQ_hat; // prior mean on logQ
@@ -169,24 +158,19 @@ data {
   real<lower=0> b_sd[nx];
   real<lower=0> logA0_sd[nx];
   real<lower=0> logn_sd[nx];
+  real<lower=0> logr_sd[nx];
   real<lower=0> logWb_sd[nx];
   real<lower=0> logDb_sd[nx];
-  real<lower=0> logr_sd[nx];
 }
-
-
 
 transformed data {
   // Transformed data are *vectors*, not arrays. This to allow ragged structure
-
   vector[nt] dApos_array[nx];
-
   vector[ntot_man] Wobsvec_man;
   vector[ntot_amhg] Wobsvec_amhg;
   vector[inc_a ? ntot_amhg : ntot_man] Wobsvec;
   vector[ntot_man] Sobsvec_man;
-  vector[ntot_amhg] Sobsvec_amhg;
-  vector[inc_a ? ntot_amhg : ntot_man] Sobsvec;
+  vector[ntot_man] Sobsvec_amhg;
 
   vector[ntot_man] logWobs_man;
   vector[ntot_amhg] logWobs_amhg;
@@ -220,31 +204,28 @@ transformed data {
   sigmavec_man = ragged_vec(sigma_man, hasdat_man);
   sigmavec_amhg = ragged_vec(sigma_amhg, hasdat_amhg);
 
+  // indices of vectorized hasdat_amhg that correspond to indices of
+  // vectorized hasdat_man
   maninds_amhg = commoninds(hasdat_amhg, hasdat_man);
 }
 
 parameters {
+  vector<lower=lowerbound_logQ,upper=upperbound_logQ>[nt] logQ;
   vector<lower=lowerbound_logn,upper=upperbound_logn>[nx] logn_man[inc_m]; //for space-varying n
   vector<lower=lowerbound_logn,upper=upperbound_logn>[nx] logn_amhg[inc_a]; //for space-varying n
-  vector<lower=lowerbound_logQ,upper=upperbound_logQ>[nt] logQ;
   vector<lower=lowerbound_A0,upper=upperbound_A0>[nx] A0[inc_m];
-
   real<lower=lowerbound_logWc,upper=upperbound_logWc> logWc[inc_a];
   real<lower=lowerbound_logQc,upper=upperbound_logQc> logQc[inc_a];
   vector<lower=lowerbound_b,upper=upperbound_b>[nx] b[inc_a];
-
+  vector<lower=lowerbound_logr, upper=upperbound_logr>[nx] logr[inc_a];
   vector<lower=lowerbound_logWb, upper=upperbound_logWb>[nx] logWb[inc_a];
   vector<lower=lowerbound_logDb, upper=upperbound_logDb>[nx] logDb[inc_a];
-  vector<lower=lowerbound_logr, upper=upperbound_logr>[nx] logr[inc_a];
 
   vector<lower=0>[ntot_w] Wact[meas_err];
   vector<lower=0>[ntot_man] Sact[meas_err * inc_m];
   vector[ntot_man] dApos_act[meas_err * inc_m];
 }
-
-
 transformed parameters {
-
   vector[ntot_man] man_lhs[inc_m]; // LHS for Manning likelihood
   vector[ntot_man] logA_man[inc_m]; // log area for Manning's equation
   vector[ntot_man] man_rhs[inc_m]; // RHS for Manning likelihood
@@ -253,7 +234,7 @@ transformed parameters {
 
   vector[ntot_amhg] amhg_rhs[inc_a]; // RHS for AMHG likelihood
   vector[ntot_amhg] logQ_amhg[inc_a]; // location-repeated logQ
-  vector[ntot_amhg] logQc_amhg[inc_a]; //new Qc term
+  vector[ntot_amhg] logQc_amhg[inc_a]; //Qc term using a bunch of priors
 
   // Manning params
   if (inc_m) {
@@ -271,11 +252,11 @@ transformed parameters {
     man_rhs[1] = 10. * logA_man[1] - 6. * ragged_col(logn_man[1], hasdat_man) - 6. * logQ_man[1];
   }
 
-  if (inc_a) {
-  // AMHG params
-    logQ_amhg[1] = ragged_row(logQ, hasdat_amhg);
 
-    //new AMHG likelihood function
+
+  // AMHG params
+  if (inc_a) {
+    logQ_amhg[1] = ragged_row(logQ, hasdat_amhg);
     logQc_amhg[1] = (1 ./ ragged_col(b[1], hasdat_amhg)) .* (logWc[1]- (ragged_col(b[1], hasdat_amhg) .*
                                            (((-1.67) * ragged_col(logDb[1], hasdat_amhg)) +
 	                                         ((-1.67) * ragged_col(logr[1], hasdat_amhg)) -
@@ -283,13 +264,11 @@ transformed parameters {
 	                                         ((1.67 * ragged_col(logr[1], hasdat_amhg)) .* ragged_col(logWb[1], hasdat_amhg)) +
 	                                         (ragged_col(logn_amhg[1], hasdat_amhg)) +
 	                                         (-(0.5)*logSobs_amhg[1]))));
-
     amhg_rhs[1] = ragged_col(b[1], hasdat_amhg) .* (logQ_amhg[1] - ragged_col(logQc_amhg[1], hasdat_amhg)) + logWc[1];
   }
 }
 
 model {
-
   // Priors
   logQ ~ normal(logQ_hat, logQ_sd);
 
@@ -308,8 +287,8 @@ model {
 	  logr[1] ~ normal(logr_hat, logr_sd);
 	  logWb[1] ~ normal(logWb_hat, logWb_sd);
   }
-  // Likelihood and observation error
 
+  // Likelihood and observation error
   // Manning likelihood
   if (inc_m) {
     man_lhs[1] ~ normal(man_rhs[1], 6 * sigmavec_man);
@@ -325,6 +304,7 @@ model {
       target += -log(Wact[1]); // Jacobian adjustments
       target += -log(Sact[1]);
     }
+
     if (inc_a) { // AMHG likelihood (w/ meas err)
       Wact[1] ~ lognormal(amhg_rhs[1], sigmavec_amhg);
     }

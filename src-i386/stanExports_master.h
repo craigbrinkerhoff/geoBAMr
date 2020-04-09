@@ -33,7 +33,7 @@ static int current_statement_begin__;
 stan::io::program_reader prog_reader__() {
     stan::io::program_reader reader;
     reader.add_event(0, 0, "start", "model_master");
-    reader.add_event(340, 338, "end", "model_master");
+    reader.add_event(320, 318, "end", "model_master");
     return reader;
 }
 template <typename T0__>
@@ -49,34 +49,34 @@ ragged_vec(const std::vector<Eigen::Matrix<T0__, Eigen::Dynamic, 1> >& x,
     int current_statement_begin__ = -1;
     try {
         {
-        current_statement_begin__ = 18;
+        current_statement_begin__ = 9;
         validate_non_negative_index("out", "num_elements(x)", num_elements(x));
         Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> out(num_elements(x));
         stan::math::initialize(out, DUMMY_VAR__);
         stan::math::fill(out, DUMMY_VAR__);
-        current_statement_begin__ = 19;
+        current_statement_begin__ = 10;
         int ind(0);
         (void) ind;  // dummy to suppress unused var warning
         stan::math::fill(ind, std::numeric_limits<int>::min());
-        current_statement_begin__ = 21;
+        current_statement_begin__ = 12;
         stan::math::assign(ind, 1);
-        current_statement_begin__ = 22;
+        current_statement_begin__ = 13;
         for (int i = 1; i <= size(x); ++i) {
-            current_statement_begin__ = 23;
+            current_statement_begin__ = 14;
             for (int t = 1; t <= num_elements(get_base1(x, 1, "x", 1)); ++t) {
-                current_statement_begin__ = 24;
+                current_statement_begin__ = 15;
                 if (as_bool(logical_eq(get_base1(get_base1(bin, i, "bin", 1), t, "bin", 2), 1))) {
-                    current_statement_begin__ = 25;
+                    current_statement_begin__ = 16;
                     stan::model::assign(out, 
                                 stan::model::cons_list(stan::model::index_uni(ind), stan::model::nil_index_list()), 
                                 get_base1(get_base1(x, i, "x", 1), t, "x", 2), 
                                 "assigning variable out");
-                    current_statement_begin__ = 26;
+                    current_statement_begin__ = 17;
                     stan::math::assign(ind, (ind + 1));
                 }
             }
         }
-        current_statement_begin__ = 31;
+        current_statement_begin__ = 23;
         return stan::math::promote_scalar<fun_return_scalar_t__>(stan::model::rvalue(out, stan::model::cons_list(stan::model::index_min_max(1, (ind - 1)), stan::model::nil_index_list()), "out"));
         }
     } catch (const std::exception& e) {
@@ -106,26 +106,26 @@ ragged_row(const Eigen::Matrix<T0__, Eigen::Dynamic, 1>& x,
     int current_statement_begin__ = -1;
     try {
         {
-        current_statement_begin__ = 36;
+        current_statement_begin__ = 28;
         validate_non_negative_index("out", "num_elements(bin)", num_elements(bin));
         Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> out(num_elements(bin));
         stan::math::initialize(out, DUMMY_VAR__);
         stan::math::fill(out, DUMMY_VAR__);
-        current_statement_begin__ = 37;
+        current_statement_begin__ = 29;
         int ind(0);
         (void) ind;  // dummy to suppress unused var warning
         stan::math::fill(ind, std::numeric_limits<int>::min());
-        current_statement_begin__ = 39;
+        current_statement_begin__ = 31;
         stan::math::assign(ind, 0);
-        current_statement_begin__ = 40;
+        current_statement_begin__ = 32;
         for (int i = 1; i <= size(bin); ++i) {
-            current_statement_begin__ = 41;
+            current_statement_begin__ = 33;
             for (int t = 1; t <= num_elements(get_base1(bin, 1, "bin", 1)); ++t) {
-                current_statement_begin__ = 42;
+                current_statement_begin__ = 34;
                 if (as_bool(logical_eq(get_base1(get_base1(bin, i, "bin", 1), t, "bin", 2), 1))) {
-                    current_statement_begin__ = 43;
+                    current_statement_begin__ = 35;
                     stan::math::assign(ind, (ind + 1));
-                    current_statement_begin__ = 44;
+                    current_statement_begin__ = 36;
                     stan::model::assign(out, 
                                 stan::model::cons_list(stan::model::index_uni(ind), stan::model::nil_index_list()), 
                                 get_base1(x, t, "x", 1), 
@@ -133,7 +133,7 @@ ragged_row(const Eigen::Matrix<T0__, Eigen::Dynamic, 1>& x,
                 }
             }
         }
-        current_statement_begin__ = 48;
+        current_statement_begin__ = 40;
         return stan::math::promote_scalar<fun_return_scalar_t__>(stan::model::rvalue(out, stan::model::cons_list(stan::model::index_min_max(1, ind), stan::model::nil_index_list()), "out"));
         }
     } catch (const std::exception& e) {
@@ -163,26 +163,26 @@ ragged_col(const Eigen::Matrix<T0__, Eigen::Dynamic, 1>& x,
     int current_statement_begin__ = -1;
     try {
         {
-        current_statement_begin__ = 53;
+        current_statement_begin__ = 46;
         validate_non_negative_index("out", "num_elements(bin)", num_elements(bin));
         Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> out(num_elements(bin));
         stan::math::initialize(out, DUMMY_VAR__);
         stan::math::fill(out, DUMMY_VAR__);
-        current_statement_begin__ = 54;
+        current_statement_begin__ = 47;
         int ind(0);
         (void) ind;  // dummy to suppress unused var warning
         stan::math::fill(ind, std::numeric_limits<int>::min());
-        current_statement_begin__ = 56;
+        current_statement_begin__ = 49;
         stan::math::assign(ind, 0);
-        current_statement_begin__ = 57;
+        current_statement_begin__ = 50;
         for (int i = 1; i <= size(bin); ++i) {
-            current_statement_begin__ = 58;
+            current_statement_begin__ = 51;
             for (int t = 1; t <= num_elements(get_base1(bin, 1, "bin", 1)); ++t) {
-                current_statement_begin__ = 59;
+                current_statement_begin__ = 52;
                 if (as_bool(logical_eq(get_base1(get_base1(bin, i, "bin", 1), t, "bin", 2), 1))) {
-                    current_statement_begin__ = 60;
+                    current_statement_begin__ = 53;
                     stan::math::assign(ind, (ind + 1));
-                    current_statement_begin__ = 61;
+                    current_statement_begin__ = 54;
                     stan::model::assign(out, 
                                 stan::model::cons_list(stan::model::index_uni(ind), stan::model::nil_index_list()), 
                                 get_base1(x, i, "x", 1), 
@@ -190,7 +190,7 @@ ragged_col(const Eigen::Matrix<T0__, Eigen::Dynamic, 1>& x,
                 }
             }
         }
-        current_statement_begin__ = 65;
+        current_statement_begin__ = 58;
         return stan::math::promote_scalar<fun_return_scalar_t__>(stan::model::rvalue(out, stan::model::cons_list(stan::model::index_min_max(1, ind), stan::model::nil_index_list()), "out"));
         }
     } catch (const std::exception& e) {
@@ -219,34 +219,34 @@ commoninds(const std::vector<std::vector<int> >& bin1,
     int current_statement_begin__ = -1;
     try {
         {
-        current_statement_begin__ = 70;
+        current_statement_begin__ = 64;
         validate_non_negative_index("out", "num_elements(bin1)", num_elements(bin1));
         std::vector<int  > out(num_elements(bin1), int(0));
         stan::math::fill(out, std::numeric_limits<int>::min());
-        current_statement_begin__ = 71;
+        current_statement_begin__ = 65;
         validate_non_negative_index("vecinds", "size(bin1)", size(bin1));
         validate_non_negative_index("vecinds", "num_elements(get_base1(bin1, 1, \"bin1\", 1))", num_elements(get_base1(bin1, 1, "bin1", 1)));
         std::vector<std::vector<int  >  > vecinds(size(bin1), std::vector<int>(num_elements(get_base1(bin1, 1, "bin1", 1)), int(0)));
         stan::math::fill(vecinds, std::numeric_limits<int>::min());
-        current_statement_begin__ = 72;
+        current_statement_begin__ = 66;
         int ctr(0);
         (void) ctr;  // dummy to suppress unused var warning
         stan::math::fill(ctr, std::numeric_limits<int>::min());
-        current_statement_begin__ = 73;
+        current_statement_begin__ = 67;
         int ind(0);
         (void) ind;  // dummy to suppress unused var warning
         stan::math::fill(ind, std::numeric_limits<int>::min());
-        current_statement_begin__ = 75;
+        current_statement_begin__ = 69;
         stan::math::assign(ctr, 0);
-        current_statement_begin__ = 76;
+        current_statement_begin__ = 70;
         for (int i = 1; i <= size(bin1); ++i) {
-            current_statement_begin__ = 77;
+            current_statement_begin__ = 71;
             for (int t = 1; t <= num_elements(get_base1(bin1, 1, "bin1", 1)); ++t) {
-                current_statement_begin__ = 78;
+                current_statement_begin__ = 72;
                 if (as_bool(logical_eq(get_base1(get_base1(bin1, i, "bin1", 1), t, "bin1", 2), 1))) {
-                    current_statement_begin__ = 79;
+                    current_statement_begin__ = 73;
                     stan::math::assign(ctr, (ctr + 1));
-                    current_statement_begin__ = 80;
+                    current_statement_begin__ = 74;
                     stan::model::assign(vecinds, 
                                 stan::model::cons_list(stan::model::index_uni(i), stan::model::cons_list(stan::model::index_uni(t), stan::model::nil_index_list())), 
                                 ctr, 
@@ -254,17 +254,17 @@ commoninds(const std::vector<std::vector<int> >& bin1,
                 }
             }
         }
-        current_statement_begin__ = 85;
+        current_statement_begin__ = 79;
         stan::math::assign(ind, 0);
-        current_statement_begin__ = 86;
+        current_statement_begin__ = 80;
         for (int i = 1; i <= size(vecinds); ++i) {
-            current_statement_begin__ = 87;
+            current_statement_begin__ = 81;
             for (int t = 1; t <= size(get_base1(vecinds, 1, "vecinds", 1)); ++t) {
-                current_statement_begin__ = 88;
+                current_statement_begin__ = 82;
                 if (as_bool(logical_eq(get_base1(get_base1(bin2, i, "bin2", 1), t, "bin2", 2), 1))) {
-                    current_statement_begin__ = 89;
+                    current_statement_begin__ = 83;
                     stan::math::assign(ind, (ind + 1));
-                    current_statement_begin__ = 90;
+                    current_statement_begin__ = 84;
                     stan::model::assign(out, 
                                 stan::model::cons_list(stan::model::index_uni(ind), stan::model::nil_index_list()), 
                                 get_base1(get_base1(vecinds, i, "vecinds", 1), t, "vecinds", 2), 
@@ -272,7 +272,7 @@ commoninds(const std::vector<std::vector<int> >& bin1,
                 }
             }
         }
-        current_statement_begin__ = 94;
+        current_statement_begin__ = 88;
         return stan::math::promote_scalar<fun_return_scalar_t__>(stan::model::rvalue(out, stan::model::cons_list(stan::model::index_min_max(1, ind), stan::model::nil_index_list()), "out"));
         }
     } catch (const std::exception& e) {
@@ -320,12 +320,12 @@ private:
         double upperbound_logWc;
         double lowerbound_b;
         double upperbound_b;
+        double lowerbound_logr;
+        double upperbound_logr;
         double lowerbound_logWb;
         double upperbound_logWb;
         double lowerbound_logDb;
         double upperbound_logDb;
-        double lowerbound_logr;
-        double upperbound_logr;
         std::vector<vector_d> sigma_man;
         std::vector<vector_d> sigma_amhg;
         vector_d logQ_hat;
@@ -343,16 +343,15 @@ private:
         std::vector<double> b_sd;
         std::vector<double> logA0_sd;
         std::vector<double> logn_sd;
+        std::vector<double> logr_sd;
         std::vector<double> logWb_sd;
         std::vector<double> logDb_sd;
-        std::vector<double> logr_sd;
         std::vector<vector_d> dApos_array;
         vector_d Wobsvec_man;
         vector_d Wobsvec_amhg;
         vector_d Wobsvec;
         vector_d Sobsvec_man;
         vector_d Sobsvec_amhg;
-        vector_d Sobsvec;
         vector_d logWobs_man;
         vector_d logWobs_amhg;
         vector_d logSobs_man;
@@ -392,7 +391,7 @@ public:
         (void) DUMMY_VAR__;  // suppress unused var warning
         try {
             // initialize data block variables from context__
-            current_statement_begin__ = 101;
+            current_statement_begin__ = 95;
             context__.validate_dims("data initialization", "inc_m", "int", context__.to_vec());
             inc_m = int(0);
             vals_i__ = context__.vals_i("inc_m");
@@ -400,7 +399,7 @@ public:
             inc_m = vals_i__[pos__++];
             check_greater_or_equal(function__, "inc_m", inc_m, 0);
             check_less_or_equal(function__, "inc_m", inc_m, 1);
-            current_statement_begin__ = 102;
+            current_statement_begin__ = 96;
             context__.validate_dims("data initialization", "inc_a", "int", context__.to_vec());
             inc_a = int(0);
             vals_i__ = context__.vals_i("inc_a");
@@ -408,7 +407,7 @@ public:
             inc_a = vals_i__[pos__++];
             check_greater_or_equal(function__, "inc_a", inc_a, 0);
             check_less_or_equal(function__, "inc_a", inc_a, 1);
-            current_statement_begin__ = 103;
+            current_statement_begin__ = 97;
             context__.validate_dims("data initialization", "meas_err", "int", context__.to_vec());
             meas_err = int(0);
             vals_i__ = context__.vals_i("meas_err");
@@ -416,35 +415,35 @@ public:
             meas_err = vals_i__[pos__++];
             check_greater_or_equal(function__, "meas_err", meas_err, 0);
             check_less_or_equal(function__, "meas_err", meas_err, 1);
-            current_statement_begin__ = 107;
+            current_statement_begin__ = 100;
             context__.validate_dims("data initialization", "nx", "int", context__.to_vec());
             nx = int(0);
             vals_i__ = context__.vals_i("nx");
             pos__ = 0;
             nx = vals_i__[pos__++];
             check_greater_or_equal(function__, "nx", nx, 0);
-            current_statement_begin__ = 108;
+            current_statement_begin__ = 101;
             context__.validate_dims("data initialization", "nt", "int", context__.to_vec());
             nt = int(0);
             vals_i__ = context__.vals_i("nt");
             pos__ = 0;
             nt = vals_i__[pos__++];
             check_greater_or_equal(function__, "nt", nt, 0);
-            current_statement_begin__ = 109;
+            current_statement_begin__ = 102;
             context__.validate_dims("data initialization", "ntot_man", "int", context__.to_vec());
             ntot_man = int(0);
             vals_i__ = context__.vals_i("ntot_man");
             pos__ = 0;
             ntot_man = vals_i__[pos__++];
             check_greater_or_equal(function__, "ntot_man", ntot_man, 0);
-            current_statement_begin__ = 110;
+            current_statement_begin__ = 103;
             context__.validate_dims("data initialization", "ntot_amhg", "int", context__.to_vec());
             ntot_amhg = int(0);
             vals_i__ = context__.vals_i("ntot_amhg");
             pos__ = 0;
             ntot_amhg = vals_i__[pos__++];
             check_greater_or_equal(function__, "ntot_amhg", ntot_amhg, 0);
-            current_statement_begin__ = 113;
+            current_statement_begin__ = 106;
             validate_non_negative_index("hasdat_man", "nx", nx);
             validate_non_negative_index("hasdat_man", "nt", nt);
             context__.validate_dims("data initialization", "hasdat_man", "int", context__.to_vec(nx,nt));
@@ -466,7 +465,7 @@ public:
                     check_less_or_equal(function__, "hasdat_man[i_0__][i_1__]", hasdat_man[i_0__][i_1__], 1);
                 }
             }
-            current_statement_begin__ = 114;
+            current_statement_begin__ = 107;
             validate_non_negative_index("hasdat_amhg", "nx", nx);
             validate_non_negative_index("hasdat_amhg", "nt", nt);
             context__.validate_dims("data initialization", "hasdat_amhg", "int", context__.to_vec(nx,nt));
@@ -488,7 +487,7 @@ public:
                     check_less_or_equal(function__, "hasdat_amhg[i_0__][i_1__]", hasdat_amhg[i_0__][i_1__], 1);
                 }
             }
-            current_statement_begin__ = 117;
+            current_statement_begin__ = 110;
             validate_non_negative_index("Wobs", "nt", nt);
             validate_non_negative_index("Wobs", "nx", nx);
             context__.validate_dims("data initialization", "Wobs", "vector_d", context__.to_vec(nx,nt));
@@ -502,7 +501,7 @@ public:
                     Wobs[k_0__](j_1__) = vals_r__[pos__++];
                 }
             }
-            current_statement_begin__ = 118;
+            current_statement_begin__ = 111;
             validate_non_negative_index("Sobs", "nt", nt);
             validate_non_negative_index("Sobs", "nx", nx);
             context__.validate_dims("data initialization", "Sobs", "vector_d", context__.to_vec(nx,nt));
@@ -516,7 +515,7 @@ public:
                     Sobs[k_0__](j_1__) = vals_r__[pos__++];
                 }
             }
-            current_statement_begin__ = 119;
+            current_statement_begin__ = 112;
             validate_non_negative_index("dAobs", "nt", nt);
             validate_non_negative_index("dAobs", "nx", nx);
             context__.validate_dims("data initialization", "dAobs", "vector_d", context__.to_vec(nx,nt));
@@ -530,7 +529,7 @@ public:
                     dAobs[k_0__](j_1__) = vals_r__[pos__++];
                 }
             }
-            current_statement_begin__ = 120;
+            current_statement_begin__ = 113;
             validate_non_negative_index("dA_shift", "nx", nx);
             context__.validate_dims("data initialization", "dA_shift", "vector_d", context__.to_vec(nx));
             dA_shift = Eigen::Matrix<double, Eigen::Dynamic, 1>(nx);
@@ -540,136 +539,136 @@ public:
             for (size_t j_1__ = 0; j_1__ < dA_shift_j_1_max__; ++j_1__) {
                 dA_shift(j_1__) = vals_r__[pos__++];
             }
-            current_statement_begin__ = 123;
+            current_statement_begin__ = 115;
             context__.validate_dims("data initialization", "Werr_sd", "double", context__.to_vec());
             Werr_sd = double(0);
             vals_r__ = context__.vals_r("Werr_sd");
             pos__ = 0;
             Werr_sd = vals_r__[pos__++];
             check_greater_or_equal(function__, "Werr_sd", Werr_sd, 0);
-            current_statement_begin__ = 124;
+            current_statement_begin__ = 116;
             context__.validate_dims("data initialization", "Serr_sd", "double", context__.to_vec());
             Serr_sd = double(0);
             vals_r__ = context__.vals_r("Serr_sd");
             pos__ = 0;
             Serr_sd = vals_r__[pos__++];
             check_greater_or_equal(function__, "Serr_sd", Serr_sd, 0);
-            current_statement_begin__ = 125;
+            current_statement_begin__ = 117;
             context__.validate_dims("data initialization", "dAerr_sd", "double", context__.to_vec());
             dAerr_sd = double(0);
             vals_r__ = context__.vals_r("dAerr_sd");
             pos__ = 0;
             dAerr_sd = vals_r__[pos__++];
             check_greater_or_equal(function__, "dAerr_sd", dAerr_sd, 0);
-            current_statement_begin__ = 128;
+            current_statement_begin__ = 120;
             context__.validate_dims("data initialization", "lowerbound_logQ", "double", context__.to_vec());
             lowerbound_logQ = double(0);
             vals_r__ = context__.vals_r("lowerbound_logQ");
             pos__ = 0;
             lowerbound_logQ = vals_r__[pos__++];
-            current_statement_begin__ = 129;
+            current_statement_begin__ = 121;
             context__.validate_dims("data initialization", "upperbound_logQ", "double", context__.to_vec());
             upperbound_logQ = double(0);
             vals_r__ = context__.vals_r("upperbound_logQ");
             pos__ = 0;
             upperbound_logQ = vals_r__[pos__++];
-            current_statement_begin__ = 131;
+            current_statement_begin__ = 123;
             context__.validate_dims("data initialization", "lowerbound_A0", "double", context__.to_vec());
             lowerbound_A0 = double(0);
             vals_r__ = context__.vals_r("lowerbound_A0");
             pos__ = 0;
             lowerbound_A0 = vals_r__[pos__++];
-            current_statement_begin__ = 132;
+            current_statement_begin__ = 124;
             context__.validate_dims("data initialization", "upperbound_A0", "double", context__.to_vec());
             upperbound_A0 = double(0);
             vals_r__ = context__.vals_r("upperbound_A0");
             pos__ = 0;
             upperbound_A0 = vals_r__[pos__++];
-            current_statement_begin__ = 133;
+            current_statement_begin__ = 125;
             context__.validate_dims("data initialization", "lowerbound_logn", "double", context__.to_vec());
             lowerbound_logn = double(0);
             vals_r__ = context__.vals_r("lowerbound_logn");
             pos__ = 0;
             lowerbound_logn = vals_r__[pos__++];
-            current_statement_begin__ = 134;
+            current_statement_begin__ = 126;
             context__.validate_dims("data initialization", "upperbound_logn", "double", context__.to_vec());
             upperbound_logn = double(0);
             vals_r__ = context__.vals_r("upperbound_logn");
             pos__ = 0;
             upperbound_logn = vals_r__[pos__++];
-            current_statement_begin__ = 136;
+            current_statement_begin__ = 127;
             context__.validate_dims("data initialization", "lowerbound_logQc", "double", context__.to_vec());
             lowerbound_logQc = double(0);
             vals_r__ = context__.vals_r("lowerbound_logQc");
             pos__ = 0;
             lowerbound_logQc = vals_r__[pos__++];
-            current_statement_begin__ = 137;
+            current_statement_begin__ = 128;
             context__.validate_dims("data initialization", "upperbound_logQc", "double", context__.to_vec());
             upperbound_logQc = double(0);
             vals_r__ = context__.vals_r("upperbound_logQc");
             pos__ = 0;
             upperbound_logQc = vals_r__[pos__++];
-            current_statement_begin__ = 138;
+            current_statement_begin__ = 129;
             context__.validate_dims("data initialization", "lowerbound_logWc", "double", context__.to_vec());
             lowerbound_logWc = double(0);
             vals_r__ = context__.vals_r("lowerbound_logWc");
             pos__ = 0;
             lowerbound_logWc = vals_r__[pos__++];
-            current_statement_begin__ = 139;
+            current_statement_begin__ = 130;
             context__.validate_dims("data initialization", "upperbound_logWc", "double", context__.to_vec());
             upperbound_logWc = double(0);
             vals_r__ = context__.vals_r("upperbound_logWc");
             pos__ = 0;
             upperbound_logWc = vals_r__[pos__++];
-            current_statement_begin__ = 140;
+            current_statement_begin__ = 131;
             context__.validate_dims("data initialization", "lowerbound_b", "double", context__.to_vec());
             lowerbound_b = double(0);
             vals_r__ = context__.vals_r("lowerbound_b");
             pos__ = 0;
             lowerbound_b = vals_r__[pos__++];
-            current_statement_begin__ = 141;
+            current_statement_begin__ = 132;
             context__.validate_dims("data initialization", "upperbound_b", "double", context__.to_vec());
             upperbound_b = double(0);
             vals_r__ = context__.vals_r("upperbound_b");
             pos__ = 0;
             upperbound_b = vals_r__[pos__++];
-            current_statement_begin__ = 143;
-            context__.validate_dims("data initialization", "lowerbound_logWb", "double", context__.to_vec());
-            lowerbound_logWb = double(0);
-            vals_r__ = context__.vals_r("lowerbound_logWb");
-            pos__ = 0;
-            lowerbound_logWb = vals_r__[pos__++];
-            current_statement_begin__ = 144;
-            context__.validate_dims("data initialization", "upperbound_logWb", "double", context__.to_vec());
-            upperbound_logWb = double(0);
-            vals_r__ = context__.vals_r("upperbound_logWb");
-            pos__ = 0;
-            upperbound_logWb = vals_r__[pos__++];
-            current_statement_begin__ = 145;
-            context__.validate_dims("data initialization", "lowerbound_logDb", "double", context__.to_vec());
-            lowerbound_logDb = double(0);
-            vals_r__ = context__.vals_r("lowerbound_logDb");
-            pos__ = 0;
-            lowerbound_logDb = vals_r__[pos__++];
-            current_statement_begin__ = 146;
-            context__.validate_dims("data initialization", "upperbound_logDb", "double", context__.to_vec());
-            upperbound_logDb = double(0);
-            vals_r__ = context__.vals_r("upperbound_logDb");
-            pos__ = 0;
-            upperbound_logDb = vals_r__[pos__++];
-            current_statement_begin__ = 147;
+            current_statement_begin__ = 133;
             context__.validate_dims("data initialization", "lowerbound_logr", "double", context__.to_vec());
             lowerbound_logr = double(0);
             vals_r__ = context__.vals_r("lowerbound_logr");
             pos__ = 0;
             lowerbound_logr = vals_r__[pos__++];
-            current_statement_begin__ = 148;
+            current_statement_begin__ = 134;
             context__.validate_dims("data initialization", "upperbound_logr", "double", context__.to_vec());
             upperbound_logr = double(0);
             vals_r__ = context__.vals_r("upperbound_logr");
             pos__ = 0;
             upperbound_logr = vals_r__[pos__++];
-            current_statement_begin__ = 151;
+            current_statement_begin__ = 135;
+            context__.validate_dims("data initialization", "lowerbound_logWb", "double", context__.to_vec());
+            lowerbound_logWb = double(0);
+            vals_r__ = context__.vals_r("lowerbound_logWb");
+            pos__ = 0;
+            lowerbound_logWb = vals_r__[pos__++];
+            current_statement_begin__ = 136;
+            context__.validate_dims("data initialization", "upperbound_logWb", "double", context__.to_vec());
+            upperbound_logWb = double(0);
+            vals_r__ = context__.vals_r("upperbound_logWb");
+            pos__ = 0;
+            upperbound_logWb = vals_r__[pos__++];
+            current_statement_begin__ = 137;
+            context__.validate_dims("data initialization", "lowerbound_logDb", "double", context__.to_vec());
+            lowerbound_logDb = double(0);
+            vals_r__ = context__.vals_r("lowerbound_logDb");
+            pos__ = 0;
+            lowerbound_logDb = vals_r__[pos__++];
+            current_statement_begin__ = 138;
+            context__.validate_dims("data initialization", "upperbound_logDb", "double", context__.to_vec());
+            upperbound_logDb = double(0);
+            vals_r__ = context__.vals_r("upperbound_logDb");
+            pos__ = 0;
+            upperbound_logDb = vals_r__[pos__++];
+            current_statement_begin__ = 141;
             validate_non_negative_index("sigma_man", "nt", nt);
             validate_non_negative_index("sigma_man", "nx", nx);
             context__.validate_dims("data initialization", "sigma_man", "vector_d", context__.to_vec(nx,nt));
@@ -687,7 +686,7 @@ public:
             for (size_t i_0__ = 0; i_0__ < sigma_man_i_0_max__; ++i_0__) {
                 check_greater_or_equal(function__, "sigma_man[i_0__]", sigma_man[i_0__], 0);
             }
-            current_statement_begin__ = 152;
+            current_statement_begin__ = 142;
             validate_non_negative_index("sigma_amhg", "nt", nt);
             validate_non_negative_index("sigma_amhg", "nx", nx);
             context__.validate_dims("data initialization", "sigma_amhg", "vector_d", context__.to_vec(nx,nt));
@@ -705,7 +704,7 @@ public:
             for (size_t i_0__ = 0; i_0__ < sigma_amhg_i_0_max__; ++i_0__) {
                 check_greater_or_equal(function__, "sigma_amhg[i_0__]", sigma_amhg[i_0__], 0);
             }
-            current_statement_begin__ = 156;
+            current_statement_begin__ = 145;
             validate_non_negative_index("logQ_hat", "nt", nt);
             context__.validate_dims("data initialization", "logQ_hat", "vector_d", context__.to_vec(nt));
             logQ_hat = Eigen::Matrix<double, Eigen::Dynamic, 1>(nt);
@@ -715,19 +714,19 @@ public:
             for (size_t j_1__ = 0; j_1__ < logQ_hat_j_1_max__; ++j_1__) {
                 logQ_hat(j_1__) = vals_r__[pos__++];
             }
-            current_statement_begin__ = 157;
+            current_statement_begin__ = 146;
             context__.validate_dims("data initialization", "logQc_hat", "double", context__.to_vec());
             logQc_hat = double(0);
             vals_r__ = context__.vals_r("logQc_hat");
             pos__ = 0;
             logQc_hat = vals_r__[pos__++];
-            current_statement_begin__ = 158;
+            current_statement_begin__ = 147;
             context__.validate_dims("data initialization", "logWc_hat", "double", context__.to_vec());
             logWc_hat = double(0);
             vals_r__ = context__.vals_r("logWc_hat");
             pos__ = 0;
             logWc_hat = vals_r__[pos__++];
-            current_statement_begin__ = 159;
+            current_statement_begin__ = 148;
             validate_non_negative_index("b_hat", "nx", nx);
             context__.validate_dims("data initialization", "b_hat", "double", context__.to_vec(nx));
             b_hat = std::vector<double>(nx, double(0));
@@ -737,7 +736,7 @@ public:
             for (size_t k_0__ = 0; k_0__ < b_hat_k_0_max__; ++k_0__) {
                 b_hat[k_0__] = vals_r__[pos__++];
             }
-            current_statement_begin__ = 160;
+            current_statement_begin__ = 149;
             validate_non_negative_index("logA0_hat", "nx", nx);
             context__.validate_dims("data initialization", "logA0_hat", "double", context__.to_vec(nx));
             logA0_hat = std::vector<double>(nx, double(0));
@@ -747,7 +746,7 @@ public:
             for (size_t k_0__ = 0; k_0__ < logA0_hat_k_0_max__; ++k_0__) {
                 logA0_hat[k_0__] = vals_r__[pos__++];
             }
-            current_statement_begin__ = 161;
+            current_statement_begin__ = 150;
             validate_non_negative_index("logn_hat", "nx", nx);
             context__.validate_dims("data initialization", "logn_hat", "double", context__.to_vec(nx));
             logn_hat = std::vector<double>(nx, double(0));
@@ -757,7 +756,7 @@ public:
             for (size_t k_0__ = 0; k_0__ < logn_hat_k_0_max__; ++k_0__) {
                 logn_hat[k_0__] = vals_r__[pos__++];
             }
-            current_statement_begin__ = 162;
+            current_statement_begin__ = 151;
             validate_non_negative_index("logWb_hat", "nx", nx);
             context__.validate_dims("data initialization", "logWb_hat", "double", context__.to_vec(nx));
             logWb_hat = std::vector<double>(nx, double(0));
@@ -767,7 +766,7 @@ public:
             for (size_t k_0__ = 0; k_0__ < logWb_hat_k_0_max__; ++k_0__) {
                 logWb_hat[k_0__] = vals_r__[pos__++];
             }
-            current_statement_begin__ = 163;
+            current_statement_begin__ = 152;
             validate_non_negative_index("logDb_hat", "nx", nx);
             context__.validate_dims("data initialization", "logDb_hat", "double", context__.to_vec(nx));
             logDb_hat = std::vector<double>(nx, double(0));
@@ -777,7 +776,7 @@ public:
             for (size_t k_0__ = 0; k_0__ < logDb_hat_k_0_max__; ++k_0__) {
                 logDb_hat[k_0__] = vals_r__[pos__++];
             }
-            current_statement_begin__ = 164;
+            current_statement_begin__ = 153;
             validate_non_negative_index("logr_hat", "nx", nx);
             context__.validate_dims("data initialization", "logr_hat", "double", context__.to_vec(nx));
             logr_hat = std::vector<double>(nx, double(0));
@@ -787,7 +786,7 @@ public:
             for (size_t k_0__ = 0; k_0__ < logr_hat_k_0_max__; ++k_0__) {
                 logr_hat[k_0__] = vals_r__[pos__++];
             }
-            current_statement_begin__ = 166;
+            current_statement_begin__ = 155;
             validate_non_negative_index("logQ_sd", "nt", nt);
             context__.validate_dims("data initialization", "logQ_sd", "vector_d", context__.to_vec(nt));
             logQ_sd = Eigen::Matrix<double, Eigen::Dynamic, 1>(nt);
@@ -798,21 +797,21 @@ public:
                 logQ_sd(j_1__) = vals_r__[pos__++];
             }
             check_greater_or_equal(function__, "logQ_sd", logQ_sd, 0);
-            current_statement_begin__ = 167;
+            current_statement_begin__ = 156;
             context__.validate_dims("data initialization", "logQc_sd", "double", context__.to_vec());
             logQc_sd = double(0);
             vals_r__ = context__.vals_r("logQc_sd");
             pos__ = 0;
             logQc_sd = vals_r__[pos__++];
             check_greater_or_equal(function__, "logQc_sd", logQc_sd, 0);
-            current_statement_begin__ = 168;
+            current_statement_begin__ = 157;
             context__.validate_dims("data initialization", "logWc_sd", "double", context__.to_vec());
             logWc_sd = double(0);
             vals_r__ = context__.vals_r("logWc_sd");
             pos__ = 0;
             logWc_sd = vals_r__[pos__++];
             check_greater_or_equal(function__, "logWc_sd", logWc_sd, 0);
-            current_statement_begin__ = 169;
+            current_statement_begin__ = 158;
             validate_non_negative_index("b_sd", "nx", nx);
             context__.validate_dims("data initialization", "b_sd", "double", context__.to_vec(nx));
             b_sd = std::vector<double>(nx, double(0));
@@ -826,7 +825,7 @@ public:
             for (size_t i_0__ = 0; i_0__ < b_sd_i_0_max__; ++i_0__) {
                 check_greater_or_equal(function__, "b_sd[i_0__]", b_sd[i_0__], 0);
             }
-            current_statement_begin__ = 170;
+            current_statement_begin__ = 159;
             validate_non_negative_index("logA0_sd", "nx", nx);
             context__.validate_dims("data initialization", "logA0_sd", "double", context__.to_vec(nx));
             logA0_sd = std::vector<double>(nx, double(0));
@@ -840,7 +839,7 @@ public:
             for (size_t i_0__ = 0; i_0__ < logA0_sd_i_0_max__; ++i_0__) {
                 check_greater_or_equal(function__, "logA0_sd[i_0__]", logA0_sd[i_0__], 0);
             }
-            current_statement_begin__ = 171;
+            current_statement_begin__ = 160;
             validate_non_negative_index("logn_sd", "nx", nx);
             context__.validate_dims("data initialization", "logn_sd", "double", context__.to_vec(nx));
             logn_sd = std::vector<double>(nx, double(0));
@@ -854,35 +853,7 @@ public:
             for (size_t i_0__ = 0; i_0__ < logn_sd_i_0_max__; ++i_0__) {
                 check_greater_or_equal(function__, "logn_sd[i_0__]", logn_sd[i_0__], 0);
             }
-            current_statement_begin__ = 172;
-            validate_non_negative_index("logWb_sd", "nx", nx);
-            context__.validate_dims("data initialization", "logWb_sd", "double", context__.to_vec(nx));
-            logWb_sd = std::vector<double>(nx, double(0));
-            vals_r__ = context__.vals_r("logWb_sd");
-            pos__ = 0;
-            size_t logWb_sd_k_0_max__ = nx;
-            for (size_t k_0__ = 0; k_0__ < logWb_sd_k_0_max__; ++k_0__) {
-                logWb_sd[k_0__] = vals_r__[pos__++];
-            }
-            size_t logWb_sd_i_0_max__ = nx;
-            for (size_t i_0__ = 0; i_0__ < logWb_sd_i_0_max__; ++i_0__) {
-                check_greater_or_equal(function__, "logWb_sd[i_0__]", logWb_sd[i_0__], 0);
-            }
-            current_statement_begin__ = 173;
-            validate_non_negative_index("logDb_sd", "nx", nx);
-            context__.validate_dims("data initialization", "logDb_sd", "double", context__.to_vec(nx));
-            logDb_sd = std::vector<double>(nx, double(0));
-            vals_r__ = context__.vals_r("logDb_sd");
-            pos__ = 0;
-            size_t logDb_sd_k_0_max__ = nx;
-            for (size_t k_0__ = 0; k_0__ < logDb_sd_k_0_max__; ++k_0__) {
-                logDb_sd[k_0__] = vals_r__[pos__++];
-            }
-            size_t logDb_sd_i_0_max__ = nx;
-            for (size_t i_0__ = 0; i_0__ < logDb_sd_i_0_max__; ++i_0__) {
-                check_greater_or_equal(function__, "logDb_sd[i_0__]", logDb_sd[i_0__], 0);
-            }
-            current_statement_begin__ = 174;
+            current_statement_begin__ = 161;
             validate_non_negative_index("logr_sd", "nx", nx);
             context__.validate_dims("data initialization", "logr_sd", "double", context__.to_vec(nx));
             logr_sd = std::vector<double>(nx, double(0));
@@ -896,156 +867,180 @@ public:
             for (size_t i_0__ = 0; i_0__ < logr_sd_i_0_max__; ++i_0__) {
                 check_greater_or_equal(function__, "logr_sd[i_0__]", logr_sd[i_0__], 0);
             }
+            current_statement_begin__ = 162;
+            validate_non_negative_index("logWb_sd", "nx", nx);
+            context__.validate_dims("data initialization", "logWb_sd", "double", context__.to_vec(nx));
+            logWb_sd = std::vector<double>(nx, double(0));
+            vals_r__ = context__.vals_r("logWb_sd");
+            pos__ = 0;
+            size_t logWb_sd_k_0_max__ = nx;
+            for (size_t k_0__ = 0; k_0__ < logWb_sd_k_0_max__; ++k_0__) {
+                logWb_sd[k_0__] = vals_r__[pos__++];
+            }
+            size_t logWb_sd_i_0_max__ = nx;
+            for (size_t i_0__ = 0; i_0__ < logWb_sd_i_0_max__; ++i_0__) {
+                check_greater_or_equal(function__, "logWb_sd[i_0__]", logWb_sd[i_0__], 0);
+            }
+            current_statement_begin__ = 163;
+            validate_non_negative_index("logDb_sd", "nx", nx);
+            context__.validate_dims("data initialization", "logDb_sd", "double", context__.to_vec(nx));
+            logDb_sd = std::vector<double>(nx, double(0));
+            vals_r__ = context__.vals_r("logDb_sd");
+            pos__ = 0;
+            size_t logDb_sd_k_0_max__ = nx;
+            for (size_t k_0__ = 0; k_0__ < logDb_sd_k_0_max__; ++k_0__) {
+                logDb_sd[k_0__] = vals_r__[pos__++];
+            }
+            size_t logDb_sd_i_0_max__ = nx;
+            for (size_t i_0__ = 0; i_0__ < logDb_sd_i_0_max__; ++i_0__) {
+                check_greater_or_equal(function__, "logDb_sd[i_0__]", logDb_sd[i_0__], 0);
+            }
             // initialize transformed data variables
-            current_statement_begin__ = 182;
+            current_statement_begin__ = 168;
             validate_non_negative_index("dApos_array", "nt", nt);
             validate_non_negative_index("dApos_array", "nx", nx);
             dApos_array = std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> >(nx, Eigen::Matrix<double, Eigen::Dynamic, 1>(nt));
             stan::math::fill(dApos_array, DUMMY_VAR__);
-            current_statement_begin__ = 184;
+            current_statement_begin__ = 169;
             validate_non_negative_index("Wobsvec_man", "ntot_man", ntot_man);
             Wobsvec_man = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man);
             stan::math::fill(Wobsvec_man, DUMMY_VAR__);
-            current_statement_begin__ = 185;
+            current_statement_begin__ = 170;
             validate_non_negative_index("Wobsvec_amhg", "ntot_amhg", ntot_amhg);
             Wobsvec_amhg = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_amhg);
             stan::math::fill(Wobsvec_amhg, DUMMY_VAR__);
-            current_statement_begin__ = 186;
+            current_statement_begin__ = 171;
             validate_non_negative_index("Wobsvec", "(inc_a ? ntot_amhg : ntot_man )", (inc_a ? ntot_amhg : ntot_man ));
             Wobsvec = Eigen::Matrix<double, Eigen::Dynamic, 1>((inc_a ? ntot_amhg : ntot_man ));
             stan::math::fill(Wobsvec, DUMMY_VAR__);
-            current_statement_begin__ = 187;
+            current_statement_begin__ = 172;
             validate_non_negative_index("Sobsvec_man", "ntot_man", ntot_man);
             Sobsvec_man = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man);
             stan::math::fill(Sobsvec_man, DUMMY_VAR__);
-            current_statement_begin__ = 188;
-            validate_non_negative_index("Sobsvec_amhg", "ntot_amhg", ntot_amhg);
-            Sobsvec_amhg = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_amhg);
+            current_statement_begin__ = 173;
+            validate_non_negative_index("Sobsvec_amhg", "ntot_man", ntot_man);
+            Sobsvec_amhg = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man);
             stan::math::fill(Sobsvec_amhg, DUMMY_VAR__);
-            current_statement_begin__ = 189;
-            validate_non_negative_index("Sobsvec", "(inc_a ? ntot_amhg : ntot_man )", (inc_a ? ntot_amhg : ntot_man ));
-            Sobsvec = Eigen::Matrix<double, Eigen::Dynamic, 1>((inc_a ? ntot_amhg : ntot_man ));
-            stan::math::fill(Sobsvec, DUMMY_VAR__);
-            current_statement_begin__ = 191;
+            current_statement_begin__ = 175;
             validate_non_negative_index("logWobs_man", "ntot_man", ntot_man);
             logWobs_man = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man);
             stan::math::fill(logWobs_man, DUMMY_VAR__);
-            current_statement_begin__ = 192;
+            current_statement_begin__ = 176;
             validate_non_negative_index("logWobs_amhg", "ntot_amhg", ntot_amhg);
             logWobs_amhg = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_amhg);
             stan::math::fill(logWobs_amhg, DUMMY_VAR__);
-            current_statement_begin__ = 193;
+            current_statement_begin__ = 177;
             validate_non_negative_index("logSobs_man", "ntot_man", ntot_man);
             logSobs_man = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man);
             stan::math::fill(logSobs_man, DUMMY_VAR__);
-            current_statement_begin__ = 194;
+            current_statement_begin__ = 178;
             validate_non_negative_index("logSobs_amhg", "ntot_amhg", ntot_amhg);
             logSobs_amhg = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_amhg);
             stan::math::fill(logSobs_amhg, DUMMY_VAR__);
-            current_statement_begin__ = 195;
+            current_statement_begin__ = 179;
             validate_non_negative_index("dApos_obs", "ntot_man", ntot_man);
             dApos_obs = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man);
             stan::math::fill(dApos_obs, DUMMY_VAR__);
-            current_statement_begin__ = 196;
+            current_statement_begin__ = 180;
             validate_non_negative_index("sigmavec_man", "ntot_man", ntot_man);
             sigmavec_man = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man);
             stan::math::fill(sigmavec_man, DUMMY_VAR__);
-            current_statement_begin__ = 197;
+            current_statement_begin__ = 181;
             validate_non_negative_index("sigmavec_amhg", "ntot_amhg", ntot_amhg);
             sigmavec_amhg = Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_amhg);
             stan::math::fill(sigmavec_amhg, DUMMY_VAR__);
-            current_statement_begin__ = 199;
+            current_statement_begin__ = 183;
             validate_non_negative_index("maninds_amhg", "ntot_man", ntot_man);
             maninds_amhg = std::vector<int>(ntot_man, int(0));
             stan::math::fill(maninds_amhg, std::numeric_limits<int>::min());
-            current_statement_begin__ = 201;
+            current_statement_begin__ = 185;
             ntot_w = int(0);
             stan::math::fill(ntot_w, std::numeric_limits<int>::min());
             // execute transformed data statements
-            current_statement_begin__ = 202;
+            current_statement_begin__ = 186;
             stan::math::assign(ntot_w, (inc_a ? ntot_amhg : ntot_man ));
-            current_statement_begin__ = 204;
+            current_statement_begin__ = 188;
             for (int i = 1; i <= nx; ++i) {
-                current_statement_begin__ = 205;
+                current_statement_begin__ = 189;
                 stan::model::assign(dApos_array, 
                             stan::model::cons_list(stan::model::index_uni(i), stan::model::nil_index_list()), 
                             subtract(get_base1(dAobs, i, "dAobs", 1), min(get_base1(dAobs, i, "dAobs", 1))), 
                             "assigning variable dApos_array");
             }
-            current_statement_begin__ = 209;
+            current_statement_begin__ = 193;
             stan::math::assign(Wobsvec_man, ragged_vec(Wobs, hasdat_man, pstream__));
-            current_statement_begin__ = 210;
+            current_statement_begin__ = 194;
             stan::math::assign(Wobsvec_amhg, ragged_vec(Wobs, hasdat_amhg, pstream__));
-            current_statement_begin__ = 211;
+            current_statement_begin__ = 195;
             stan::math::assign(Wobsvec, (inc_a ? stan::math::promote_scalar<double>(Wobsvec_amhg) : stan::math::promote_scalar<double>(Wobsvec_man) ));
-            current_statement_begin__ = 212;
+            current_statement_begin__ = 196;
             stan::math::assign(Sobsvec_man, ragged_vec(Sobs, hasdat_man, pstream__));
-            current_statement_begin__ = 213;
+            current_statement_begin__ = 197;
             stan::math::assign(Sobsvec_amhg, ragged_vec(Sobs, hasdat_amhg, pstream__));
-            current_statement_begin__ = 214;
+            current_statement_begin__ = 198;
             stan::math::assign(dApos_obs, ragged_vec(dApos_array, hasdat_man, pstream__));
-            current_statement_begin__ = 216;
+            current_statement_begin__ = 200;
             stan::math::assign(logWobs_man, stan::math::log(Wobsvec_man));
-            current_statement_begin__ = 217;
+            current_statement_begin__ = 201;
             stan::math::assign(logSobs_man, stan::math::log(Sobsvec_man));
-            current_statement_begin__ = 218;
+            current_statement_begin__ = 202;
             stan::math::assign(logSobs_amhg, stan::math::log(Sobsvec_amhg));
-            current_statement_begin__ = 220;
+            current_statement_begin__ = 204;
             stan::math::assign(sigmavec_man, ragged_vec(sigma_man, hasdat_man, pstream__));
-            current_statement_begin__ = 221;
+            current_statement_begin__ = 205;
             stan::math::assign(sigmavec_amhg, ragged_vec(sigma_amhg, hasdat_amhg, pstream__));
-            current_statement_begin__ = 223;
+            current_statement_begin__ = 209;
             stan::math::assign(maninds_amhg, commoninds(hasdat_amhg, hasdat_man, pstream__));
             // validate transformed data
             // validate, set parameter ranges
             num_params_r__ = 0U;
             param_ranges_i__.clear();
-            current_statement_begin__ = 227;
+            current_statement_begin__ = 213;
+            validate_non_negative_index("logQ", "nt", nt);
+            num_params_r__ += nt;
+            current_statement_begin__ = 214;
             validate_non_negative_index("logn_man", "nx", nx);
             validate_non_negative_index("logn_man", "inc_m", inc_m);
             num_params_r__ += (nx * inc_m);
-            current_statement_begin__ = 228;
+            current_statement_begin__ = 215;
             validate_non_negative_index("logn_amhg", "nx", nx);
             validate_non_negative_index("logn_amhg", "inc_a", inc_a);
             num_params_r__ += (nx * inc_a);
-            current_statement_begin__ = 229;
-            validate_non_negative_index("logQ", "nt", nt);
-            num_params_r__ += nt;
-            current_statement_begin__ = 230;
+            current_statement_begin__ = 216;
             validate_non_negative_index("A0", "nx", nx);
             validate_non_negative_index("A0", "inc_m", inc_m);
             num_params_r__ += (nx * inc_m);
-            current_statement_begin__ = 232;
+            current_statement_begin__ = 217;
             validate_non_negative_index("logWc", "inc_a", inc_a);
             num_params_r__ += (1 * inc_a);
-            current_statement_begin__ = 233;
+            current_statement_begin__ = 218;
             validate_non_negative_index("logQc", "inc_a", inc_a);
             num_params_r__ += (1 * inc_a);
-            current_statement_begin__ = 234;
+            current_statement_begin__ = 219;
             validate_non_negative_index("b", "nx", nx);
             validate_non_negative_index("b", "inc_a", inc_a);
             num_params_r__ += (nx * inc_a);
-            current_statement_begin__ = 236;
-            validate_non_negative_index("logWb", "nx", nx);
-            validate_non_negative_index("logWb", "inc_a", inc_a);
-            num_params_r__ += (nx * inc_a);
-            current_statement_begin__ = 237;
-            validate_non_negative_index("logDb", "nx", nx);
-            validate_non_negative_index("logDb", "inc_a", inc_a);
-            num_params_r__ += (nx * inc_a);
-            current_statement_begin__ = 238;
+            current_statement_begin__ = 220;
             validate_non_negative_index("logr", "nx", nx);
             validate_non_negative_index("logr", "inc_a", inc_a);
             num_params_r__ += (nx * inc_a);
-            current_statement_begin__ = 240;
+            current_statement_begin__ = 221;
+            validate_non_negative_index("logWb", "nx", nx);
+            validate_non_negative_index("logWb", "inc_a", inc_a);
+            num_params_r__ += (nx * inc_a);
+            current_statement_begin__ = 222;
+            validate_non_negative_index("logDb", "nx", nx);
+            validate_non_negative_index("logDb", "inc_a", inc_a);
+            num_params_r__ += (nx * inc_a);
+            current_statement_begin__ = 224;
             validate_non_negative_index("Wact", "ntot_w", ntot_w);
             validate_non_negative_index("Wact", "meas_err", meas_err);
             num_params_r__ += (ntot_w * meas_err);
-            current_statement_begin__ = 241;
+            current_statement_begin__ = 225;
             validate_non_negative_index("Sact", "ntot_man", ntot_man);
             validate_non_negative_index("Sact", "(meas_err * inc_m)", (meas_err * inc_m));
             num_params_r__ += (ntot_man * (meas_err * inc_m));
-            current_statement_begin__ = 242;
+            current_statement_begin__ = 226;
             validate_non_negative_index("dApos_act", "ntot_man", ntot_man);
             validate_non_negative_index("dApos_act", "(meas_err * inc_m)", (meas_err * inc_m));
             num_params_r__ += (ntot_man * (meas_err * inc_m));
@@ -1066,7 +1061,24 @@ public:
         (void) pos__; // dummy call to supress warning
         std::vector<double> vals_r__;
         std::vector<int> vals_i__;
-        current_statement_begin__ = 227;
+        current_statement_begin__ = 213;
+        if (!(context__.contains_r("logQ")))
+            stan::lang::rethrow_located(std::runtime_error(std::string("Variable logQ missing")), current_statement_begin__, prog_reader__());
+        vals_r__ = context__.vals_r("logQ");
+        pos__ = 0U;
+        validate_non_negative_index("logQ", "nt", nt);
+        context__.validate_dims("parameter initialization", "logQ", "vector_d", context__.to_vec(nt));
+        Eigen::Matrix<double, Eigen::Dynamic, 1> logQ(nt);
+        size_t logQ_j_1_max__ = nt;
+        for (size_t j_1__ = 0; j_1__ < logQ_j_1_max__; ++j_1__) {
+            logQ(j_1__) = vals_r__[pos__++];
+        }
+        try {
+            writer__.vector_lub_unconstrain(lowerbound_logQ, upperbound_logQ, logQ);
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logQ: ") + e.what()), current_statement_begin__, prog_reader__());
+        }
+        current_statement_begin__ = 214;
         if (!(context__.contains_r("logn_man")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable logn_man missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("logn_man");
@@ -1090,7 +1102,7 @@ public:
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logn_man: ") + e.what()), current_statement_begin__, prog_reader__());
             }
         }
-        current_statement_begin__ = 228;
+        current_statement_begin__ = 215;
         if (!(context__.contains_r("logn_amhg")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable logn_amhg missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("logn_amhg");
@@ -1114,24 +1126,7 @@ public:
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logn_amhg: ") + e.what()), current_statement_begin__, prog_reader__());
             }
         }
-        current_statement_begin__ = 229;
-        if (!(context__.contains_r("logQ")))
-            stan::lang::rethrow_located(std::runtime_error(std::string("Variable logQ missing")), current_statement_begin__, prog_reader__());
-        vals_r__ = context__.vals_r("logQ");
-        pos__ = 0U;
-        validate_non_negative_index("logQ", "nt", nt);
-        context__.validate_dims("parameter initialization", "logQ", "vector_d", context__.to_vec(nt));
-        Eigen::Matrix<double, Eigen::Dynamic, 1> logQ(nt);
-        size_t logQ_j_1_max__ = nt;
-        for (size_t j_1__ = 0; j_1__ < logQ_j_1_max__; ++j_1__) {
-            logQ(j_1__) = vals_r__[pos__++];
-        }
-        try {
-            writer__.vector_lub_unconstrain(lowerbound_logQ, upperbound_logQ, logQ);
-        } catch (const std::exception& e) {
-            stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logQ: ") + e.what()), current_statement_begin__, prog_reader__());
-        }
-        current_statement_begin__ = 230;
+        current_statement_begin__ = 216;
         if (!(context__.contains_r("A0")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable A0 missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("A0");
@@ -1155,7 +1150,7 @@ public:
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable A0: ") + e.what()), current_statement_begin__, prog_reader__());
             }
         }
-        current_statement_begin__ = 232;
+        current_statement_begin__ = 217;
         if (!(context__.contains_r("logWc")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable logWc missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("logWc");
@@ -1175,7 +1170,7 @@ public:
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logWc: ") + e.what()), current_statement_begin__, prog_reader__());
             }
         }
-        current_statement_begin__ = 233;
+        current_statement_begin__ = 218;
         if (!(context__.contains_r("logQc")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable logQc missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("logQc");
@@ -1195,7 +1190,7 @@ public:
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logQc: ") + e.what()), current_statement_begin__, prog_reader__());
             }
         }
-        current_statement_begin__ = 234;
+        current_statement_begin__ = 219;
         if (!(context__.contains_r("b")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable b missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("b");
@@ -1219,55 +1214,7 @@ public:
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable b: ") + e.what()), current_statement_begin__, prog_reader__());
             }
         }
-        current_statement_begin__ = 236;
-        if (!(context__.contains_r("logWb")))
-            stan::lang::rethrow_located(std::runtime_error(std::string("Variable logWb missing")), current_statement_begin__, prog_reader__());
-        vals_r__ = context__.vals_r("logWb");
-        pos__ = 0U;
-        validate_non_negative_index("logWb", "nx", nx);
-        validate_non_negative_index("logWb", "inc_a", inc_a);
-        context__.validate_dims("parameter initialization", "logWb", "vector_d", context__.to_vec(inc_a,nx));
-        std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logWb(inc_a, Eigen::Matrix<double, Eigen::Dynamic, 1>(nx));
-        size_t logWb_j_1_max__ = nx;
-        size_t logWb_k_0_max__ = inc_a;
-        for (size_t j_1__ = 0; j_1__ < logWb_j_1_max__; ++j_1__) {
-            for (size_t k_0__ = 0; k_0__ < logWb_k_0_max__; ++k_0__) {
-                logWb[k_0__](j_1__) = vals_r__[pos__++];
-            }
-        }
-        size_t logWb_i_0_max__ = inc_a;
-        for (size_t i_0__ = 0; i_0__ < logWb_i_0_max__; ++i_0__) {
-            try {
-                writer__.vector_lub_unconstrain(lowerbound_logWb, upperbound_logWb, logWb[i_0__]);
-            } catch (const std::exception& e) {
-                stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logWb: ") + e.what()), current_statement_begin__, prog_reader__());
-            }
-        }
-        current_statement_begin__ = 237;
-        if (!(context__.contains_r("logDb")))
-            stan::lang::rethrow_located(std::runtime_error(std::string("Variable logDb missing")), current_statement_begin__, prog_reader__());
-        vals_r__ = context__.vals_r("logDb");
-        pos__ = 0U;
-        validate_non_negative_index("logDb", "nx", nx);
-        validate_non_negative_index("logDb", "inc_a", inc_a);
-        context__.validate_dims("parameter initialization", "logDb", "vector_d", context__.to_vec(inc_a,nx));
-        std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logDb(inc_a, Eigen::Matrix<double, Eigen::Dynamic, 1>(nx));
-        size_t logDb_j_1_max__ = nx;
-        size_t logDb_k_0_max__ = inc_a;
-        for (size_t j_1__ = 0; j_1__ < logDb_j_1_max__; ++j_1__) {
-            for (size_t k_0__ = 0; k_0__ < logDb_k_0_max__; ++k_0__) {
-                logDb[k_0__](j_1__) = vals_r__[pos__++];
-            }
-        }
-        size_t logDb_i_0_max__ = inc_a;
-        for (size_t i_0__ = 0; i_0__ < logDb_i_0_max__; ++i_0__) {
-            try {
-                writer__.vector_lub_unconstrain(lowerbound_logDb, upperbound_logDb, logDb[i_0__]);
-            } catch (const std::exception& e) {
-                stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logDb: ") + e.what()), current_statement_begin__, prog_reader__());
-            }
-        }
-        current_statement_begin__ = 238;
+        current_statement_begin__ = 220;
         if (!(context__.contains_r("logr")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable logr missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("logr");
@@ -1291,7 +1238,55 @@ public:
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logr: ") + e.what()), current_statement_begin__, prog_reader__());
             }
         }
-        current_statement_begin__ = 240;
+        current_statement_begin__ = 221;
+        if (!(context__.contains_r("logWb")))
+            stan::lang::rethrow_located(std::runtime_error(std::string("Variable logWb missing")), current_statement_begin__, prog_reader__());
+        vals_r__ = context__.vals_r("logWb");
+        pos__ = 0U;
+        validate_non_negative_index("logWb", "nx", nx);
+        validate_non_negative_index("logWb", "inc_a", inc_a);
+        context__.validate_dims("parameter initialization", "logWb", "vector_d", context__.to_vec(inc_a,nx));
+        std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logWb(inc_a, Eigen::Matrix<double, Eigen::Dynamic, 1>(nx));
+        size_t logWb_j_1_max__ = nx;
+        size_t logWb_k_0_max__ = inc_a;
+        for (size_t j_1__ = 0; j_1__ < logWb_j_1_max__; ++j_1__) {
+            for (size_t k_0__ = 0; k_0__ < logWb_k_0_max__; ++k_0__) {
+                logWb[k_0__](j_1__) = vals_r__[pos__++];
+            }
+        }
+        size_t logWb_i_0_max__ = inc_a;
+        for (size_t i_0__ = 0; i_0__ < logWb_i_0_max__; ++i_0__) {
+            try {
+                writer__.vector_lub_unconstrain(lowerbound_logWb, upperbound_logWb, logWb[i_0__]);
+            } catch (const std::exception& e) {
+                stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logWb: ") + e.what()), current_statement_begin__, prog_reader__());
+            }
+        }
+        current_statement_begin__ = 222;
+        if (!(context__.contains_r("logDb")))
+            stan::lang::rethrow_located(std::runtime_error(std::string("Variable logDb missing")), current_statement_begin__, prog_reader__());
+        vals_r__ = context__.vals_r("logDb");
+        pos__ = 0U;
+        validate_non_negative_index("logDb", "nx", nx);
+        validate_non_negative_index("logDb", "inc_a", inc_a);
+        context__.validate_dims("parameter initialization", "logDb", "vector_d", context__.to_vec(inc_a,nx));
+        std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logDb(inc_a, Eigen::Matrix<double, Eigen::Dynamic, 1>(nx));
+        size_t logDb_j_1_max__ = nx;
+        size_t logDb_k_0_max__ = inc_a;
+        for (size_t j_1__ = 0; j_1__ < logDb_j_1_max__; ++j_1__) {
+            for (size_t k_0__ = 0; k_0__ < logDb_k_0_max__; ++k_0__) {
+                logDb[k_0__](j_1__) = vals_r__[pos__++];
+            }
+        }
+        size_t logDb_i_0_max__ = inc_a;
+        for (size_t i_0__ = 0; i_0__ < logDb_i_0_max__; ++i_0__) {
+            try {
+                writer__.vector_lub_unconstrain(lowerbound_logDb, upperbound_logDb, logDb[i_0__]);
+            } catch (const std::exception& e) {
+                stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable logDb: ") + e.what()), current_statement_begin__, prog_reader__());
+            }
+        }
+        current_statement_begin__ = 224;
         if (!(context__.contains_r("Wact")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable Wact missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("Wact");
@@ -1315,7 +1310,7 @@ public:
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable Wact: ") + e.what()), current_statement_begin__, prog_reader__());
             }
         }
-        current_statement_begin__ = 241;
+        current_statement_begin__ = 225;
         if (!(context__.contains_r("Sact")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable Sact missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("Sact");
@@ -1339,7 +1334,7 @@ public:
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable Sact: ") + e.what()), current_statement_begin__, prog_reader__());
             }
         }
-        current_statement_begin__ = 242;
+        current_statement_begin__ = 226;
         if (!(context__.contains_r("dApos_act")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable dApos_act missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("dApos_act");
@@ -1388,7 +1383,14 @@ public:
         try {
             stan::io::reader<local_scalar_t__> in__(params_r__, params_i__);
             // model parameters
-            current_statement_begin__ = 227;
+            current_statement_begin__ = 213;
+            Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> logQ;
+            (void) logQ;  // dummy to suppress unused var warning
+            if (jacobian__)
+                logQ = in__.vector_lub_constrain(lowerbound_logQ, upperbound_logQ, nt, lp__);
+            else
+                logQ = in__.vector_lub_constrain(lowerbound_logQ, upperbound_logQ, nt);
+            current_statement_begin__ = 214;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logn_man;
             size_t logn_man_d_0_max__ = inc_m;
             logn_man.reserve(logn_man_d_0_max__);
@@ -1398,7 +1400,7 @@ public:
                 else
                     logn_man.push_back(in__.vector_lub_constrain(lowerbound_logn, upperbound_logn, nx));
             }
-            current_statement_begin__ = 228;
+            current_statement_begin__ = 215;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logn_amhg;
             size_t logn_amhg_d_0_max__ = inc_a;
             logn_amhg.reserve(logn_amhg_d_0_max__);
@@ -1408,14 +1410,7 @@ public:
                 else
                     logn_amhg.push_back(in__.vector_lub_constrain(lowerbound_logn, upperbound_logn, nx));
             }
-            current_statement_begin__ = 229;
-            Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> logQ;
-            (void) logQ;  // dummy to suppress unused var warning
-            if (jacobian__)
-                logQ = in__.vector_lub_constrain(lowerbound_logQ, upperbound_logQ, nt, lp__);
-            else
-                logQ = in__.vector_lub_constrain(lowerbound_logQ, upperbound_logQ, nt);
-            current_statement_begin__ = 230;
+            current_statement_begin__ = 216;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > A0;
             size_t A0_d_0_max__ = inc_m;
             A0.reserve(A0_d_0_max__);
@@ -1425,7 +1420,7 @@ public:
                 else
                     A0.push_back(in__.vector_lub_constrain(lowerbound_A0, upperbound_A0, nx));
             }
-            current_statement_begin__ = 232;
+            current_statement_begin__ = 217;
             std::vector<local_scalar_t__> logWc;
             size_t logWc_d_0_max__ = inc_a;
             logWc.reserve(logWc_d_0_max__);
@@ -1435,7 +1430,7 @@ public:
                 else
                     logWc.push_back(in__.scalar_lub_constrain(lowerbound_logWc, upperbound_logWc));
             }
-            current_statement_begin__ = 233;
+            current_statement_begin__ = 218;
             std::vector<local_scalar_t__> logQc;
             size_t logQc_d_0_max__ = inc_a;
             logQc.reserve(logQc_d_0_max__);
@@ -1445,7 +1440,7 @@ public:
                 else
                     logQc.push_back(in__.scalar_lub_constrain(lowerbound_logQc, upperbound_logQc));
             }
-            current_statement_begin__ = 234;
+            current_statement_begin__ = 219;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > b;
             size_t b_d_0_max__ = inc_a;
             b.reserve(b_d_0_max__);
@@ -1455,27 +1450,7 @@ public:
                 else
                     b.push_back(in__.vector_lub_constrain(lowerbound_b, upperbound_b, nx));
             }
-            current_statement_begin__ = 236;
-            std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logWb;
-            size_t logWb_d_0_max__ = inc_a;
-            logWb.reserve(logWb_d_0_max__);
-            for (size_t d_0__ = 0; d_0__ < logWb_d_0_max__; ++d_0__) {
-                if (jacobian__)
-                    logWb.push_back(in__.vector_lub_constrain(lowerbound_logWb, upperbound_logWb, nx, lp__));
-                else
-                    logWb.push_back(in__.vector_lub_constrain(lowerbound_logWb, upperbound_logWb, nx));
-            }
-            current_statement_begin__ = 237;
-            std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logDb;
-            size_t logDb_d_0_max__ = inc_a;
-            logDb.reserve(logDb_d_0_max__);
-            for (size_t d_0__ = 0; d_0__ < logDb_d_0_max__; ++d_0__) {
-                if (jacobian__)
-                    logDb.push_back(in__.vector_lub_constrain(lowerbound_logDb, upperbound_logDb, nx, lp__));
-                else
-                    logDb.push_back(in__.vector_lub_constrain(lowerbound_logDb, upperbound_logDb, nx));
-            }
-            current_statement_begin__ = 238;
+            current_statement_begin__ = 220;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logr;
             size_t logr_d_0_max__ = inc_a;
             logr.reserve(logr_d_0_max__);
@@ -1485,7 +1460,27 @@ public:
                 else
                     logr.push_back(in__.vector_lub_constrain(lowerbound_logr, upperbound_logr, nx));
             }
-            current_statement_begin__ = 240;
+            current_statement_begin__ = 221;
+            std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logWb;
+            size_t logWb_d_0_max__ = inc_a;
+            logWb.reserve(logWb_d_0_max__);
+            for (size_t d_0__ = 0; d_0__ < logWb_d_0_max__; ++d_0__) {
+                if (jacobian__)
+                    logWb.push_back(in__.vector_lub_constrain(lowerbound_logWb, upperbound_logWb, nx, lp__));
+                else
+                    logWb.push_back(in__.vector_lub_constrain(lowerbound_logWb, upperbound_logWb, nx));
+            }
+            current_statement_begin__ = 222;
+            std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logDb;
+            size_t logDb_d_0_max__ = inc_a;
+            logDb.reserve(logDb_d_0_max__);
+            for (size_t d_0__ = 0; d_0__ < logDb_d_0_max__; ++d_0__) {
+                if (jacobian__)
+                    logDb.push_back(in__.vector_lub_constrain(lowerbound_logDb, upperbound_logDb, nx, lp__));
+                else
+                    logDb.push_back(in__.vector_lub_constrain(lowerbound_logDb, upperbound_logDb, nx));
+            }
+            current_statement_begin__ = 224;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > Wact;
             size_t Wact_d_0_max__ = meas_err;
             Wact.reserve(Wact_d_0_max__);
@@ -1495,7 +1490,7 @@ public:
                 else
                     Wact.push_back(in__.vector_lb_constrain(0, ntot_w));
             }
-            current_statement_begin__ = 241;
+            current_statement_begin__ = 225;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > Sact;
             size_t Sact_d_0_max__ = (meas_err * inc_m);
             Sact.reserve(Sact_d_0_max__);
@@ -1505,7 +1500,7 @@ public:
                 else
                     Sact.push_back(in__.vector_lb_constrain(0, ntot_man));
             }
-            current_statement_begin__ = 242;
+            current_statement_begin__ = 226;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > dApos_act;
             size_t dApos_act_d_0_max__ = (meas_err * inc_m);
             dApos_act.reserve(dApos_act_d_0_max__);
@@ -1516,110 +1511,110 @@ public:
                     dApos_act.push_back(in__.vector_constrain(ntot_man));
             }
             // transformed parameters
-            current_statement_begin__ = 248;
+            current_statement_begin__ = 229;
             validate_non_negative_index("man_lhs", "ntot_man", ntot_man);
             validate_non_negative_index("man_lhs", "inc_m", inc_m);
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > man_lhs(inc_m, Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(man_lhs, DUMMY_VAR__);
             stan::math::fill(man_lhs, DUMMY_VAR__);
-            current_statement_begin__ = 249;
+            current_statement_begin__ = 230;
             validate_non_negative_index("logA_man", "ntot_man", ntot_man);
             validate_non_negative_index("logA_man", "inc_m", inc_m);
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logA_man(inc_m, Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(logA_man, DUMMY_VAR__);
             stan::math::fill(logA_man, DUMMY_VAR__);
-            current_statement_begin__ = 250;
+            current_statement_begin__ = 231;
             validate_non_negative_index("man_rhs", "ntot_man", ntot_man);
             validate_non_negative_index("man_rhs", "inc_m", inc_m);
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > man_rhs(inc_m, Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(man_rhs, DUMMY_VAR__);
             stan::math::fill(man_rhs, DUMMY_VAR__);
-            current_statement_begin__ = 251;
+            current_statement_begin__ = 232;
             validate_non_negative_index("Wact_man", "ntot_man", ntot_man);
             validate_non_negative_index("Wact_man", "(inc_m * meas_err)", (inc_m * meas_err));
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > Wact_man((inc_m * meas_err), Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(Wact_man, DUMMY_VAR__);
             stan::math::fill(Wact_man, DUMMY_VAR__);
-            current_statement_begin__ = 252;
+            current_statement_begin__ = 233;
             validate_non_negative_index("logQ_man", "ntot_man", ntot_man);
             validate_non_negative_index("logQ_man", "inc_m", inc_m);
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logQ_man(inc_m, Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(logQ_man, DUMMY_VAR__);
             stan::math::fill(logQ_man, DUMMY_VAR__);
-            current_statement_begin__ = 254;
+            current_statement_begin__ = 235;
             validate_non_negative_index("amhg_rhs", "ntot_amhg", ntot_amhg);
             validate_non_negative_index("amhg_rhs", "inc_a", inc_a);
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > amhg_rhs(inc_a, Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1>(ntot_amhg));
             stan::math::initialize(amhg_rhs, DUMMY_VAR__);
             stan::math::fill(amhg_rhs, DUMMY_VAR__);
-            current_statement_begin__ = 255;
+            current_statement_begin__ = 236;
             validate_non_negative_index("logQ_amhg", "ntot_amhg", ntot_amhg);
             validate_non_negative_index("logQ_amhg", "inc_a", inc_a);
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logQ_amhg(inc_a, Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1>(ntot_amhg));
             stan::math::initialize(logQ_amhg, DUMMY_VAR__);
             stan::math::fill(logQ_amhg, DUMMY_VAR__);
-            current_statement_begin__ = 256;
+            current_statement_begin__ = 237;
             validate_non_negative_index("logQc_amhg", "ntot_amhg", ntot_amhg);
             validate_non_negative_index("logQc_amhg", "inc_a", inc_a);
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logQc_amhg(inc_a, Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1>(ntot_amhg));
             stan::math::initialize(logQc_amhg, DUMMY_VAR__);
             stan::math::fill(logQc_amhg, DUMMY_VAR__);
             // transformed parameters block statements
-            current_statement_begin__ = 259;
+            current_statement_begin__ = 240;
             if (as_bool(inc_m)) {
-                current_statement_begin__ = 260;
+                current_statement_begin__ = 241;
                 if (as_bool(meas_err)) {
-                    current_statement_begin__ = 261;
+                    current_statement_begin__ = 242;
                     stan::model::assign(Wact_man, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 stan::model::rvalue(get_base1(Wact, 1, "Wact", 1), stan::model::cons_list(stan::model::index_multi(maninds_amhg), stan::model::nil_index_list()), "Wact[1]"), 
                                 "assigning variable Wact_man");
-                    current_statement_begin__ = 262;
+                    current_statement_begin__ = 243;
                     stan::model::assign(logA_man, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 stan::math::log(add(ragged_col(get_base1(A0, 1, "A0", 1), hasdat_man, pstream__), get_base1(dApos_act, 1, "dApos_act", 1))), 
                                 "assigning variable logA_man");
-                    current_statement_begin__ = 263;
+                    current_statement_begin__ = 244;
                     stan::model::assign(man_lhs, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 subtract(multiply(4., stan::math::log(get_base1(Wact_man, 1, "Wact_man", 1))), multiply(3., stan::math::log(get_base1(Sact, 1, "Sact", 1)))), 
                                 "assigning variable man_lhs");
                 } else {
-                    current_statement_begin__ = 266;
+                    current_statement_begin__ = 247;
                     stan::model::assign(logA_man, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 stan::math::log(add(ragged_col(get_base1(A0, 1, "A0", 1), hasdat_man, pstream__), dApos_obs)), 
                                 "assigning variable logA_man");
-                    current_statement_begin__ = 267;
+                    current_statement_begin__ = 248;
                     stan::model::assign(man_lhs, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 subtract(multiply(4., logWobs_man), multiply(3., logSobs_man)), 
                                 "assigning variable man_lhs");
                 }
-                current_statement_begin__ = 270;
+                current_statement_begin__ = 251;
                 stan::model::assign(logQ_man, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             ragged_row(logQ, hasdat_man, pstream__), 
                             "assigning variable logQ_man");
-                current_statement_begin__ = 271;
+                current_statement_begin__ = 252;
                 stan::model::assign(man_rhs, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             subtract(subtract(multiply(10., get_base1(logA_man, 1, "logA_man", 1)), multiply(6., ragged_col(get_base1(logn_man, 1, "logn_man", 1), hasdat_man, pstream__))), multiply(6., get_base1(logQ_man, 1, "logQ_man", 1))), 
                             "assigning variable man_rhs");
             }
-            current_statement_begin__ = 274;
+            current_statement_begin__ = 258;
             if (as_bool(inc_a)) {
-                current_statement_begin__ = 276;
+                current_statement_begin__ = 259;
                 stan::model::assign(logQ_amhg, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             ragged_row(logQ, hasdat_amhg, pstream__), 
                             "assigning variable logQ_amhg");
-                current_statement_begin__ = 279;
+                current_statement_begin__ = 260;
                 stan::model::assign(logQc_amhg, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             elt_multiply(elt_divide(1.0, ragged_col(get_base1(b, 1, "b", 1), hasdat_amhg, pstream__)), subtract(get_base1(logWc, 1, "logWc", 1), elt_multiply(ragged_col(get_base1(b, 1, "b", 1), hasdat_amhg, pstream__), add(add(add(subtract(add(multiply(-(1.67), ragged_col(get_base1(logDb, 1, "logDb", 1), hasdat_amhg, pstream__)), multiply(-(1.67), ragged_col(get_base1(logr, 1, "logr", 1), hasdat_amhg, pstream__))), multiply(-(1.67), add(ragged_col(get_base1(logr, 1, "logr", 1), hasdat_amhg, pstream__), 1))), elt_multiply(multiply(1.67, ragged_col(get_base1(logr, 1, "logr", 1), hasdat_amhg, pstream__)), ragged_col(get_base1(logWb, 1, "logWb", 1), hasdat_amhg, pstream__))), ragged_col(get_base1(logn_amhg, 1, "logn_amhg", 1), hasdat_amhg, pstream__)), (-(0.5) * get_base1(logSobs_amhg, 1, "logSobs_amhg", 1)))))), 
                             "assigning variable logQc_amhg");
-                current_statement_begin__ = 287;
+                current_statement_begin__ = 267;
                 stan::model::assign(amhg_rhs, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             add(elt_multiply(ragged_col(get_base1(b, 1, "b", 1), hasdat_amhg, pstream__), subtract(get_base1(logQ_amhg, 1, "logQ_amhg", 1), ragged_col(get_base1(logQc_amhg, 1, "logQc_amhg", 1), hasdat_amhg, pstream__))), get_base1(logWc, 1, "logWc", 1)), 
@@ -1628,7 +1623,7 @@ public:
             // validate transformed parameters
             const char* function__ = "validate transformed params";
             (void) function__;  // dummy to suppress unused var warning
-            current_statement_begin__ = 248;
+            current_statement_begin__ = 229;
             size_t man_lhs_k_0_max__ = inc_m;
             size_t man_lhs_j_1_max__ = ntot_man;
             for (size_t k_0__ = 0; k_0__ < man_lhs_k_0_max__; ++k_0__) {
@@ -1640,7 +1635,7 @@ public:
                     }
                 }
             }
-            current_statement_begin__ = 249;
+            current_statement_begin__ = 230;
             size_t logA_man_k_0_max__ = inc_m;
             size_t logA_man_j_1_max__ = ntot_man;
             for (size_t k_0__ = 0; k_0__ < logA_man_k_0_max__; ++k_0__) {
@@ -1652,7 +1647,7 @@ public:
                     }
                 }
             }
-            current_statement_begin__ = 250;
+            current_statement_begin__ = 231;
             size_t man_rhs_k_0_max__ = inc_m;
             size_t man_rhs_j_1_max__ = ntot_man;
             for (size_t k_0__ = 0; k_0__ < man_rhs_k_0_max__; ++k_0__) {
@@ -1664,7 +1659,7 @@ public:
                     }
                 }
             }
-            current_statement_begin__ = 251;
+            current_statement_begin__ = 232;
             size_t Wact_man_k_0_max__ = (inc_m * meas_err);
             size_t Wact_man_j_1_max__ = ntot_man;
             for (size_t k_0__ = 0; k_0__ < Wact_man_k_0_max__; ++k_0__) {
@@ -1676,7 +1671,7 @@ public:
                     }
                 }
             }
-            current_statement_begin__ = 252;
+            current_statement_begin__ = 233;
             size_t logQ_man_k_0_max__ = inc_m;
             size_t logQ_man_j_1_max__ = ntot_man;
             for (size_t k_0__ = 0; k_0__ < logQ_man_k_0_max__; ++k_0__) {
@@ -1688,7 +1683,7 @@ public:
                     }
                 }
             }
-            current_statement_begin__ = 254;
+            current_statement_begin__ = 235;
             size_t amhg_rhs_k_0_max__ = inc_a;
             size_t amhg_rhs_j_1_max__ = ntot_amhg;
             for (size_t k_0__ = 0; k_0__ < amhg_rhs_k_0_max__; ++k_0__) {
@@ -1700,7 +1695,7 @@ public:
                     }
                 }
             }
-            current_statement_begin__ = 255;
+            current_statement_begin__ = 236;
             size_t logQ_amhg_k_0_max__ = inc_a;
             size_t logQ_amhg_j_1_max__ = ntot_amhg;
             for (size_t k_0__ = 0; k_0__ < logQ_amhg_k_0_max__; ++k_0__) {
@@ -1712,7 +1707,7 @@ public:
                     }
                 }
             }
-            current_statement_begin__ = 256;
+            current_statement_begin__ = 237;
             size_t logQc_amhg_k_0_max__ = inc_a;
             size_t logQc_amhg_j_1_max__ = ntot_amhg;
             for (size_t k_0__ = 0; k_0__ < logQc_amhg_k_0_max__; ++k_0__) {
@@ -1725,61 +1720,61 @@ public:
                 }
             }
             // model body
-            current_statement_begin__ = 294;
+            current_statement_begin__ = 273;
             lp_accum__.add(normal_log<propto__>(logQ, logQ_hat, logQ_sd));
-            current_statement_begin__ = 296;
+            current_statement_begin__ = 275;
             if (as_bool(inc_m)) {
-                current_statement_begin__ = 297;
+                current_statement_begin__ = 276;
                 lp_accum__.add(lognormal_log<propto__>(add(get_base1(A0, 1, "A0", 1), get_base1(dA_shift, 1, "dA_shift", 1)), logA0_hat, logA0_sd));
-                current_statement_begin__ = 298;
+                current_statement_begin__ = 277;
                 lp_accum__.add(normal_log<propto__>(get_base1(logn_man, 1, "logn_man", 1), logn_hat, logn_sd));
             }
-            current_statement_begin__ = 300;
+            current_statement_begin__ = 279;
             if (as_bool(inc_a)) {
-                current_statement_begin__ = 301;
+                current_statement_begin__ = 280;
                 lp_accum__.add(normal_log<propto__>(get_base1(b, 1, "b", 1), b_hat, b_sd));
-                current_statement_begin__ = 302;
+                current_statement_begin__ = 281;
                 lp_accum__.add(normal_log<propto__>(logWc, logWc_hat, logWc_sd));
-                current_statement_begin__ = 303;
+                current_statement_begin__ = 282;
                 lp_accum__.add(normal_log<propto__>(logQc, logQc_hat, logQc_sd));
-                current_statement_begin__ = 305;
+                current_statement_begin__ = 284;
                 lp_accum__.add(normal_log<propto__>(get_base1(logn_amhg, 1, "logn_amhg", 1), logn_hat, logn_sd));
-                current_statement_begin__ = 307;
+                current_statement_begin__ = 286;
                 lp_accum__.add(normal_log<propto__>(get_base1(logDb, 1, "logDb", 1), logDb_hat, logDb_sd));
-                current_statement_begin__ = 308;
+                current_statement_begin__ = 287;
                 lp_accum__.add(normal_log<propto__>(get_base1(logr, 1, "logr", 1), logr_hat, logr_sd));
-                current_statement_begin__ = 309;
+                current_statement_begin__ = 288;
                 lp_accum__.add(normal_log<propto__>(get_base1(logWb, 1, "logWb", 1), logWb_hat, logWb_sd));
             }
-            current_statement_begin__ = 314;
+            current_statement_begin__ = 293;
             if (as_bool(inc_m)) {
-                current_statement_begin__ = 315;
+                current_statement_begin__ = 294;
                 lp_accum__.add(normal_log<propto__>(get_base1(man_lhs, 1, "man_lhs", 1), get_base1(man_rhs, 1, "man_rhs", 1), multiply(6, sigmavec_man)));
             }
-            current_statement_begin__ = 319;
+            current_statement_begin__ = 298;
             if (as_bool(meas_err)) {
-                current_statement_begin__ = 320;
+                current_statement_begin__ = 299;
                 lp_accum__.add(normal_log<propto__>(get_base1(Wact, 1, "Wact", 1), Wobsvec, Werr_sd));
-                current_statement_begin__ = 322;
+                current_statement_begin__ = 301;
                 if (as_bool(inc_m)) {
-                    current_statement_begin__ = 323;
+                    current_statement_begin__ = 302;
                     lp_accum__.add(normal_log<propto__>(get_base1(Sact, 1, "Sact", 1), Sobsvec_man, Serr_sd));
-                    current_statement_begin__ = 324;
+                    current_statement_begin__ = 303;
                     lp_accum__.add(normal_log<propto__>(get_base1(dApos_act, 1, "dApos_act", 1), dApos_obs, dAerr_sd));
-                    current_statement_begin__ = 325;
+                    current_statement_begin__ = 304;
                     lp_accum__.add(minus(stan::math::log(get_base1(Wact, 1, "Wact", 1))));
-                    current_statement_begin__ = 326;
+                    current_statement_begin__ = 305;
                     lp_accum__.add(minus(stan::math::log(get_base1(Sact, 1, "Sact", 1))));
                 }
-                current_statement_begin__ = 328;
+                current_statement_begin__ = 308;
                 if (as_bool(inc_a)) {
-                    current_statement_begin__ = 329;
+                    current_statement_begin__ = 309;
                     lp_accum__.add(lognormal_log<propto__>(get_base1(Wact, 1, "Wact", 1), get_base1(amhg_rhs, 1, "amhg_rhs", 1), sigmavec_amhg));
                 }
             } else {
-                current_statement_begin__ = 334;
+                current_statement_begin__ = 314;
                 if (as_bool(inc_a)) {
-                    current_statement_begin__ = 335;
+                    current_statement_begin__ = 315;
                     lp_accum__.add(lognormal_log<propto__>(Wobsvec, get_base1(amhg_rhs, 1, "amhg_rhs", 1), sigmavec_amhg));
                 }
             }
@@ -1803,16 +1798,16 @@ public:
     }
     void get_param_names(std::vector<std::string>& names__) const {
         names__.resize(0);
+        names__.push_back("logQ");
         names__.push_back("logn_man");
         names__.push_back("logn_amhg");
-        names__.push_back("logQ");
         names__.push_back("A0");
         names__.push_back("logWc");
         names__.push_back("logQc");
         names__.push_back("b");
+        names__.push_back("logr");
         names__.push_back("logWb");
         names__.push_back("logDb");
-        names__.push_back("logr");
         names__.push_back("Wact");
         names__.push_back("Sact");
         names__.push_back("dApos_act");
@@ -1829,15 +1824,15 @@ public:
         dimss__.resize(0);
         std::vector<size_t> dims__;
         dims__.resize(0);
+        dims__.push_back(nt);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
         dims__.push_back(inc_m);
         dims__.push_back(nx);
         dimss__.push_back(dims__);
         dims__.resize(0);
         dims__.push_back(inc_a);
         dims__.push_back(nx);
-        dimss__.push_back(dims__);
-        dims__.resize(0);
-        dims__.push_back(nt);
         dimss__.push_back(dims__);
         dims__.resize(0);
         dims__.push_back(inc_m);
@@ -1924,6 +1919,11 @@ public:
         static const char* function__ = "model_master_namespace::write_array";
         (void) function__;  // dummy to suppress unused var warning
         // read-transform, write parameters
+        Eigen::Matrix<double, Eigen::Dynamic, 1> logQ = in__.vector_lub_constrain(lowerbound_logQ, upperbound_logQ, nt);
+        size_t logQ_j_1_max__ = nt;
+        for (size_t j_1__ = 0; j_1__ < logQ_j_1_max__; ++j_1__) {
+            vars__.push_back(logQ(j_1__));
+        }
         std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logn_man;
         size_t logn_man_d_0_max__ = inc_m;
         logn_man.reserve(logn_man_d_0_max__);
@@ -1949,11 +1949,6 @@ public:
             for (size_t k_0__ = 0; k_0__ < logn_amhg_k_0_max__; ++k_0__) {
                 vars__.push_back(logn_amhg[k_0__](j_1__));
             }
-        }
-        Eigen::Matrix<double, Eigen::Dynamic, 1> logQ = in__.vector_lub_constrain(lowerbound_logQ, upperbound_logQ, nt);
-        size_t logQ_j_1_max__ = nt;
-        for (size_t j_1__ = 0; j_1__ < logQ_j_1_max__; ++j_1__) {
-            vars__.push_back(logQ(j_1__));
         }
         std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > A0;
         size_t A0_d_0_max__ = inc_m;
@@ -2001,6 +1996,19 @@ public:
                 vars__.push_back(b[k_0__](j_1__));
             }
         }
+        std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logr;
+        size_t logr_d_0_max__ = inc_a;
+        logr.reserve(logr_d_0_max__);
+        for (size_t d_0__ = 0; d_0__ < logr_d_0_max__; ++d_0__) {
+            logr.push_back(in__.vector_lub_constrain(lowerbound_logr, upperbound_logr, nx));
+        }
+        size_t logr_j_1_max__ = nx;
+        size_t logr_k_0_max__ = inc_a;
+        for (size_t j_1__ = 0; j_1__ < logr_j_1_max__; ++j_1__) {
+            for (size_t k_0__ = 0; k_0__ < logr_k_0_max__; ++k_0__) {
+                vars__.push_back(logr[k_0__](j_1__));
+            }
+        }
         std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logWb;
         size_t logWb_d_0_max__ = inc_a;
         logWb.reserve(logWb_d_0_max__);
@@ -2025,19 +2033,6 @@ public:
         for (size_t j_1__ = 0; j_1__ < logDb_j_1_max__; ++j_1__) {
             for (size_t k_0__ = 0; k_0__ < logDb_k_0_max__; ++k_0__) {
                 vars__.push_back(logDb[k_0__](j_1__));
-            }
-        }
-        std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logr;
-        size_t logr_d_0_max__ = inc_a;
-        logr.reserve(logr_d_0_max__);
-        for (size_t d_0__ = 0; d_0__ < logr_d_0_max__; ++d_0__) {
-            logr.push_back(in__.vector_lub_constrain(lowerbound_logr, upperbound_logr, nx));
-        }
-        size_t logr_j_1_max__ = nx;
-        size_t logr_k_0_max__ = inc_a;
-        for (size_t j_1__ = 0; j_1__ < logr_j_1_max__; ++j_1__) {
-            for (size_t k_0__ = 0; k_0__ < logr_k_0_max__; ++k_0__) {
-                vars__.push_back(logr[k_0__](j_1__));
             }
         }
         std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > Wact;
@@ -2087,110 +2082,110 @@ public:
         if (!include_tparams__ && !include_gqs__) return;
         try {
             // declare and define transformed parameters
-            current_statement_begin__ = 248;
+            current_statement_begin__ = 229;
             validate_non_negative_index("man_lhs", "ntot_man", ntot_man);
             validate_non_negative_index("man_lhs", "inc_m", inc_m);
             std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > man_lhs(inc_m, Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(man_lhs, DUMMY_VAR__);
             stan::math::fill(man_lhs, DUMMY_VAR__);
-            current_statement_begin__ = 249;
+            current_statement_begin__ = 230;
             validate_non_negative_index("logA_man", "ntot_man", ntot_man);
             validate_non_negative_index("logA_man", "inc_m", inc_m);
             std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logA_man(inc_m, Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(logA_man, DUMMY_VAR__);
             stan::math::fill(logA_man, DUMMY_VAR__);
-            current_statement_begin__ = 250;
+            current_statement_begin__ = 231;
             validate_non_negative_index("man_rhs", "ntot_man", ntot_man);
             validate_non_negative_index("man_rhs", "inc_m", inc_m);
             std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > man_rhs(inc_m, Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(man_rhs, DUMMY_VAR__);
             stan::math::fill(man_rhs, DUMMY_VAR__);
-            current_statement_begin__ = 251;
+            current_statement_begin__ = 232;
             validate_non_negative_index("Wact_man", "ntot_man", ntot_man);
             validate_non_negative_index("Wact_man", "(inc_m * meas_err)", (inc_m * meas_err));
             std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > Wact_man((inc_m * meas_err), Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(Wact_man, DUMMY_VAR__);
             stan::math::fill(Wact_man, DUMMY_VAR__);
-            current_statement_begin__ = 252;
+            current_statement_begin__ = 233;
             validate_non_negative_index("logQ_man", "ntot_man", ntot_man);
             validate_non_negative_index("logQ_man", "inc_m", inc_m);
             std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logQ_man(inc_m, Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_man));
             stan::math::initialize(logQ_man, DUMMY_VAR__);
             stan::math::fill(logQ_man, DUMMY_VAR__);
-            current_statement_begin__ = 254;
+            current_statement_begin__ = 235;
             validate_non_negative_index("amhg_rhs", "ntot_amhg", ntot_amhg);
             validate_non_negative_index("amhg_rhs", "inc_a", inc_a);
             std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > amhg_rhs(inc_a, Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_amhg));
             stan::math::initialize(amhg_rhs, DUMMY_VAR__);
             stan::math::fill(amhg_rhs, DUMMY_VAR__);
-            current_statement_begin__ = 255;
+            current_statement_begin__ = 236;
             validate_non_negative_index("logQ_amhg", "ntot_amhg", ntot_amhg);
             validate_non_negative_index("logQ_amhg", "inc_a", inc_a);
             std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logQ_amhg(inc_a, Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_amhg));
             stan::math::initialize(logQ_amhg, DUMMY_VAR__);
             stan::math::fill(logQ_amhg, DUMMY_VAR__);
-            current_statement_begin__ = 256;
+            current_statement_begin__ = 237;
             validate_non_negative_index("logQc_amhg", "ntot_amhg", ntot_amhg);
             validate_non_negative_index("logQc_amhg", "inc_a", inc_a);
             std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logQc_amhg(inc_a, Eigen::Matrix<double, Eigen::Dynamic, 1>(ntot_amhg));
             stan::math::initialize(logQc_amhg, DUMMY_VAR__);
             stan::math::fill(logQc_amhg, DUMMY_VAR__);
             // do transformed parameters statements
-            current_statement_begin__ = 259;
+            current_statement_begin__ = 240;
             if (as_bool(inc_m)) {
-                current_statement_begin__ = 260;
+                current_statement_begin__ = 241;
                 if (as_bool(meas_err)) {
-                    current_statement_begin__ = 261;
+                    current_statement_begin__ = 242;
                     stan::model::assign(Wact_man, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 stan::model::rvalue(get_base1(Wact, 1, "Wact", 1), stan::model::cons_list(stan::model::index_multi(maninds_amhg), stan::model::nil_index_list()), "Wact[1]"), 
                                 "assigning variable Wact_man");
-                    current_statement_begin__ = 262;
+                    current_statement_begin__ = 243;
                     stan::model::assign(logA_man, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 stan::math::log(add(ragged_col(get_base1(A0, 1, "A0", 1), hasdat_man, pstream__), get_base1(dApos_act, 1, "dApos_act", 1))), 
                                 "assigning variable logA_man");
-                    current_statement_begin__ = 263;
+                    current_statement_begin__ = 244;
                     stan::model::assign(man_lhs, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 subtract(multiply(4., stan::math::log(get_base1(Wact_man, 1, "Wact_man", 1))), multiply(3., stan::math::log(get_base1(Sact, 1, "Sact", 1)))), 
                                 "assigning variable man_lhs");
                 } else {
-                    current_statement_begin__ = 266;
+                    current_statement_begin__ = 247;
                     stan::model::assign(logA_man, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 stan::math::log(add(ragged_col(get_base1(A0, 1, "A0", 1), hasdat_man, pstream__), dApos_obs)), 
                                 "assigning variable logA_man");
-                    current_statement_begin__ = 267;
+                    current_statement_begin__ = 248;
                     stan::model::assign(man_lhs, 
                                 stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                                 subtract(multiply(4., logWobs_man), multiply(3., logSobs_man)), 
                                 "assigning variable man_lhs");
                 }
-                current_statement_begin__ = 270;
+                current_statement_begin__ = 251;
                 stan::model::assign(logQ_man, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             ragged_row(logQ, hasdat_man, pstream__), 
                             "assigning variable logQ_man");
-                current_statement_begin__ = 271;
+                current_statement_begin__ = 252;
                 stan::model::assign(man_rhs, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             subtract(subtract(multiply(10., get_base1(logA_man, 1, "logA_man", 1)), multiply(6., ragged_col(get_base1(logn_man, 1, "logn_man", 1), hasdat_man, pstream__))), multiply(6., get_base1(logQ_man, 1, "logQ_man", 1))), 
                             "assigning variable man_rhs");
             }
-            current_statement_begin__ = 274;
+            current_statement_begin__ = 258;
             if (as_bool(inc_a)) {
-                current_statement_begin__ = 276;
+                current_statement_begin__ = 259;
                 stan::model::assign(logQ_amhg, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             ragged_row(logQ, hasdat_amhg, pstream__), 
                             "assigning variable logQ_amhg");
-                current_statement_begin__ = 279;
+                current_statement_begin__ = 260;
                 stan::model::assign(logQc_amhg, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             elt_multiply(elt_divide(1.0, ragged_col(get_base1(b, 1, "b", 1), hasdat_amhg, pstream__)), subtract(get_base1(logWc, 1, "logWc", 1), elt_multiply(ragged_col(get_base1(b, 1, "b", 1), hasdat_amhg, pstream__), add(add(add(subtract(add(multiply(-(1.67), ragged_col(get_base1(logDb, 1, "logDb", 1), hasdat_amhg, pstream__)), multiply(-(1.67), ragged_col(get_base1(logr, 1, "logr", 1), hasdat_amhg, pstream__))), multiply(-(1.67), add(ragged_col(get_base1(logr, 1, "logr", 1), hasdat_amhg, pstream__), 1))), elt_multiply(multiply(1.67, ragged_col(get_base1(logr, 1, "logr", 1), hasdat_amhg, pstream__)), ragged_col(get_base1(logWb, 1, "logWb", 1), hasdat_amhg, pstream__))), ragged_col(get_base1(logn_amhg, 1, "logn_amhg", 1), hasdat_amhg, pstream__)), (-(0.5) * get_base1(logSobs_amhg, 1, "logSobs_amhg", 1)))))), 
                             "assigning variable logQc_amhg");
-                current_statement_begin__ = 287;
+                current_statement_begin__ = 267;
                 stan::model::assign(amhg_rhs, 
                             stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list()), 
                             add(elt_multiply(ragged_col(get_base1(b, 1, "b", 1), hasdat_amhg, pstream__), subtract(get_base1(logQ_amhg, 1, "logQ_amhg", 1), ragged_col(get_base1(logQc_amhg, 1, "logQc_amhg", 1), hasdat_amhg, pstream__))), get_base1(logWc, 1, "logWc", 1)), 
@@ -2290,6 +2285,12 @@ public:
                                  bool include_tparams__ = true,
                                  bool include_gqs__ = true) const {
         std::stringstream param_name_stream__;
+        size_t logQ_j_1_max__ = nt;
+        for (size_t j_1__ = 0; j_1__ < logQ_j_1_max__; ++j_1__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "logQ" << '.' << j_1__ + 1;
+            param_names__.push_back(param_name_stream__.str());
+        }
         size_t logn_man_j_1_max__ = nx;
         size_t logn_man_k_0_max__ = inc_m;
         for (size_t j_1__ = 0; j_1__ < logn_man_j_1_max__; ++j_1__) {
@@ -2307,12 +2308,6 @@ public:
                 param_name_stream__ << "logn_amhg" << '.' << k_0__ + 1 << '.' << j_1__ + 1;
                 param_names__.push_back(param_name_stream__.str());
             }
-        }
-        size_t logQ_j_1_max__ = nt;
-        for (size_t j_1__ = 0; j_1__ < logQ_j_1_max__; ++j_1__) {
-            param_name_stream__.str(std::string());
-            param_name_stream__ << "logQ" << '.' << j_1__ + 1;
-            param_names__.push_back(param_name_stream__.str());
         }
         size_t A0_j_1_max__ = nx;
         size_t A0_k_0_max__ = inc_m;
@@ -2344,6 +2339,15 @@ public:
                 param_names__.push_back(param_name_stream__.str());
             }
         }
+        size_t logr_j_1_max__ = nx;
+        size_t logr_k_0_max__ = inc_a;
+        for (size_t j_1__ = 0; j_1__ < logr_j_1_max__; ++j_1__) {
+            for (size_t k_0__ = 0; k_0__ < logr_k_0_max__; ++k_0__) {
+                param_name_stream__.str(std::string());
+                param_name_stream__ << "logr" << '.' << k_0__ + 1 << '.' << j_1__ + 1;
+                param_names__.push_back(param_name_stream__.str());
+            }
+        }
         size_t logWb_j_1_max__ = nx;
         size_t logWb_k_0_max__ = inc_a;
         for (size_t j_1__ = 0; j_1__ < logWb_j_1_max__; ++j_1__) {
@@ -2359,15 +2363,6 @@ public:
             for (size_t k_0__ = 0; k_0__ < logDb_k_0_max__; ++k_0__) {
                 param_name_stream__.str(std::string());
                 param_name_stream__ << "logDb" << '.' << k_0__ + 1 << '.' << j_1__ + 1;
-                param_names__.push_back(param_name_stream__.str());
-            }
-        }
-        size_t logr_j_1_max__ = nx;
-        size_t logr_k_0_max__ = inc_a;
-        for (size_t j_1__ = 0; j_1__ < logr_j_1_max__; ++j_1__) {
-            for (size_t k_0__ = 0; k_0__ < logr_k_0_max__; ++k_0__) {
-                param_name_stream__.str(std::string());
-                param_name_stream__ << "logr" << '.' << k_0__ + 1 << '.' << j_1__ + 1;
                 param_names__.push_back(param_name_stream__.str());
             }
         }
@@ -2479,6 +2474,12 @@ public:
                                    bool include_tparams__ = true,
                                    bool include_gqs__ = true) const {
         std::stringstream param_name_stream__;
+        size_t logQ_j_1_max__ = nt;
+        for (size_t j_1__ = 0; j_1__ < logQ_j_1_max__; ++j_1__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "logQ" << '.' << j_1__ + 1;
+            param_names__.push_back(param_name_stream__.str());
+        }
         size_t logn_man_j_1_max__ = nx;
         size_t logn_man_k_0_max__ = inc_m;
         for (size_t j_1__ = 0; j_1__ < logn_man_j_1_max__; ++j_1__) {
@@ -2496,12 +2497,6 @@ public:
                 param_name_stream__ << "logn_amhg" << '.' << k_0__ + 1 << '.' << j_1__ + 1;
                 param_names__.push_back(param_name_stream__.str());
             }
-        }
-        size_t logQ_j_1_max__ = nt;
-        for (size_t j_1__ = 0; j_1__ < logQ_j_1_max__; ++j_1__) {
-            param_name_stream__.str(std::string());
-            param_name_stream__ << "logQ" << '.' << j_1__ + 1;
-            param_names__.push_back(param_name_stream__.str());
         }
         size_t A0_j_1_max__ = nx;
         size_t A0_k_0_max__ = inc_m;
@@ -2533,6 +2528,15 @@ public:
                 param_names__.push_back(param_name_stream__.str());
             }
         }
+        size_t logr_j_1_max__ = nx;
+        size_t logr_k_0_max__ = inc_a;
+        for (size_t j_1__ = 0; j_1__ < logr_j_1_max__; ++j_1__) {
+            for (size_t k_0__ = 0; k_0__ < logr_k_0_max__; ++k_0__) {
+                param_name_stream__.str(std::string());
+                param_name_stream__ << "logr" << '.' << k_0__ + 1 << '.' << j_1__ + 1;
+                param_names__.push_back(param_name_stream__.str());
+            }
+        }
         size_t logWb_j_1_max__ = nx;
         size_t logWb_k_0_max__ = inc_a;
         for (size_t j_1__ = 0; j_1__ < logWb_j_1_max__; ++j_1__) {
@@ -2548,15 +2552,6 @@ public:
             for (size_t k_0__ = 0; k_0__ < logDb_k_0_max__; ++k_0__) {
                 param_name_stream__.str(std::string());
                 param_name_stream__ << "logDb" << '.' << k_0__ + 1 << '.' << j_1__ + 1;
-                param_names__.push_back(param_name_stream__.str());
-            }
-        }
-        size_t logr_j_1_max__ = nx;
-        size_t logr_k_0_max__ = inc_a;
-        for (size_t j_1__ = 0; j_1__ < logr_j_1_max__; ++j_1__) {
-            for (size_t k_0__ = 0; k_0__ < logr_k_0_max__; ++k_0__) {
-                param_name_stream__.str(std::string());
-                param_name_stream__ << "logr" << '.' << k_0__ + 1 << '.' << j_1__ + 1;
                 param_names__.push_back(param_name_stream__.str());
             }
         }
