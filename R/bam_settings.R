@@ -28,8 +28,8 @@ bam_settings <- settings::options_manager(
 
   lowerbound_A0 = rlang::quo(estimate_lowerboundA0(Wobs)), #0.72,
   upperbound_A0 = rlang::quo(estimate_upperboundA0(Wobs)), #114500,
-  lowerbound_logn = log(0.05), #rlang::quo(estimate_lowerboundlogn(Wobs)), #-4.60517,
-  upperbound_logn = log(0.01), #rlang::quo(estimate_upperboundlogn(Wobs)), #-2.995732,
+  lowerbound_logn = log(0.01), #rlang::quo(estimate_lowerboundlogn(Wobs)), #-4.60517,
+  upperbound_logn = log(0.05), #rlang::quo(estimate_upperboundlogn(Wobs)), #-2.995732,
 
   lowerbound_logQc = 0.01,
   upperbound_logQc = 10,
@@ -79,7 +79,7 @@ bam_settings <- settings::options_manager(
   dAerr_sd = 10,
 
   #Classified river type
-  river_type = rlang::quo(classify_func((Wobs)))
+  river_type = rlang::quo(apply(Wobs, 1, classify_func_unsupervised))
 )
 
 
@@ -107,8 +107,8 @@ bam_settings_unsupervised <- settings::options_manager(
 
   lowerbound_A0 = rlang::quo(estimate_lowerboundA0_unsupervised(Wobs)), #0.72,
   upperbound_A0 = rlang::quo(estimate_upperboundA0_unsupervised(Wobs)), #114500,
-  lowerbound_logn = log(0.01), #rlang::quo(estimate_lowerboundlogn_unsupervised(Wobs)), #-4.60517,
-  upperbound_logn = log(0.05), #rlang::quo(estimate_upperboundlogn_unsupervised(Wobs)), #-2.995732,
+  lowerbound_logn = log(0.05), #rlang::quo(estimate_lowerboundlogn_unsupervised(Wobs)), #-4.60517,
+  upperbound_logn = log(0.01), #rlang::quo(estimate_upperboundlogn_unsupervised(Wobs)), #-2.995732,
 
   lowerbound_logQc = 0.01,
   upperbound_logQc = 10,
@@ -158,5 +158,5 @@ bam_settings_unsupervised <- settings::options_manager(
   dAerr_sd = 10,
 
   #Classified river type
-  river_type = rlang::quo(classify_func_unsupervised((Wobs)))
+  river_type = rlang::quo(apply(Wobs, 1, classify_func_unsupervised))
 )
