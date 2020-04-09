@@ -7,7 +7,6 @@ Authors@R:
            role = c("aut", "cre"),
            email = "cbrinkerhoff@umass.edu",
            comment = c(ORCID = "0000-0001-6701-4835"))
-           )
 Description: Geomorphically-informed discharge inversion
 License: GPL-3
 Encoding: UTF-8
@@ -28,3 +27,5 @@ LinkingTo:
     StanHeaders (>= 2.18.0)
 SystemRequirements: GNU make
 RoxygenNote: 7.1.0
+URL: https://github.com/craigbrinkerhoff/geoBAMr
+BugReports: https://github.com/craigbrinkerhoff/geoBAMr/issues
