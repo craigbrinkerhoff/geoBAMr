@@ -1002,8 +1002,8 @@ public:
             param_ranges_i__.clear();
             current_statement_begin__ = 227;
             validate_non_negative_index("logn", "nx", nx);
-            validate_non_negative_index("logn", "1", 1);
-            num_params_r__ += (nx * 1);
+            validate_non_negative_index("logn", "inc_a", inc_a);
+            num_params_r__ += (nx * inc_a);
             current_statement_begin__ = 228;
             validate_non_negative_index("logQ", "nt", nt);
             num_params_r__ += nt;
@@ -1068,17 +1068,17 @@ public:
         vals_r__ = context__.vals_r("logn");
         pos__ = 0U;
         validate_non_negative_index("logn", "nx", nx);
-        validate_non_negative_index("logn", "1", 1);
-        context__.validate_dims("parameter initialization", "logn", "vector_d", context__.to_vec(1,nx));
-        std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logn(1, Eigen::Matrix<double, Eigen::Dynamic, 1>(nx));
+        validate_non_negative_index("logn", "inc_a", inc_a);
+        context__.validate_dims("parameter initialization", "logn", "vector_d", context__.to_vec(inc_a,nx));
+        std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logn(inc_a, Eigen::Matrix<double, Eigen::Dynamic, 1>(nx));
         size_t logn_j_1_max__ = nx;
-        size_t logn_k_0_max__ = 1;
+        size_t logn_k_0_max__ = inc_a;
         for (size_t j_1__ = 0; j_1__ < logn_j_1_max__; ++j_1__) {
             for (size_t k_0__ = 0; k_0__ < logn_k_0_max__; ++k_0__) {
                 logn[k_0__](j_1__) = vals_r__[pos__++];
             }
         }
-        size_t logn_i_0_max__ = 1;
+        size_t logn_i_0_max__ = inc_a;
         for (size_t i_0__ = 0; i_0__ < logn_i_0_max__; ++i_0__) {
             try {
                 writer__.vector_lub_unconstrain(lowerbound_logn, upperbound_logn, logn[i_0__]);
@@ -1362,7 +1362,7 @@ public:
             // model parameters
             current_statement_begin__ = 227;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > logn;
-            size_t logn_d_0_max__ = 1;
+            size_t logn_d_0_max__ = inc_a;
             logn.reserve(logn_d_0_max__);
             for (size_t d_0__ = 0; d_0__ < logn_d_0_max__; ++d_0__) {
                 if (jacobian__)
@@ -1790,7 +1790,7 @@ public:
         dimss__.resize(0);
         std::vector<size_t> dims__;
         dims__.resize(0);
-        dims__.push_back(1);
+        dims__.push_back(inc_a);
         dims__.push_back(nx);
         dimss__.push_back(dims__);
         dims__.resize(0);
@@ -1882,13 +1882,13 @@ public:
         (void) function__;  // dummy to suppress unused var warning
         // read-transform, write parameters
         std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1> > logn;
-        size_t logn_d_0_max__ = 1;
+        size_t logn_d_0_max__ = inc_a;
         logn.reserve(logn_d_0_max__);
         for (size_t d_0__ = 0; d_0__ < logn_d_0_max__; ++d_0__) {
             logn.push_back(in__.vector_lub_constrain(lowerbound_logn, upperbound_logn, nx));
         }
         size_t logn_j_1_max__ = nx;
-        size_t logn_k_0_max__ = 1;
+        size_t logn_k_0_max__ = inc_a;
         for (size_t j_1__ = 0; j_1__ < logn_j_1_max__; ++j_1__) {
             for (size_t k_0__ = 0; k_0__ < logn_k_0_max__; ++k_0__) {
                 vars__.push_back(logn[k_0__](j_1__));
@@ -2235,7 +2235,7 @@ public:
                                  bool include_gqs__ = true) const {
         std::stringstream param_name_stream__;
         size_t logn_j_1_max__ = nx;
-        size_t logn_k_0_max__ = 1;
+        size_t logn_k_0_max__ = inc_a;
         for (size_t j_1__ = 0; j_1__ < logn_j_1_max__; ++j_1__) {
             for (size_t k_0__ = 0; k_0__ < logn_k_0_max__; ++k_0__) {
                 param_name_stream__.str(std::string());
@@ -2415,7 +2415,7 @@ public:
                                    bool include_gqs__ = true) const {
         std::stringstream param_name_stream__;
         size_t logn_j_1_max__ = nx;
-        size_t logn_k_0_max__ = 1;
+        size_t logn_k_0_max__ = inc_a;
         for (size_t j_1__ = 0; j_1__ < logn_j_1_max__; ++j_1__) {
             for (size_t k_0__ = 0; k_0__ < logn_k_0_max__; ++k_0__) {
                 param_name_stream__.str(std::string());

@@ -224,7 +224,7 @@ transformed data {
 }
 
 parameters {
-  vector<lower=lowerbound_logn,upper=upperbound_logn>[nx] logn[1]; //for reach-defined n
+  vector<lower=lowerbound_logn,upper=upperbound_logn>[nx] logn[inc_a]; //for reach-defined n
   vector<lower=lowerbound_logQ,upper=upperbound_logQ>[nt] logQ;
   vector<lower=lowerbound_A0,upper=upperbound_A0>[nx] A0[inc_m];
 
