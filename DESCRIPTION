@@ -1,16 +1,12 @@
 Package: geoBAMr
 Title: geoBAMr
 Version: 0.0.0.9000
-Authors@R:c( 
+Authors@R: 
     person(given = "Craig",
            family = "Brinkerhoff",
            role = c("aut", "cre"),
            email = "cbrinkerhoff@umass.edu",
            comment = c(ORCID = "0000-0001-6701-4835"))
-           ),
-    person(given = "Mark",
-           family = "Hagemann",
-           role = c("cre"))
            )
 Description: Geomorphically-informed discharge inversion
 License: GPL-3
