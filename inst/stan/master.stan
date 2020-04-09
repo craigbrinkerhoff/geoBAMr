@@ -4,6 +4,8 @@
   //2) Manning's n prior is space-varying
   //3) '_sd' priors are space varying
 
+//line 227 must be set to inc_a to run amhg and to inc_m to run mannings.... I need someway to switch this
+
 functions {
   // Conversion from array to vector takes place by row.
   // Nested elements are appended in sequence.
@@ -222,9 +224,8 @@ transformed data {
 }
 
 parameters {
-
+  vector<lower=lowerbound_logn,upper=upperbound_logn>[nx] logn[1]; //for reach-defined n
   vector<lower=lowerbound_logQ,upper=upperbound_logQ>[nt] logQ;
-  vector<lower=lowerbound_logn,upper=upperbound_logn>[nx] logn[inc_m]; //for reach-defined n
   vector<lower=lowerbound_A0,upper=upperbound_A0>[nx] A0[inc_m];
 
   real<lower=lowerbound_logWc,upper=upperbound_logWc> logWc[inc_a];

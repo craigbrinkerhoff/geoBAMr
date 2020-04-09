@@ -106,7 +106,12 @@ devtools:: install_github("craigbrinkerhoff/geoBAMr", force=TRUE)</code></pre>
 <h2 class="hasAnchor">
 <a href="#notes" class="anchor"></a>Notes</h2>
 <p>1) The Sacramento test case in the bamr package is not included with geoBAMr.</p>
-<p>2) geoBAMr is far more memory intensive than bamr. If you have large time-series of stream widths and/or slopes and geoBAMr crashes, this is likely a memory issue. One solution is to run geoBAMr on a computing cluster, the other is to use bamr!</p>
+<p>2) geoBAMr is far more memory intensive than bamr. If you have large time-series of stream widths and/or slopes, this is likely the issue if the following error is thrown:</p>
+<pre><code>Error in unserialize(socklist[[n]]) : error reading from connection
+Error in serialize(data, node$con, xdr = FALSE) : 
+  error writing to connection</code></pre>
+<p>One solution is to run geoBAMr on a computing cluster. Another is to use Manning’s only as the posterior is smallest. The other<br>
+option is to use bamr!</p>
 <p>3) If both bamr and geoBAMr are installed, make sure to explictly call functions by package as they have the same names. Otherwise, chaotic confusion will ensue!</p>
 <p>For example:</p>
 <pre><code>geoBAMr:: bam_estimate()
