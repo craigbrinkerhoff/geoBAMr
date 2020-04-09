@@ -224,7 +224,8 @@ transformed data {
 }
 
 parameters {
-  vector<lower=lowerbound_logn,upper=upperbound_logn>[nx] logn[inc_a]; //for reach-defined n
+  vector<lower=lowerbound_logn,upper=upperbound_logn>[nx] logn_man[inc_m]; //for space-varying n
+  vector<lower=lowerbound_logn,upper=upperbound_logn>[nx] logn_amhg[inc_a]; //for space-varying n
   vector<lower=lowerbound_logQ,upper=upperbound_logQ>[nt] logQ;
   vector<lower=lowerbound_A0,upper=upperbound_A0>[nx] A0[inc_m];
 
@@ -267,7 +268,7 @@ transformed parameters {
     }
 
     logQ_man[1] = ragged_row(logQ, hasdat_man);
-    man_rhs[1] = 10. * logA_man[1] - 6. * ragged_col(logn[1], hasdat_man) - 6. * logQ_man[1];
+    man_rhs[1] = 10. * logA_man[1] - 6. * ragged_col(logn_man[1], hasdat_man) - 6. * logQ_man[1];
   }
 
   if (inc_a) {
@@ -280,7 +281,7 @@ transformed parameters {
 	                                         ((-1.67) * ragged_col(logr[1], hasdat_amhg)) -
 	                                         ((-1.67) * (ragged_col(logr[1], hasdat_amhg)+1)) +
 	                                         ((1.67 * ragged_col(logr[1], hasdat_amhg)) .* ragged_col(logWb[1], hasdat_amhg)) +
-	                                         (ragged_col(logn[1], hasdat_amhg)) +
+	                                         (ragged_col(logn_amhg[1], hasdat_amhg)) +
 	                                         (-(0.5)*logSobs_amhg[1]))));
 
     amhg_rhs[1] = ragged_col(b[1], hasdat_amhg) .* (logQ_amhg[1] - ragged_col(logQc_amhg[1], hasdat_amhg)) + logWc[1];
@@ -294,14 +295,14 @@ model {
 
   if (inc_m) {
     A0[1] + dA_shift[1] ~ lognormal(logA0_hat, logA0_sd);
-    logn[1] ~ normal(logn_hat, logn_sd);
+    logn_man[1] ~ normal(logn_hat, logn_sd);
   }
   if (inc_a) {
     b[1] ~ normal(b_hat, b_sd);
     logWc ~ normal(logWc_hat, logWc_sd);
     logQc ~ normal(logQc_hat, logQc_sd);
 
-    logn[1] ~ normal(logn_hat, logn_sd);
+    logn_amhg[1] ~ normal(logn_hat, logn_sd);
 
 	  logDb[1] ~ normal(logDb_hat, logDb_sd);
 	  logr[1] ~ normal(logr_hat, logr_sd);
