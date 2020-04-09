@@ -33,7 +33,7 @@ The best way to get started is to follow the examples in the included vignettes 
 
 geoBAMr is packaged with two approaches to defining prior river knowledge: 1) an expert geomorphology framework or 2) an unsupervised one.  The assigned priors will be different, depending on which is chosen. 'Expert' is default and accounts for both really big rivers and 'highly width variable' ones.  The unsupervised approach is purely statistical and implicitly accounts for edge cases like these, but was not explictly designed to do so.
 
-Regardless of classification chosen, resulting river types are accessible using the bam_priors() object$river_type.  For a read on what these river types qualitvately represent, consult [**this vignette**](https://craigbrinkerhoff.github.io/geoBAMr/index.html) at the geoBAMR site.
+Regardless of classification chosen, resulting river types are accessible using the bam_priors() object$river_type.  For a read on what these river types qualitvately represent, consult [**this vignette**](https://craigbrinkerhoff.github.io/geoBAMr/articles/geoBAMr.html) at the geoBAMR site.
 
 ## Notes
 

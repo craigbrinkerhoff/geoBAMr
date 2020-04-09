@@ -1,5 +1,5 @@
 ---
-title: "geoBAMr river classification frameworks"
+title: "geoBAMr river classification"
 author: "Craig Brinkerhoff"
 date: 2020/04/09
 output: rmarkdown::html_vignette
