@@ -26,14 +26,14 @@ maxmin <- function(x) {
   max(apply(x, 1, min))
 }
 
-#Functions for classifying rivers
+#Functions for classifying rivers----------------------------------------------------------------------
 
 #'Classify river for expert framework
 #'
 #'@param Wobs observed widths matrix
 classify_func <- function(Wobs) {
-  lwbar <- mean(log(Wobs), na.rm=TRUE)#apply(log(Wobs), 1, mean, na.rm = TRUE)
-  lwsd <- sd(log(Wobs), na.rm= TRUE)#apply(log(Wobs), 1, sd, na.rm = TRUE)
+  lwbar <- mean(log(Wobs), na.rm=TRUE)
+  lwsd <- sd(log(Wobs), na.rm= TRUE)
 
   maxWidth = 6.5
   classes <- c(2.476118144,
@@ -51,9 +51,9 @@ classify_func <- function(Wobs) {
                4.436574004,
                4.921166637,
                5.287893051) #median width of each river type
-
-  ifelse(lwbar > maxWidth, 17,
-         ifelse(lwsd >= 0.45, 16, which.min(abs(classes-lwbar)))) #17 for big rivers, 16 for width-variable rivers
+  index <- ifelse(lwbar > maxWidth, 17, which.min(abs(classes-lwbar))) #17 for big rivers
+  index <- ifelse(lwsd >= 0.45, 16, index)  #16 for width-variable rivers, which overrides 'big' rivers
+  return(index)
 }
 
 #'Classify river for unsupervised framework

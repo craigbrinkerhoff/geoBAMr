@@ -1,6 +1,6 @@
-# Prior calculation using expert classification framework
+# Prior calculation using expert classification framework------------------------------------------------------------------
+#class 17 are 'big' rivers
 
-#AHG b exponent functions-------------------------------------------------------------------
 #' Estimate AHG b exponent using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -115,7 +115,6 @@ estimate_bSD <- function(Wobs) {
   b_sd <- ifelse(class != 17, temp[class], 0.068077044)
 }
 
-#A0 functions---------------------------------------------------------------
 #' Estimate base cross-sectional area using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -243,7 +242,6 @@ estimate_A0SD <- function(Wobs) {
   logA0_sd <- ifelse(class != 17, temp[class], 0.58987527)
 }
 
-#Bankful Width---------------------------------------------------------
 #'Estimate bankful width using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -363,7 +361,6 @@ estimate_logWbSD <- function(Wobs) {
   logWb_sd <- ifelse(class != 17, temp[class], 0.137381044)
 }
 
-#Bankful depth-------------------------------------------------------------------------
 #'Estimate bankful depth using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -487,7 +484,6 @@ estimate_logDbSD <- function(Wobs) {
   upperbound_logDb <- ifelse(class != 17, temp[class], 0.576212733)
 }
 
-#Channel shape----------------------------------------------
 #'Estimate channel shape using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -612,7 +608,6 @@ estimate_logrSD <- function(Wobs) {
   logr_sd <- ifelse(class != 17, temp[class], 0.67332688)
 }
 
-#Manning's n------------------------------------------------------------------------
 #'Estimate manning's n using bam data
 #'
 #' @param Sobs Observed S, as a space-down, time-across matrix
@@ -733,9 +728,8 @@ estimate_lognSD <- function(Wobs) {
 
 
 # Prior calculation using unsupervised framework------------------------------------------------------------------------------
-#class 100 are noisy rivers
+#class 101 are noisy rivers
 
-#AHG b exponent functions-------------------------------------------------------------------
 #' Estimate AHG b exponent using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -1075,8 +1069,7 @@ estimate_logDbSD_unsupervised <- function(Wobs) {
             0.49869352)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
-  upperbound_logDb <- ifelse(class != 101, temp[class], 0.576212733)
-  upperbound_logDb <- max(upperbound_logDb)
+  logDb_sd <- ifelse(class != 101, temp[class], 0.576212733)
 }
 
 #Channel shape----------------------------------------------

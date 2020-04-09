@@ -1,5 +1,6 @@
 #Bounds on Manning's n are manually set to log(0.01) and log(0.05).
   #Functions are written to revert back to standard approach to defining priors, currently commented out.
+#Mark's defualt BAM priors are also commented out.
 
 
 
@@ -157,6 +158,5 @@ bam_settings_unsupervised <- settings::options_manager(
   dAerr_sd = 10,
 
   #Classified river type
-  river_type = rlang::quo(classify_func_unsupervised((Wobs))) #class 100 are 'big' rivers for expert framework
-    #class 101 are 'noisy' rivers for unsupervised framework
+  river_type = rlang::quo(classify_func_unsupervised((Wobs)))
 )
