@@ -1,3 +1,7 @@
+#Bounds on Manning's n are manually set to log(0.01) and log(0.05).
+  #Functions are written to revert back to standard approach to defining priors, currently commented out.
+
+
 
 #' Options manager for geoBAMr defaults
 #'
@@ -23,8 +27,8 @@ bam_settings <- settings::options_manager(
 
   lowerbound_A0 = rlang::quo(estimate_lowerboundA0(Wobs)), #0.72,
   upperbound_A0 = rlang::quo(estimate_upperboundA0(Wobs)), #114500,
-  lowerbound_logn = rlang::quo(estimate_lowerboundlogn(Wobs)), #-4.60517,
-  upperbound_logn = rlang::quo(estimate_upperboundlogn(Wobs)), #-2.995732,
+  lowerbound_logn = log(0.05), #rlang::quo(estimate_lowerboundlogn(Wobs)), #-4.60517,
+  upperbound_logn = log(0.01), #rlang::quo(estimate_upperboundlogn(Wobs)), #-2.995732,
 
   lowerbound_logQc = 0.01,
   upperbound_logQc = 10,

@@ -745,15 +745,13 @@ estimate_b_unsupervised <- function(Wobs) {
   lwsd <- apply(log(Wobs), 1, function(x) sd(x, na.rm = TRUE))
 
   #unsupervised classification
-  temp <- c(0.281116498,
-            0.24873163,
-            0.233806573,
-            0.221609934,
-            0.190969495,
-            0.186128473,
-            0.145874141,
-            0.15322105,
-            0.405)
+  temp <- c(0.193965612,
+            0.186677399,
+            0.053815029,
+            0.193643212,
+            0.171665843,
+            0.297094389,
+            0.409781961)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   b_hat <- ifelse(class != 101, temp[class], 0.0569 + 0.3822 * lwsd) #repeat by sptial unit
@@ -766,15 +764,13 @@ estimate_b_unsupervised <- function(Wobs) {
 #' @export
 estimate_lowerboundb_unsupervised <- function(Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
-  temp <- c(0.01904573,
-            0.016895241,
-            0.009206385,
-            0.009206385,
-            0.009206385,
-            0.009634045,
-            0.008909195,
-            0.000182357,
-            0.029)
+  temp <- c(0.004872167,
+            0.038484492,
+            0.022462362,
+            0.029379248,
+            0.077325498,
+            0.024351422,
+            0.103600981)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_b <- ifelse(class != 101, temp[class], 0.000182357)
@@ -787,15 +783,13 @@ estimate_lowerboundb_unsupervised <- function(Wobs) {
 #' @export
 estimate_upperboundb_unsupervised <- function(Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
-  temp <- c(0.718356399,
-            0.718356399,
-            0.773757585,
-            0.773757585,
-            0.773757585,
-            0.773757585,
-            0.659229465,
-            0.659229465,
-            0.77)
+  temp <- c(0.773757585,
+            0.437298948,
+            0.478046051,
+            0.514297361,
+            0.488190912,
+            0.455487205,
+            0.692551528)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_b <- ifelse(class != 101, temp[class], 0.773757585)
@@ -808,15 +802,13 @@ estimate_upperboundb_unsupervised <- function(Wobs) {
 #' @export
 estimate_bSD_unsupervised <- function(Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
-  temp <- c(0.127044741,
-            0.121791926,
-            0.116980495,
-            0.120133338,
-            0.11851495,
-            0.131447085,
-            0.123924935,
-            0.117431499,
-            0.11)
+  temp <- c(0.123620812,
+            0.133008102,
+            0.159164985,
+            0.160152755,
+            0.151764685,
+            0.139129593,
+            0.123429852)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   b_sd <- ifelse(class != 101, temp[class], 0.068077044)
@@ -833,15 +825,13 @@ estimate_logA0_unsupervised <- function(Wobs) {
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
 
   #unsupervised classification
-  temp <- c(4.235554731,
-            4.890349128,
-            5.036952602,
-            5.347107531,
-            5.768320996,
-            6.488444764,
-            7.222566019,
-            8.496990484,
-            4.394)
+  temp <- c(5.538317552,
+            7.31986493,
+            8.157657015,
+            7.835974582,
+            5.329969058,
+            6.223916904,
+            3.019662854)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   logA0_hat <- ifelse(class != 101, temp[class], -0.2918 + 1.6930 * lwbar - 0.1887 * lwsd) #repeat for each sptial unit
@@ -858,15 +848,13 @@ estimate_lowerboundA0_unsupervised <- function(Wobs) {
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
 
   #unsupervised classification
-  temp <- c(-0.328504067,
-            0.385262401,
-            -0.192371893,
-            -0.192371893,
-            -0.192371893,
-            0.91027266,
-            0.91027266,
-            1.545432582,
-            0.262)
+  temp <- c(0.385262401,
+            2.05284086,
+            4.952299717,
+            5.059425458,
+            3.446807893,
+            1.596352673,
+            0.262364264)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_A0 <- ifelse(class != 101, exp(temp[class]), exp(-0.328504067))
@@ -883,15 +871,13 @@ estimate_upperboundA0_unsupervised <- function(Wobs) {
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
 
   #unsupervised classification
-  temp <- c(10.20728901,
-            10.20728901,
-            8.997147152,
-            10.20728901,
-            10.20728901,
-            10.20728901,
-            10.20728901,
-            11.6483301,
-            11.55)
+  temp <- c(11.6483301,
+            9.952277717,
+            8.942460927,
+            9.472704636,
+            7.316548177,
+            9.164296433,
+            6.200509174)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_A0 <- ifelse(class != 101, exp(temp[class]), exp(11.6483301))
@@ -908,15 +894,13 @@ estimate_A0SD_unsupervised <- function(Wobs) {
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
 
   #unsupervised classification
-  temp <- c(1.186970818,
-            1.115671401,
-            1.139077766,
-            1.159659197,
-            1.332424151,
-            1.420396679,
-            1.338002098,
-            1.793626478,
-            2.285)
+  temp <- c(1.83150945,
+            2.054790651,
+            1.248676431,
+            0.954728776,
+            1.426273172,
+            2.302489877,
+            1.252208404)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   logA0_sd <- ifelse(class != 101, temp[class], 0.58987527)
@@ -931,15 +915,13 @@ estimate_logWb_unsupervised <- function(Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(2.773369667,
-            3.231397105,
-            3.417726684,
-            3.557488626,
-            3.732537423,
-            4.090671157,
-            4.4893103,
-            5.145836126,
-            3.039)
+  temp <- c(3.574730432,
+            4.392286324,
+            4.361632583,
+            4.461530736,
+            3.769275439,
+            3.890165778,
+            2.060762964)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   logWb_hat <- ifelse(class != 101, temp[class], 0.0037 + 1.0028 * lwbar) #repeat for each sptial unit
@@ -955,14 +937,12 @@ estimate_lowerboundlogWb_unsupervised <- function(Wobs) {
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   #unsupervised classification
   temp <- c(-0.122732765,
-            -0.122732765,
-            -0.122732765,
-            0.211273379,
-            -0.122732765,
-            0.461215123,
-            0.42199441,
-            0.42199441,
-            -0.1227)
+            1.173410499,
+            2.971439581,
+            3.417726684,
+            1.6804554,
+            1.042570898,
+            0.381172416)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_logWb <- ifelse(class != 101, temp[class], -0.122732765)
@@ -977,15 +957,13 @@ estimate_upperboundlogWb_unsupervised <- function(Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(6.372636963,
-            6.372636963,
-            5.967171855,
-            6.372636963,
-            6.372636963,
-            6.372636963,
-            6.540091608,
-            7.006785802,
-            6.917)
+  temp <- c(6.917259966,
+            5.427282098,
+            4.91287545,
+            5.860073719,
+            4.670489652,
+            5.56832542,
+            3.948354935)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_logWb <- ifelse(class != 101, temp[class], 7.006785802)
@@ -1000,15 +978,13 @@ estimate_logWbSD_unsupervised <- function(Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(0.711826397,
-            0.640918356,
-            0.621565057,
-            0.600591021,
-            0.710380783,
-            0.74356749,
-            0.765907204,
-            1.029163996,
-            1.284)
+  temp <- c(1.026265531,
+            1.051896455,
+            0.597547965,
+            0.533663213,
+            1.093140262,
+            1.318621719,
+            0.830429076)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   logWb_sd <- ifelse(class != 101, temp[class], 0.137381044)
@@ -1024,15 +1000,13 @@ estimate_logDb_unsupervised <- function(Wobs) {
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(-0.855744545,
-            -0.746966348,
-            -0.749188571,
-            -0.666909064,
-            -0.467863065,
-            -0.036929277,
-            0.252025621,
-            1.264673325,
-            -1.00)
+  temp <- c(-0.477454537,
+            0.570414415,
+            1.402823663,
+            0.829185144,
+            -0.618893436,
+            -0.325969172,
+            -1.458486344)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   logDb_hat <- ifelse(class != 101, temp[class], -2.6189 - 0.2436 * lwsd + 0.6854 * lwbar) #repeat for each spatial unit
@@ -1048,15 +1022,13 @@ estimate_lowerboundlogDb_unsupervised <- function(Wobs) {
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(-3.020024966,
-            -3.020024966,
-            -2.926934543,
-            -2.926934543,
-            -2.926934543,
-            -2.094164783,
-            -2.094164783,
-            -2.094164783,
-            -3.02)
+  temp <- c(-2.241241775,
+            -1.502582421,
+            -0.688452336,
+            -0.718666115,
+            -0.856326031,
+            -1.894752997,
+            -2.379581849)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_logDb <- ifelse(class != 101, temp[class], -3.020024966)
@@ -1072,15 +1044,13 @@ estimate_upperboundlogDb_unsupervised <- function(Wobs) {
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(1.7933029,
-            1.7933029,
-            1.7933029,
-            1.7933029,
-            1.708874134,
+  temp <- c(3.309358647,
+            2.145955751,
             2.009770826,
-            2.009770826,
-            3.309358647,
-            2.572)
+            1.729110741,
+            0.249099039,
+            1.7933029,
+            -0.221917668)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_logDb <- ifelse(class != 101, temp[class], 3.309358647)
@@ -1096,15 +1066,13 @@ estimate_logDbSD_unsupervised <- function(Wobs) {
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(0.598955804,
-            0.608728355,
-            0.643855445,
-            0.684081848,
-            0.746547309,
-            0.806479131,
-            0.733313884,
-            0.927305358,
-            1.147)
+  temp <- c(0.909913045,
+            1.11158809,
+            0.709944526,
+            0.609960942,
+            0.465557504,
+            1.157661125,
+            0.49869352)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_logDb <- ifelse(class != 101, temp[class], 0.576212733)
@@ -1122,15 +1090,13 @@ estimate_logr_unsupervised <- function(Wobs) {
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
 
   #supervised classification
-  temp <- c(0.325295247,
-            0.559767277,
-            0.618153535,
-            0.656156611,
-            0.796844318,
-            0.845216799,
-            1.106992587,
-            0.875041483,
-            -0.249)
+  temp <- c(0.722592009,
+            0.977709482,
+            1.230106834,
+            0.303821877,
+            0.917785312,
+            0.141431684,
+            -0.248390176) #DBSCAN successfully identified rivers with r < 1!!
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   logr_hat <- ifelse(class != 101, temp[class], 1.4241 - 1.9097 * lwsd + 0.0420 * lwbar) #repeat for each spatial unit
@@ -1147,14 +1113,12 @@ estimate_lowerboundlogr_unsupervised <- function(Wobs) {
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
   #unsupervised classification
   temp <- c(-1.694462984,
-            -1.694462984,
-            -1.694462984,
-            -1.504526738,
-            -1.694462984,
-            -1.59134178,
-            -1.59134178,
             -2.580471126,
-            -2.58)
+            -0.188149031,
+            -2.297051297,
+            -0.374243132,
+            -0.636077687,
+            -0.827781183)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_logr <- ifelse(class != 101, temp[class], -2.580471126)
@@ -1170,15 +1134,13 @@ estimate_upperboundlogr_unsupervised <- function(Wobs) {
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(2.750427051,
-            2.750427051,
-            3.660494543,
-            3.660494543,
-            3.75765632,
-            3.75765632,
-            3.885278632,
-            8.037716276,
-            0)
+  temp <- c(3.885278632,
+            2.701880636,
+            2.468097757,
+            2.311888633,
+            1.777431218,
+            2.674955812,
+            0.9913607)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_logr <- ifelse(class != 101, temp[class], 8.037716276)
@@ -1194,15 +1156,13 @@ estimate_logrSD_unsupervised <- function(Wobs) {
   lwbar <- apply(log(Wobs), 1, mean, na.rm = TRUE)
   lwsd <- apply(log(Wobs), 1, sd, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(0.611235593,
-            0.65753785,
-            0.649325058,
-            0.690260039,
-            0.73068479,
-            0.874593274,
-            0.916480631,
-            1.043382513,
-            0.412)
+  temp <- c(0.796841513,
+            1.174459584,
+            0.85622092,
+            1.205119078,
+            0.744722627,
+            0.955376128,
+            0.429377882)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   logr_sd <- ifelse(class != 101, temp[class], 0.67332688)
@@ -1219,15 +1179,13 @@ estimate_logn_unsupervised <- function(Sobs, Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
   lsbar <- apply(log(Sobs), 1, mean, na.rm = TRUE)
   #unsupervised classification
-  temp <- c(-3.34557283,
-            -3.312687279,
-            -3.323656967,
-            -3.46372292,
-            -3.417279106,
-            -3.470045772,
-            -3.225956303,
-            -3.400259437,
-            -3.41)
+  temp <- c(-3.293181606,
+            -3.705388959,
+            -0.735356858,
+            -3.156147655,
+            -3.95179067,
+            -3.406376251,
+            -3.121679163)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   logn_hat <- ifelse(class != 101, temp[class], -0.1636 + 0.4077 * lsbar) #repeat for each sptial unit
@@ -1241,15 +1199,13 @@ estimate_logn_unsupervised <- function(Sobs, Wobs) {
 estimate_lowerboundlogn_unsupervised <- function(Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
   #unsupervised classification
-  temp <- c(-7.628253825,
-            -7.369108582,
-            -7.720003485,
-            -7.385380143,
-            -8.636508843,
-            -8.741518112,
-            -8.941359471,
-            -12.60217578,
-            log(0.01))
+  temp <- c(-6.678294272,
+            -5.933075927,
+            -1.881832288,
+            -4.865235717,
+            -5.661908145,
+            -5.42815632,
+            -5.577638217)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_logn <- ifelse(class != 101, temp[class], log(0.01))
@@ -1263,15 +1219,13 @@ estimate_lowerboundlogn_unsupervised <- function(Wobs) {
 estimate_upperboundlogn_unsupervised <- function(Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
   #unsupervised classification
-  temp <- c(0.726125533,
-            -0.270337583,
-            -0.013112528,
-            0.030500965,
-            0.207297661,
-            0.298670281,
-            0.611600396,
-            3.047771386,
-            log(0.05))
+  temp <- c(-0.025491812,
+            -1.681204649,
+            0.501441352,
+            -1.270558784,
+            -2.631875724,
+            -1.540988288,
+            -0.377797559)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_logn <- ifelse(class != 101, temp[class], log(0.05))
@@ -1285,15 +1239,13 @@ estimate_upperboundlogn_unsupervised <- function(Wobs) {
 estimate_lognSD_unsupervised <- function(Wobs) {
   Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
   #unsupervised classification
-  temp <- c(1.154479143,
-            1.129036566,
-            1.167466126,
-            1.200156724,
-            1.223989206,
-            1.206875933,
-            1.306485481,
-            1.484896588,
-            1.23)
+  temp <- c(1.137136185,
+            1.107362891,
+            0.679465988,
+            0.885903042,
+            1.311510864,
+            1.096048948,
+            0.925151557)
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   logn_sd <- ifelse(class != 101, temp[class], 0.761673112)
