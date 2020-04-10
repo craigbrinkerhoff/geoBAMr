@@ -73,7 +73,7 @@
       <h1 data-toc-skip>geoBAMr river classification</h1>
                         <h4 class="author">Craig Brinkerhoff</h4>
             
-            <h4 class="date">2020/04/09</h4>
+            <h4 class="date">2020/04/10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/craigbrinkerhoff/geoBAMr/blob/master/vignettes/geoBAMr.Rmd"><code>vignettes/geoBAMr.Rmd</code></a></small>
       <div class="hidden name"><code>geoBAMr.Rmd</code></div>
@@ -82,16 +82,30 @@
 
     
     
-<p>The <code>bamr</code> package facilitates Bayesian AMHG + Manning discharge estimation using stream slope, width, and partial cross-section area. It includes functions to preprocess and visualize data, perform Bayesian inference using Hamiltonian Monte Carlo (via models pre-written in the Stan language), and analyze the results. See the <a href="https://markwh.github.io/bamr/index.html">website</a> for <code>bamr</code> vignettes on how to use BAM to estimate river discharge</p>
-<p><code>geoBAMr</code> expands upon BAM by using geomorphic river classifications to better assign Bayesian priors. This document walks through the two river classification frameworks within geoBAMr: the Expert framework and the Unsupervised framework. To select which framework to use when deriving priors for your river, simply set classification to ‘expert’ or ‘unsupervised’:</p>
-<div class="sourceCode"><html><body><pre class="r"><span class="no">priors</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/bam_priors.html">bam_priors</a></span>(<span class="kw">bamdata</span> <span class="kw">=</span> <span class="no">bam_data</span>, <span class="kw">variant</span> <span class="kw">=</span> <span class="st">'amhg'</span>, <span class="kw">classification</span> <span class="kw">=</span> <span class="st">'expert'</span>)</pre></body></html></div>
+<p>The <code>bamr</code> package facilitates Bayesian AMHG + Manning discharge estimation using stream slope, width, and partial cross-section area. It includes functions to preprocess and visualize data, perform Bayesian inference using Hamiltonian Monte Carlo (via models pre-written in the Stan language), and analyze the results. See the <a href="https://markwh.github.io/bamr/index.html">website</a> for <code>bamr</code> vignettes on how to use BAM to estimate river discharge, and see Hagemann et al. (2017) for the academic paper on the algorithm.</p>
+<p><code>geoBAMr</code> expands upon BAM by using geomorphic river classifications to better assign Bayesian priors. This document walks through the two river classification frameworks within geoBAMr: the expert framework and the unsupervised framework. To select which framework to use when deriving priors for your river, simply set classification to ‘expert’ or ‘unsupervised’. Then, one can access resulting river types using the bam_priors() object:</p>
+<div class="sourceCode"><html><body><pre class="r">priors </pre></body></html></div>
+<p>River types are defined for every spatial unit that inversion is ran on, i.e. if predicting discharge at the reach scale, every reach will be classified. If predicting discharge at the cross-section scale, every cross-section will be classified.</p>
+<p>Our training data comes from Brinkerhoff et al. (2019) and includes 750,000+ field-measured river channel hydraulics across the continental United States. See below for a map of all river cross-sections we had training data for.</p>
 <div id="expert-classification-framework" class="section level2">
 <h2 class="hasAnchor">
 <a href="#expert-classification-framework" class="anchor"></a>1. Expert Classification Framework</h2>
+<p>We devolped a bespoke expert classification framework for extracting river types, built specifically such that river width is a predictor of these types. The approach uses principal component analysis (PCA) as a guiding tool. A PCA was ran to identify the primary drivers of geomorphic variation in the training data, and then the top-weighted PCs were used to bin observations into river types. This amounted to 15 river types, each defined by a ‘characteristic river width’.</p>
+<p>The second part of the expert classification framework was designed to parse out unique river geomorphology from the previously defined 15 classes, namely ‘big’ rivers and ‘highly width-variable’ rivers. For some very large rivers (e.g. the Mississippi or St. Lawrence rivers), the training data had very few measurements in rivers of similar size and thus hydraulics are ill defined. We also defined ‘highly width-variable’ rivers as those with significant variability in river width for both single channel and multi-channel rivers. More on this methodology is currently under peer review.</p>
+<p>Because each river type is associated with a characteristic river width (or width variability), these river types are easily mapped anywhere on Earth using just remotely-sensed river width. This is performed internal to <code>geoBAMr</code>.</p>
 </div>
 <div id="unsupervised-classification-framework" class="section level2">
 <h2 class="hasAnchor">
 <a href="#unsupervised-classification-framework" class="anchor"></a>2. Unsupervised Classification Framework</h2>
+<p>As a representative unsupervised clustering approach, we used the ‘density-based spatial clustering of applications with noise’ (DBSCAN: Ester et al. 1996) algorithm. DBSCAN is a density-based clustering algorithm that groups observations in the multi-dimensional feature space using proximity. Distance between points is determined using Euclidean distance. Unlike simpler unsupervised clustering algorithms, DBSCAN does not assume all clusters have a convex shape in the feature space and instead uses density to group observations. This means clusters can be arbitrarily shaped or completely surround other clusters. This also permits DBSCAN to identify ‘noise’ points which are outside of the dense areas of the feature space, differing in practice from other simple unsupervised learning methods (e.g. K-Means clustering will assign every observation to a cluster). The user must provide a minimum number of points for a cluster and a maximum cluster radius, and DBSCAN determines the number of clusters (unlike simpler unsupervised algorithms). We used an ‘elbow’-based approach to determine the optimal cluster radius (0.5) and then manually set a minimum cluster size of 5 stations as the best balance between number of clusters, within-cluster variance, and computational efficiency.</p>
+<p>We built a logistic regression model to predict the resulting river types using just river width. On a random test set of the training data, this model had an accuracy rate of 87%. It is implemented internally in <code>geoBAMr</code>.</p>
+</div>
+<div id="references" class="section level2">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>3. References</h2>
+<p>Brinkerhoff, C. B., Gleason, C. J., &amp; Ostendorf, D. W. (2019). Reconciling at-a-Station and at-Many-Stations Hydraulic Geometry Through River-Wide Geomorphology. Geophysical Research Letters, 46(16), 9637–9647. <a href="https://doi.org/10.1029/2019GL084529" class="uri">https://doi.org/10.1029/2019GL084529</a></p>
+<p>Ester, M., Kriegel, H.-P., &amp; Xu, X. (1996). A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise, 6.</p>
+<p>Hagemann, M. W., Gleason, C. J., &amp; Durand, M. T. (2017). BAM: Bayesian AMHG-Manning Inference of Discharge Using Remotely Sensed Stream Width, Slope, and Height: BAM FLOW USING STREAM WIDTH SLOPE HEIGHT. Water Resources Research, 53(11), 9692–9707. <a href="https://doi.org/10.1002/2017WR021626" class="uri">https://doi.org/10.1002/2017WR021626</a></p>
 </div>
   </div>
 

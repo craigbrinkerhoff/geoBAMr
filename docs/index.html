@@ -77,14 +77,14 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>An update to the <a href="https://github.com/markwh/bamr"><strong>bamr R package</strong></a> (built by <a href="https://scholar.google.com/citations?user=_-XH9u4AAAAJ&amp;hl=en&amp;oi=ao"><strong>Mark Hagemann</strong></a> while at UMass) that uses more geomorphically-informed prior knowledge for discharge inversion.</p>
-<p>From bamr: “The bamr package facilitates Bayesian AMHG + Manning discharge estimation using stream slope, width, and partial cross-section area. It includes functions to preprocess and visualize data, perform Bayesian inference using Hamiltonian Monte Carlo (via models pre-written in the Stan language), and analyze the results.”</p>
-<p>geoBAMr expands upon this project by defining prior river knowledge using river classification frameworks. Internal to geoBAMr, geomorphic river types are assigned to rivers using stream widths, which in turn determine which priors are fed into the BAM algorithm. geoBAMr uses the identical Bayesian model as used in bamr.</p>
+<p>From <code>bamr</code>: “The bamr package facilitates Bayesian AMHG + Manning discharge estimation using stream slope, width, and partial cross-section area. It includes functions to preprocess and visualize data, perform Bayesian inference using Hamiltonian Monte Carlo (via models pre-written in the Stan language), and analyze the results.”</p>
+<p><code>geoBAMr</code> expands upon this project by defining prior river knowledge using river classification frameworks. Internal to <code>geoBAMr</code>, geomorphic river types are assigned to rivers using stream widths, which in turn determine which priors are fed into the BAM algorithm. <code>geoBAMr</code> uses the identical Bayesian model as used in <code>bamr</code>.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>First, you need to have installed rstan from source on your local machine. To do that, follow the directions at <a href="https://github.com/stan-dev/rstan/wiki/Installing-RStan-from-source-on-Windows"><strong>this link</strong></a> verbatim. Otherwise, an error will be thrown during package installation. This only needs to be done the first time you wish to install geoBAMr.</p>
-<p>Following that, you can install geoBAMr:</p>
+<p>First, you need to have installed rstan from source on your local machine. To do that, follow the directions at <a href="https://github.com/stan-dev/rstan/wiki/Installing-RStan-from-source-on-Windows"><strong>this link</strong></a> verbatim. Otherwise, an error will be thrown during package installation. This only needs to be done the first time you wish to install <code>geoBAMr</code>.</p>
+<p>Following that, you can install <code>geoBAMr</code>:</p>
 <pre><code> #First get devtools package
 if (!require("devtools")) {
   install.packages("devtools")
@@ -99,20 +99,18 @@ devtools:: install_github("craigbrinkerhoff/geoBAMr", force=TRUE)</code></pre>
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>The best way to get started is to follow the examples in the included vignettes at the <a href="https://markwh.github.io/bamr/index.html"><strong>bamr</strong> website</a>.</p>
-<p>geoBAMr is packaged with two approaches to defining prior river knowledge: 1) an expert geomorphology framework or 2) an unsupervised one. The assigned priors will be different, depending on which is chosen. ‘Expert’ is default and accounts for both really big rivers and ‘highly width variable’ ones. The unsupervised approach is purely statistical and implicitly accounts for edge cases like these, but was not explictly designed to do so.</p>
-<p>Regardless of classification chosen, resulting river types are accessible using the bam_priors() object$river_type. For a read on what these river types qualitvately represent, consult <a href="https://craigbrinkerhoff.github.io/geoBAMr/articles/geoBAMr.html"><strong>this vignette</strong></a> at the geoBAMR site.</p>
+<p>To read about the river classification frameworks available and how to implement them, go to the <a href="https://craigbrinkerhoff.github.io/geoBAMr/index.html"><strong>geoBAMr</strong> website</a> and click on ‘Getting Started’.</p>
 </div>
 <div id="notes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#notes" class="anchor"></a>Notes</h2>
-<p>1) The Sacramento test case in the bamr package is not included with geoBAMr.</p>
-<p>2) geoBAMr is far more memory intensive than bamr. If you have large time-series of stream widths and/or slopes, this is likely the issue if the following error is thrown:</p>
+<p>1) The Sacramento test case in the bamr package is not included with <code>geoBAMr</code>.</p>
+<p>2) <code>geoBAMr</code> is far more memory intensive than <code>bamr</code> as the posterior is significantly larger. If you have large time-series of stream widths and/or slopes, this is likely the issue if the following error is thrown:</p>
 <pre><code>Error in unserialize(socklist[[n]]) : error reading from connection
 Error in serialize(data, node$con, xdr = FALSE) : 
   error writing to connection</code></pre>
-<p>One solution is to run geoBAMr on a computing cluster. Another is to use Manning’s only as the posterior is smallest. The other<br>
-option is to use bamr!</p>
-<p>3) If both bamr and geoBAMr are installed, make sure to explictly call functions by package as they have the same names. Otherwise, chaotic confusion will ensue!</p>
+<p>One solution is to run <code>geoBAMr</code> on a computing cluster. Another is to use the Manning’s-only flow law variant, as the posterior is smallest. The other option is to keep using <code>bamr</code>!</p>
+<p>3) If both <code>bamr</code> and <code>geoBAMr</code> are installed, make sure to explictly call functions by package as they have the same names. Otherwise, chaotic confusion will ensue!</p>
 <p>For example:</p>
 <pre><code>geoBAMr:: bam_estimate()
 bamr:: bam_estimate()</code></pre>
