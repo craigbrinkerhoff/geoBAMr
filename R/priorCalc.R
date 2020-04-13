@@ -57,7 +57,7 @@ estimate_lowerboundb <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   lowerbound_b <- ifelse(class != 17, temp[class], 0.000182357)
-  lowerbound_b <- min(lowerbound_b)
+  lowerbound_b <- min(lowerbound_b, na.rm = TRUE)
 }
 
 #' Estimate AHG b upperbound using bam data
@@ -85,7 +85,7 @@ estimate_upperboundb <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   upperbound_b <- ifelse(class != 17, temp[class], 0.773757585)
-  upperbound_b <- max(upperbound_b)
+  upperbound_b <- max(upperbound_b, na.rm = TRUE)
 }
 
 #' Estimate AHG b SD using bam data
@@ -176,7 +176,7 @@ estimate_lowerboundA0 <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   lowerbound_A0 <- ifelse(class != 17, exp(temp[class]), exp(4.540631665))
-  lowerbound_A0 <- min(lowerbound_A0)
+  lowerbound_A0 <- min(lowerbound_A0, na.rm = TRUE)
 }
 
 #' Estimate base cross-sectional area upperbound using bam data
@@ -208,7 +208,7 @@ estimate_upperboundA0 <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   upperbound_A0 <- ifelse(class != 17, exp(temp[class]), 1000000)
-  upperbound <- max(upperbound_A0)
+  upperbound <- max(upperbound_A0, na.rm = TRUE)
 }
 
 #' Estimate base cross-sectional area SD using bam data
@@ -299,7 +299,7 @@ estimate_lowerboundlogWb <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   lowerbound_logWb <- ifelse(class != 17, temp[class], 3.089222617)
-  lowerbound_logWb <- min(lowerbound_logWb)
+  lowerbound_logWb <- min(lowerbound_logWb, na.rm = TRUE)
 }
 
 #'Estimate bankful width upper bound using bam data
@@ -329,7 +329,7 @@ estimate_upperboundlogWb <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   upperbound_logWb <- ifelse(class != 17, temp[class], 10)
-  upperbound_logWb <- max(upperbound_logWb)
+  upperbound_logWb <- max(upperbound_logWb, na.rm = TRUE)
 }
 
 #'Estimate bankful width SD using bam data
@@ -420,7 +420,7 @@ estimate_lowerboundlogDb <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   lowerbound_logDb <- ifelse(class != 17, temp[class], -0.951962577)
-  lowerbound_logDb <- min(lowerbound_logDb)
+  lowerbound_logDb <- min(lowerbound_logDb, na.rm = TRUE)
 }
 
 #'Estimate bankful depth upper bound using bam data
@@ -451,7 +451,7 @@ estimate_upperboundlogDb <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   upperbound_logDb <- ifelse(class != 17, temp[class], 5)
-  upperbound_logDb <- max(upperbound_logDb)
+  upperbound_logDb <- max(upperbound_logDb, na.rm = TRUE)
 }
 
 #'Estimate bankful depth SD using bam data
@@ -544,7 +544,7 @@ estimate_lowerboundlogr <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   lowerbound_logr <- ifelse(class != 17, temp[class], -2.580471126)
-  lowerbound_logr <- min(lowerbound_logr)
+  lowerbound_logr <- min(lowerbound_logr, na.rm = TRUE)
 }
 
 #'Estimate channel shape upperbound using bam data
@@ -575,7 +575,7 @@ estimate_upperboundlogr <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   upperbound_logr <- ifelse(class != 17, temp[class], 8.037716276)
-  upperbound_logr <- max(upperbound_logr)
+  upperbound_logr <- max(upperbound_logr, na.rm = TRUE)
 }
 
 #'Estimate channel shape SD using bam data
@@ -666,7 +666,7 @@ estimate_lowerboundlogn <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   lowerbound_logn <- ifelse(class != 17, temp[class], log(0.01))
-  lowerbound_logn <- min(lowerbound_logn)
+  lowerbound_logn <- min(lowerbound_logn, na.rm = TRUE)
 }
 
 #'Estimate manning's n upperbound using bam data
@@ -695,7 +695,7 @@ estimate_upperboundlogn <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func)
   upperbound_logn <- ifelse(class != 17, temp[class], log(0.05))
-  upperbound_logn <- max(upperbound_logn)
+  upperbound_logn <- max(upperbound_logn, na.rm = TRUE)
 }
 
 #'Estimate manning's n SD using bam data
@@ -768,7 +768,7 @@ estimate_lowerboundb_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_b <- ifelse(class != 101, temp[class], 0.000182357)
-  lowerbound_b <- min(lowerbound_b)
+  lowerbound_b <- min(lowerbound_b, na.rm = TRUE)
 }
 
 #' Estimate AHG b upperbound using bam data
@@ -787,7 +787,7 @@ estimate_upperboundb_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_b <- ifelse(class != 101, temp[class], 0.773757585)
-  upperbound_b <- max(upperbound_b)
+  upperbound_b <- max(upperbound_b, na.rm = TRUE)
 }
 
 #' Estimate AHG b SD using bam data
@@ -852,7 +852,7 @@ estimate_lowerboundA0_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_A0 <- ifelse(class != 101, exp(temp[class]), exp(-0.328504067))
-  lowerbound_A0 <- min(lowerbound_A0)
+  lowerbound_A0 <- min(lowerbound_A0, na.rm = TRUE)
 }
 
 #' Estimate base cross-sectional area upperbound using bam data
@@ -875,7 +875,7 @@ estimate_upperboundA0_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_A0 <- ifelse(class != 101, exp(temp[class]), exp(11.6483301))
-  upperbound_A0 <- max(upperbound_A0)
+  upperbound_A0 <- max(upperbound_A0, na.rm = TRUE)
 }
 
 #' Estimate base cross-sectional area SD using bam data
@@ -940,7 +940,7 @@ estimate_lowerboundlogWb_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_logWb <- ifelse(class != 101, temp[class], -0.122732765)
-  lowerbound_logWb <- min(lowerbound_logWb)
+  lowerbound_logWb <- min(lowerbound_logWb, na.rm = TRUE)
 }
 
 #'Estimate bankful width upper bound using bam data
@@ -961,7 +961,7 @@ estimate_upperboundlogWb_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_logWb <- ifelse(class != 101, temp[class], 7.006785802)
-  upperbound_logWb <- max(upperbound_logWb)
+  upperbound_logWb <- max(upperbound_logWb, na.rm = TRUE)
 }
 
 #'Estimate bankful width SD using bam data
@@ -1026,7 +1026,7 @@ estimate_lowerboundlogDb_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_logDb <- ifelse(class != 101, temp[class], -3.020024966)
-  lowerbound_logDb <- min(lowerbound_logDb)
+  lowerbound_logDb <- min(lowerbound_logDb, na.rm = TRUE)
 }
 
 #'Estimate bankful depth upper bound using bam data
@@ -1048,7 +1048,7 @@ estimate_upperboundlogDb_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_logDb <- ifelse(class != 101, temp[class], 3.309358647)
-  upperbound_logDb <- max(upperbound_logDb)
+  upperbound_logDb <- max(upperbound_logDb, na.rm = TRUE)
 }
 
 #'Estimate bankful depth SD using bam data
@@ -1115,7 +1115,7 @@ estimate_lowerboundlogr_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_logr <- ifelse(class != 101, temp[class], -2.580471126)
-  lowerbound_logr <- min(lowerbound_logr)
+  lowerbound_logr <- min(lowerbound_logr, na.rm = TRUE)
 }
 
 #'Estimate channel shape upperbound using bam data
@@ -1137,7 +1137,7 @@ estimate_upperboundlogr_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_logr <- ifelse(class != 101, temp[class], 8.037716276)
-  upperbound_logr <- max(upperbound_logr)
+  upperbound_logr <- max(upperbound_logr, na.rm = TRUE)
 }
 
 #'Estimate channel shape SD using bam data
@@ -1202,7 +1202,7 @@ estimate_lowerboundlogn_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   lowerbound_logn <- ifelse(class != 101, temp[class], log(0.01))
-  lowerbound_logn <- min(lowerbound_logn)
+  lowerbound_logn <- min(lowerbound_logn, na.rm = TRUE)
 }
 
 #'Estimate manning's n upperbound using bam data
@@ -1222,7 +1222,7 @@ estimate_upperboundlogn_unsupervised <- function(Wobs) {
 
   class <- apply(Wobs, 1, classify_func_unsupervised)
   upperbound_logn <- ifelse(class != 101, temp[class], log(0.05))
-  upperbound_logn <- max(upperbound_logn)
+  upperbound_logn <- max(upperbound_logn, na.rm = TRUE)
 }
 
 #'Estimate manning's n SD using bam data

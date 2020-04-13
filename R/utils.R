@@ -60,8 +60,8 @@ classify_func <- function(Wobs) {
 #'
 #' @param Wobs observed widths matrix
 classify_func_unsupervised <- function(Wobs) {
-  width <- median((Wobs)) #note these are not log widths!
-  width_sd <- sd((Wobs))
+  width <- median((Wobs), na.rm = TRUE) #note these are not log widths!
+  width_sd <- sd((Wobs), na.rm = TRUE)
 
   #One-vs-Rest Logistic regression model
   #test set accuracy rate of 87%
