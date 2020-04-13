@@ -52,8 +52,8 @@ bam_settings <- settings::options_manager(
 
 
   # Hyperparameters
-  logQc_hat = rlang::quo(mean(logQ_hat), na.rm=TRUE),
-  logWc_hat = rlang::quo(mean(log(Wobs), na.rm=TRUE)),
+  logQc_hat = rlang::quo(mean(logQ_hat)),
+  logWc_hat = rlang::quo(mean(log(Wobs))),
   b_hat = rlang::quo(estimate_b(Wobs)),
   logA0_hat = rlang::quo(estimate_logA0(Wobs)),
   logn_hat = rlang::quo(estimate_logn(Sobs, Wobs)),
@@ -131,8 +131,8 @@ bam_settings_unsupervised <- settings::options_manager(
 
 
   # Hyperparameters
-  logQc_hat = rlang::quo(mean(logQ_hat, na.rm=TRUE)),
-  logWc_hat = rlang::quo(mean(log(Wobs, na.rm=TRUE))),
+  logQc_hat = rlang::quo(mean(logQ_hat)),
+  logWc_hat = rlang::quo(mean(log(Wobs))),
   b_hat = rlang::quo(estimate_b_unsupervised(Wobs)),
   logA0_hat = rlang::quo(estimate_logA0_unsupervised(Wobs)),
   logn_hat = rlang::quo(estimate_logn_unsupervised(Sobs, Wobs)),
