@@ -142,7 +142,7 @@ bam_settings_unsupervised <- settings::options_manager(
 
   logQ_sd = sqrt(log(1^2 + 1)), # CV of Q equals 1
   logQc_sd = sqrt(log(1^2 + 1)), # CV of Q equals 1; UPDATE THIS
-  logWc_sd = sqrt(log(0.01)^2 + 1),
+  logWc_sd = sqrt(log(0.01^2 + 1)), #CV of Wc equals 0.01
 
   #set from my model outputs
   b_sd = rlang::quo(estimate_bSD_unsupervised(Wobs)), #0.068077044,
