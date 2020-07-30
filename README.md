@@ -30,7 +30,7 @@ Note that if you need to reinstall this package, uninstall the current version f
 ## Usage
 The best way to get started is to follow the examples in the included vignettes at the [**bamr** website](https://markwh.github.io/bamr/index.html).
 
-To read about the river classification frameworks available and how to implement them, go to the [**geoBAMr** website](https://craigbrinkerhoff.github.io/geoBAMr/index.html) and click on 'Getting Started'.
+To read about the river classification frameworks available and how to implement them, go to the [**geoBAMr** website](https://craigbrinkerhoff.github.io/geoBAMr/) and click on 'Getting Started'.
 
 ## Notes
 
