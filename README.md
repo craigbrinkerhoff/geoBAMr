@@ -36,13 +36,18 @@ To read about the river classification frameworks available and how to implement
 
 1) The Sacramento test case in the bamr package is not included with ``geoBAMr``.
 
-2) ``geoBAMr`` is far more memory intensive than ``bamr`` as the posterior is significantly larger.  If you have large time-series of stream widths and/or slopes, this is likely the issue if the following error is thrown: 
+2) ``geoBAMr`` is far more memory intensive than ``bamr``, and as such the precompiled stan model will crash if you are using medium-to-large matrices of river widths/slopes. This is likely the issue if the following error is thrown: 
 ```
 Error in unserialize(socklist[[n]]) : error reading from connection
 Error in serialize(data, node$con, xdr = FALSE) : 
   error writing to connection
 ```
-  One solution is to run ``geoBAMr`` on a computing cluster. Another is to use the Manning's-only flow law variant, as the posterior is smallest.  The other option is to keep using ``bamr``!
+  The workaround is to compile the stan model yourself! Workflow is identical except you 1) add a line of code and 2) amend the bam_estimate() function call. See below (after downloading the stan model from this repo 'master.stan'):
+```
+  geoBAM_model <- stan_model("~//master.stan", model_name = 'geoBAM_model')
+  run_bam <- bam_estimate(bamdata=bamdata, bampriors = priors, stanmodel=geoBAM_model)
+```
+  If you are dead set on running ``geoBAMr`` as is (generally for simplicity's sake), one solution is to find more memory! i.e. run ``geoBAMr`` on a computing cluster.
 
 3) If both ``bamr`` and ``geoBAMr`` are installed, make sure to explictly call functions by package as they have the same names. Otherwise, chaotic confusion will ensue!
 
