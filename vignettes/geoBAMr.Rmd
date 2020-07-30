@@ -15,7 +15,7 @@ The `bamr` package facilitates Bayesian AMHG + Manning discharge estimation usin
 
 `geoBAMr` expands upon BAM by using geomorphic river classifications to better assign Bayesian priors.  This document walks through the two river classification frameworks within geoBAMr: the expert framework and the unsupervised framework.  To select which framework to use when deriving priors for your river, simply set classification to 'expert' or 'unsupervised'.  Then, one can access resulting river types using the bam_priors() object:
 
-```{r}
+```
 
 priors <- bam_priors(bamdata = bam_data, variant = 'amhg', classification = 'expert')
 
