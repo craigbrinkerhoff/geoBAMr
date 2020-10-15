@@ -117,7 +117,6 @@ bam_check_nas <- function(datalist) {
   datalist[["Wobs"]][!hasdat_amhg] <- 0
   datalist[["Sobs"]][!hasdat_amhg] <- 0
 
-
   # Manning has-data matrix (only nonzero if all Manning obs present)
   if (identical(setdiff(c("Wobs", "Sobs", "dAobs"),
                         names(datalist[mats])),
@@ -125,7 +124,7 @@ bam_check_nas <- function(datalist) {
     hasdat_s <- (!is.na(datalist[["Sobs"]])) * 1
     hasdat_a <- (!is.na(datalist[["dAobs"]])) * 1
 
-    hasdat_man <- hasdat_w * hasdat_s * hasdat_a
+    hasdat_man <- hasdat_amhg * hasdat_a
 
     # Replace NA's with zeros so Stan will accept the data
     datalist[["Sobs"]][!hasdat_man] <- 0
