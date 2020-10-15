@@ -121,14 +121,14 @@ bam_check_nas <- function(datalist) {
   if (identical(setdiff(c("Wobs", "Sobs", "dAobs"),
                         names(datalist[mats])),
                 character(0))) {
-    hasdat_s <- (!is.na(datalist[["Sobs"]])) * 1
+    #hasdat_s <- (!is.na(datalist[["Sobs"]])) * 1
     hasdat_a <- (!is.na(datalist[["dAobs"]])) * 1
 
     hasdat_man <- hasdat_amhg * hasdat_a
 
     # Replace NA's with zeros so Stan will accept the data
-    datalist[["Sobs"]][!hasdat_man] <- 0
     datalist[["dAobs"]][!hasdat_man] <- 0
+
   } else {
     hasdat_man <- matrix(0, nrow = nrow(hasdat_amhg), ncol = ncol(hasdat_amhg))
   }
