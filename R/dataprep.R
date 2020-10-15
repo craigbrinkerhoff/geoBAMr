@@ -108,11 +108,14 @@ bam_check_nas <- function(datalist) {
   mats <- vapply(datalist, is.matrix, logical(1))
   nonas <- lapply(datalist[mats], function(x) !is.na(x))
 
-  # AMHG has-data matrix
-  hasdat_amhg <- (!is.na(datalist[["Wobs"]])) * 1
+  # AMHG has-data matrix (needs slopes and widths)
+  hasdat_s <- (!is.na(datalist[["Sobs"]])) * 1
+  hasdat_w <- (!is.na(datalist[["Wobs"]])) * 1
+  hasdat_amhg <- hasdat_w * hasdat_s
 
   # Replace NA's with zeros so Stan will accept the data
   datalist[["Wobs"]][!hasdat_amhg] <- 0
+  datalist[["Sobs"]][!hasdat_amhg] <- 0
 
 
   # Manning has-data matrix (only nonzero if all Manning obs present)
@@ -122,7 +125,7 @@ bam_check_nas <- function(datalist) {
     hasdat_s <- (!is.na(datalist[["Sobs"]])) * 1
     hasdat_a <- (!is.na(datalist[["dAobs"]])) * 1
 
-    hasdat_man <- hasdat_amhg * hasdat_s * hasdat_a
+    hasdat_man <- hasdat_w * hasdat_s * hasdat_a
 
     # Replace NA's with zeros so Stan will accept the data
     datalist[["Sobs"]][!hasdat_man] <- 0
