@@ -11,7 +11,7 @@
 #'
 #' @useDynLib geoBAMr, .registration = TRUE
 #' @param w Matrix (or data frame) of widths: time as columns, space as rows
-#' @param s Matrix of slopes: time as columns, space as rows
+#' @param s Matrix (or data frame) of slopes: time as columns, space as rows
 #' @param dA Matrix of area above base area: time as columns, space as rows
 #' @param Qhat Vector of Q estimates. Needed to create prior on Q.
 #' @param max_xs Maximum number of cross-sections to allow in data. Used to reduce
@@ -20,7 +20,7 @@
 #' @export
 
 bam_data <- function(w,
-                     s = NULL,
+                     s,
                      dA = NULL,
                      Qhat,
                      max_xs = 30L,
@@ -29,7 +29,7 @@ bam_data <- function(w,
 
   manning_ready <- !is.null(s) && !is.null(dA)
   if (!manning_ready) {
-    s <- dA <- matrix(1, nrow = nrow(w), ncol = ncol(w))
+    dA <- matrix(1, nrow = nrow(w), ncol = ncol(w))
   }
 
 

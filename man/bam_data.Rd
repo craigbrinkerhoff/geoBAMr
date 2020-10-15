@@ -4,12 +4,12 @@
 \alias{bam_data}
 \title{Preprocess data for BAM estimation}
 \usage{
-bam_data(w, s = NULL, dA = NULL, Qhat, max_xs = 30L, seed = NULL)
+bam_data(w, s, dA = NULL, Qhat, max_xs = 30L, seed = NULL)
 }
 \arguments{
 \item{w}{Matrix (or data frame) of widths: time as columns, space as rows}
 
-\item{s}{Matrix of slopes: time as columns, space as rows}
+\item{s}{Matrix (or data frame) of slopes: time as columns, space as rows}
 
 \item{dA}{Matrix of area above base area: time as columns, space as rows}
 
