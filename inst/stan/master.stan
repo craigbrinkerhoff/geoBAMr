@@ -170,7 +170,7 @@ transformed data {
   vector[ntot_amhg] Wobsvec_amhg;
   vector[inc_a ? ntot_amhg : ntot_man] Wobsvec;
   vector[ntot_man] Sobsvec_man;
-  vector[ntot_man] Sobsvec_amhg;
+  vector[ntot_amhg] Sobsvec_amhg;
 
   vector[ntot_man] logWobs_man;
   vector[ntot_amhg] logWobs_amhg;
