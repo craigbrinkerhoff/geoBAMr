@@ -4,7 +4,7 @@
 \alias{bam_check_nas}
 \title{Add missing-data inputs to data list}
 \usage{
-bam_check_nas(datalist)
+bam_check_nas(datalist, variant)
 }
 \arguments{
 \item{datalist}{a list of BAM inputs}

@@ -23,15 +23,21 @@ bam_data <- function(w,
                      s,
                      dA = NULL,
                      Qhat,
+                     variant = c("manning_amhg", "manning", "amhg"),
                      max_xs = 30L,
                      seed = NULL) {
   force(Qhat)
+
+
+  if(is.null(dA)==0 && variant=='amhg'){
+    stop('AMHG-only geoBAM cannot process a dA matrix!')}
+  if(is.null(dA)==1 && variant!='amhg'){
+    stop('Mannings-based geoBAM requires a dA matrix!')}
 
   manning_ready <- !is.null(s) && !is.null(dA)
   if (!manning_ready) {
     dA <- matrix(1, nrow = nrow(w), ncol = ncol(w))
   }
-
 
   datalist <- list(Wobs = w,
                 Sobs = s,
@@ -39,7 +45,7 @@ bam_data <- function(w,
                 logQ_hat = log(Qhat))
 
   datalist <- bam_check_args(datalist)
-  datalist <- bam_check_nas(datalist)
+  datalist <- bam_check_nas(datalist, variant)
 
   nx <- nrow(datalist$Wobs)
   nt <- ncol(datalist$Wobs)
@@ -67,6 +73,7 @@ bam_data <- function(w,
 #' @param datalist A list of BAM data inputs
 bam_check_args <- function(datalist) {
 
+  dA <- dA_obs# datalist$dA
   logQ_hat <- datalist$logQ_hat
   matlist <- datalist[names(datalist) != "logQ_hat"]
 
@@ -75,7 +82,6 @@ bam_check_args <- function(datalist) {
     stop("Qhat must be a numeric vector.\n")
   if (!all(vapply(matlist, is, logical(1), "matrix")))
     stop("All data must be a supplied as a matrix.\n")
-
 
   # Check dims
   nr <- nrow(matlist[[1]])
@@ -103,7 +109,7 @@ bam_check_args <- function(datalist) {
 #'
 #' @param datalist a list of BAM inputs
 #' @importFrom stats median
-bam_check_nas <- function(datalist) {
+bam_check_nas <- function(datalist, variant) {
 
   mats <- vapply(datalist, is.matrix, logical(1))
   nonas <- lapply(datalist[mats], function(x) !is.na(x))

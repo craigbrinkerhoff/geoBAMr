@@ -4,7 +4,15 @@
 \alias{bam_data}
 \title{Preprocess data for BAM estimation}
 \usage{
-bam_data(w, s, dA = NULL, Qhat, max_xs = 30L, seed = NULL)
+bam_data(
+  w,
+  s,
+  dA = NULL,
+  Qhat,
+  variant = c("manning_amhg", "manning", "amhg"),
+  max_xs = 30L,
+  seed = NULL
+)
 }
 \arguments{
 \item{w}{Matrix (or data frame) of widths: time as columns, space as rows}
