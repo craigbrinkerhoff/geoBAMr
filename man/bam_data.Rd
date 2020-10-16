@@ -23,6 +23,9 @@ bam_data(
 
 \item{Qhat}{Vector of Q estimates. Needed to create prior on Q.}
 
+\item{variant}{Which geoBAM variant to use. Options are "manning_amhg" (default),
+"manning", or "amhg".}
+
 \item{max_xs}{Maximum number of cross-sections to allow in data. Used to reduce
 sampling time. Defaults to 30.}
 

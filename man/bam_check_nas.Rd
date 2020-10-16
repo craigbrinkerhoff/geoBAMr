@@ -8,6 +8,8 @@ bam_check_nas(datalist, variant)
 }
 \arguments{
 \item{datalist}{a list of BAM inputs}
+
+\item{variant}{which geoBAM is being run}
 }
 \description{
 Binary matrices indicating where data are/aren't missing are

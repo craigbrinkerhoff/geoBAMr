@@ -14,7 +14,7 @@ bam_priors(
 \arguments{
 \item{bamdata}{An object of class bamdata, as returned by \code{bam_data}}
 
-\item{variant}{Which BAM variant to use. Options are "manning_amhg" (default),
+\item{variant}{Which geoBAM variant to use. Options are "manning_amhg" (default),
 "manning", or "amhg".}
 
 \item{classification}{Which classification framework to use. Options are 'expert' (default),

@@ -14,6 +14,8 @@
 #' @param s Matrix (or data frame) of slopes: time as columns, space as rows
 #' @param dA Matrix of area above base area: time as columns, space as rows
 #' @param Qhat Vector of Q estimates. Needed to create prior on Q.
+#' @param variant Which geoBAM variant to use. Options are "manning_amhg" (default),
+#'   "manning", or "amhg".
 #' @param max_xs Maximum number of cross-sections to allow in data. Used to reduce
 #'   sampling time. Defaults to 30.
 #' @param seed RNG seed to use for sampling cross-sections, if nx > max_xs.
@@ -108,6 +110,7 @@ bam_check_args <- function(datalist) {
 #' operations are entirely different.
 #'
 #' @param datalist a list of BAM inputs
+#' @param variant which geoBAM is being run
 #' @importFrom stats median
 bam_check_nas <- function(datalist, variant) {
 
@@ -163,7 +166,7 @@ bam_check_nas <- function(datalist, variant) {
 #'
 #' @useDynLib geoBAMr, .registration = TRUE
 #' @param bamdata An object of class bamdata, as returned by \code{bam_data}
-#' @param variant Which BAM variant to use. Options are "manning_amhg" (default),
+#' @param variant Which geoBAM variant to use. Options are "manning_amhg" (default),
 #'   "manning", or "amhg".
 #' @param classification Which classification framework to use. Options are 'expert' (default),
 #'   or 'unsupervised'.
