@@ -17,13 +17,13 @@ cv2sigma <- function (cv) {
 #'
 #' @param x a numeric matrix
 minmax <- function(x)
-  min(apply(x, 1, max))
+  min(apply(x, 1, max, na.rm=TRUE), na.rm=TRUE)
 
 #' Maximum across xs of min across time of width
 #'
 #' @param x a numeric matrix
 maxmin <- function(x) {
-  max(apply(x, 1, min))
+  max(apply(x, 1, min, na.rm=TRUE), na.rm=TRUE)
 }
 
 #Functions for classifying rivers----------------------------------------------------------------------

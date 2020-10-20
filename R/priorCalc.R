@@ -1,3 +1,31 @@
+#Prior calculation for non geoBAM priors-------------------------------------------------------------------------------
+#' Estimate AHG logWc_hat using bam data
+#'
+#' @param Wobs Observed W,as a space-down, time-across matrix.
+#' @export
+estimate_Wc <- function(Wobs) {
+  Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
+  logWc_hat <- mean(log(Wobs), na.rm=TRUE)
+}
+
+#' Estimate AHG lowerbound_logQ using bam data
+#'
+#' @param Wobs Observed W,as a space-down, time-across matrix.
+#' @export
+estimate_lowerbound_logQ <- function(Wobs) {
+  Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
+  lowerbound_logQ <- maxmin(log(Wobs)) + log(0.5) + log(0.5)
+}
+
+#' Estimate AHG upperbound_logQ using bam data
+#'
+#' @param Wobs Observed W,as a space-down, time-across matrix.
+#' @export
+estimate_upperbound_logQ <- function(Wobs) {
+  Wobs[Wobs <= 0] <- NA # I replaced missing values with 0 so Stan will accept
+  upperbound_logQ <- minmax(log(Wobs)) + log(40) + log(5)
+}
+
 # Prior calculation using expert classification framework------------------------------------------------------------------
 #class 17 are 'big' rivers
 
@@ -808,7 +836,6 @@ estimate_bSD_unsupervised <- function(Wobs) {
   b_sd <- ifelse(class != 101, temp[class], 0.068077044)
 }
 
-#A0 functions---------------------------------------------------------------
 #' Estimate base cross-sectional area using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -900,7 +927,6 @@ estimate_A0SD_unsupervised <- function(Wobs) {
   logA0_sd <- ifelse(class != 101, temp[class], 0.58987527)
 }
 
-#Bankful Width---------------------------------------------------------
 #'Estimate bankful width using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -984,7 +1010,6 @@ estimate_logWbSD_unsupervised <- function(Wobs) {
   logWb_sd <- ifelse(class != 101, temp[class], 0.137381044)
 }
 
-#Bankful depth-------------------------------------------------------------------------
 #'Estimate bankful depth using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -1072,7 +1097,6 @@ estimate_logDbSD_unsupervised <- function(Wobs) {
   logDb_sd <- ifelse(class != 101, temp[class], 0.576212733)
 }
 
-#Channel shape----------------------------------------------
 #'Estimate channel shape using bam data
 #'
 #' @param Wobs Observed W,as a space-down, time-across matrix.
@@ -1161,7 +1185,6 @@ estimate_logrSD_unsupervised <- function(Wobs) {
   logr_sd <- ifelse(class != 101, temp[class], 0.67332688)
 }
 
-#Manning's n------------------------------------------------------------------------
 #'Estimate manning's n using bam data
 #'
 #' @param Sobs Observed S, as a space-down, time-across matrix

@@ -35,6 +35,9 @@ bam_data <- function(w,
     stop('AMHG-only geoBAM cannot process a dA matrix!')}
   if(is.null(dA)==1 && variant!='amhg'){
     stop('Mannings-based geoBAM requires a dA matrix!')}
+  w_test <- apply(w,2, function(x){sum(x, na.rm=T)})  #make sure at least 3 observations for width sd calculation for priors
+  if(any(w_test<2)){
+    stop('Need at least 3 non-NA width observations to calculate some priors!')}
 
   manning_ready <- !is.null(s) && !is.null(dA)
   if (!manning_ready) {
@@ -182,14 +185,14 @@ bam_priors <- function(bamdata,
   variant <- match.arg(variant)
   classification <- match.arg(classification)
   if (variant != "amhg" && !attr(bamdata, "manning_ready"))
-    stop("bamdata must have slope and dA data for non-amhg variants.")
+    stop("bamdata must have dA data for non-amhg variants.")
 
   force(bamdata)
-  paramset <- bam_settings("paramnames")
+  paramset <- bam_settings_expert("paramnames")
 
   myparams0 <- rlang::quos(..., .named = TRUE)
   myparams <- do.call(settings::clone_and_merge,
-                      args = c(list(options = bam_settings), myparams0))
+                      args = c(list(options = bam_settings_expert), myparams0))
 
   quoparams <- myparams()[-1] # first one is parameter set
   params <- lapply(quoparams, rlang::eval_tidy, data = bamdata)
@@ -222,7 +225,24 @@ bam_priors <- function(bamdata,
                                 nrow = bamdata$nx)
   }
 
-  out <- structure(params[paramset],
+  #just priors the user wants to see
+  user_paramset <- c('lowerbound_logQ', 'upperbound_logQ', 'lowerbound_logWc', 'upperbound_logWc', 'lowerbound_logQc', 'upperbound_logQc',
+                     'logWc_hat',"logQc_hat",
+                     'logQ_sd','logWc_sd','logQc_sd',
+                     "Werr_sd", "Serr_sd", "dAerr_sd",
+                     "sigma_man", "sigma_amhg")
+  user_paramset <- params[user_paramset]
+
+  #total priors needed to run geoBAM
+  geoBAM_paramset <- c( "lowerbound_A0", "upperbound_A0", "lowerbound_logn", "upperbound_logn","lowerbound_b","upperbound_b", "lowerbound_logWb", 'upperbound_logWb', 'lowerbound_logDb','upperbound_logDb', 'lowerbound_logr', 'upperbound_logr',
+                        "logA0_hat", "logn_hat","b_hat",  'logWb_hat', 'logDb_hat', 'logr_hat',
+                       "logA0_sd", "logn_sd", "b_sd",'logWb_sd', 'logDb_sd', 'logr_sd')
+  geoBAMparams <- params[geoBAM_paramset]
+
+  riverType <- params[["River_Type"]]
+
+  out <- list( 'River_Type'=riverType, 'river_type_priors'=geoBAMparams, 'other_priors'=user_paramset)
+  out <- structure(out,
                    class = c("bampriors"))
   out
 }

@@ -10,7 +10,7 @@
 #' @param .__defaults See \code{?settings::option_manager}
 #' @param .__reset See \code{?settings::option_manager}
 #' @export
-bam_settings <- settings::options_manager(
+bam_settings_expert <- settings::options_manager(
   paramnames = c("lowerbound_logQ", "upperbound_logQ", "lowerbound_A0",
                  "upperbound_A0", "lowerbound_logn", "upperbound_logn", "lowerbound_logQc",
                  "upperbound_logQc", "lowerbound_logWc", "upperbound_logWc", "lowerbound_b",
@@ -20,11 +20,11 @@ bam_settings <- settings::options_manager(
                  "logQc_hat", "logWc_hat", "b_hat", "logA0_hat", "logn_hat", 'logWb_hat', 'logDb_hat', 'logr_hat',
                  "logQ_sd", "logQc_sd", "logWc_sd", "b_sd", "logA0_sd", "logn_sd", 'logWb_sd', 'logDb_sd', 'logr_sd',
                  "Werr_sd", "Serr_sd", "dAerr_sd",
-                 'river_type'),
+                 'River_Type'),
 
   # Bounds on parameters
-  lowerbound_logQ = rlang::quo(maxmin(log(Wobs)) + log(0.5) + log(0.5)),
-  upperbound_logQ = rlang::quo(minmax(log(Wobs)) + log(40) + log(5)),
+  lowerbound_logQ = rlang::quo(estimate_lowerbound_logQ(Wobs)),
+  upperbound_logQ = rlang::quo(estimate_upperbound_logQ(Wobs)),
 
   lowerbound_A0 = rlang::quo(estimate_lowerboundA0(Wobs)), #0.72,
   upperbound_A0 = rlang::quo(estimate_upperboundA0(Wobs)), #114500,
@@ -52,8 +52,8 @@ bam_settings <- settings::options_manager(
 
 
   # Hyperparameters
-  logQc_hat = rlang::quo(mean(logQ_hat)),
-  logWc_hat = rlang::quo(mean(log(Wobs))),
+  logQc_hat = rlang::quo(mean(logQ_hat, na.rm=TRUE)),
+  logWc_hat = rlang::quo(estimate_Wc(Wobs)),
   b_hat = rlang::quo(estimate_b(Wobs)),
   logA0_hat = rlang::quo(estimate_logA0(Wobs)),
   logn_hat = rlang::quo(estimate_logn(Sobs, Wobs)),
@@ -78,8 +78,8 @@ bam_settings <- settings::options_manager(
   Serr_sd = 1e-5,
   dAerr_sd = 10,
 
-  #Classified river type
-  river_type = rlang::quo(apply(Wobs, 1, classify_func))
+  #River type
+  River_Type=rlang::quo(apply(W_obs, 1, classify_func))
 )
 
 
@@ -99,11 +99,11 @@ bam_settings_unsupervised <- settings::options_manager(
                  "logQc_hat", "logWc_hat", "b_hat", "logA0_hat", "logn_hat", 'logWb_hat', 'logDb_hat', 'logr_hat',
                  "logQ_sd", "logQc_sd", "logWc_sd", "b_sd", "logA0_sd", "logn_sd", 'logWb_sd', 'logDb_sd', 'logr_sd',
                  "Werr_sd", "Serr_sd", "dAerr_sd",
-                 'river_type'),
+                 'River_Type'),
 
   # Bounds on parameters
-  lowerbound_logQ = rlang::quo(maxmin(log(Wobs)) + log(0.5) + log(0.5)),
-  upperbound_logQ = rlang::quo(minmax(log(Wobs)) + log(40) + log(5)),
+  lowerbound_logQ = rlang::quo(estimate_lowerbound_logQ(Wobs)),
+  upperbound_logQ = rlang::quo(estimate_upperbound_logQ(Wobs)),
 
   lowerbound_A0 = rlang::quo(estimate_lowerboundA0_unsupervised(Wobs)), #0.72,
   upperbound_A0 = rlang::quo(estimate_upperboundA0_unsupervised(Wobs)), #114500,
@@ -131,8 +131,8 @@ bam_settings_unsupervised <- settings::options_manager(
 
 
   # Hyperparameters
-  logQc_hat = rlang::quo(mean(logQ_hat)),
-  logWc_hat = rlang::quo(mean(log(Wobs))),
+  logQc_hat = rlang::quo(mean(logQ_hat, na.rm=TRUE)),
+  logWc_hat = rlang::quo(estimate_Wc(Wobs)),
   b_hat = rlang::quo(estimate_b_unsupervised(Wobs)),
   logA0_hat = rlang::quo(estimate_logA0_unsupervised(Wobs)),
   logn_hat = rlang::quo(estimate_logn_unsupervised(Sobs, Wobs)),
@@ -157,6 +157,6 @@ bam_settings_unsupervised <- settings::options_manager(
   Serr_sd = 1e-5,
   dAerr_sd = 10,
 
-  #Classified river type
-  river_type = rlang::quo(apply(Wobs, 1, classify_func_unsupervised))
+  #river type
+  River_Type=rlang::quo(apply(W_obs, 1, classify_func_unsupervised))
 )
