@@ -48,8 +48,6 @@ bam_estimate <- function(bamdata,
 
   baminputs <- compose_bam_inputs(bamdata, bampriors)
 
-  print(bampriors)
-
   if (!is.null(stanmodel)) {
     stopifnot(inherits(stanmodel, "stanmodel"))
     stanfit <- stanmodel
