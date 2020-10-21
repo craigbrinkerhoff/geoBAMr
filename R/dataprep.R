@@ -78,7 +78,7 @@ bam_data <- function(w,
 #' @param datalist A list of BAM data inputs
 bam_check_args <- function(datalist) {
 
-  dA <- dA_obs# datalist$dA
+  dA <- datalist$dA
   logQ_hat <- datalist$logQ_hat
   matlist <- datalist[names(datalist) != "logQ_hat"]
 
