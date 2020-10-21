@@ -10,7 +10,7 @@
 #' @param .__defaults See \code{?settings::option_manager}
 #' @param .__reset See \code{?settings::option_manager}
 #' @export
-bam_settings_expert <- settings::options_manager(
+bam_settings <- settings::options_manager(
   paramnames = c("lowerbound_logQ", "upperbound_logQ", "lowerbound_A0",
                  "upperbound_A0", "lowerbound_logn", "upperbound_logn", "lowerbound_logQc",
                  "upperbound_logQc", "lowerbound_logWc", "upperbound_logWc", "lowerbound_b",

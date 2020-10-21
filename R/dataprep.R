@@ -188,11 +188,11 @@ bam_priors <- function(bamdata,
     stop("bamdata must have dA data for non-amhg variants.")
 
   force(bamdata)
-  paramset <- bam_settings_expert("paramnames")
+  paramset <- bam_settings("paramnames")
 
   myparams0 <- rlang::quos(..., .named = TRUE)
   myparams <- do.call(settings::clone_and_merge,
-                      args = c(list(options = bam_settings_expert), myparams0))
+                      args = c(list(options = bam_settings), myparams0))
 
   quoparams <- myparams()[-1] # first one is parameter set
   params <- lapply(quoparams, rlang::eval_tidy, data = bamdata)
