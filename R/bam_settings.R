@@ -79,7 +79,7 @@ bam_settings <- settings::options_manager(
   dAerr_sd = 10,
 
   #River type
-  River_Type=rlang::quo(apply(W_obs, 1, classify_func))
+  River_Type=rlang::quo(apply(Wobs, 1, classify_func))
 )
 
 
@@ -158,5 +158,5 @@ bam_settings_unsupervised <- settings::options_manager(
   dAerr_sd = 10,
 
   #river type
-  River_Type=rlang::quo(apply(W_obs, 1, classify_func_unsupervised))
+  River_Type=rlang::quo(apply(Wobs, 1, classify_func_unsupervised))
 )
