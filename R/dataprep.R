@@ -35,8 +35,11 @@ bam_data <- function(w,
     stop('AMHG-only geoBAM cannot process a dA matrix!')}
   if(is.null(dA)==1 && variant!='amhg'){
     stop('Mannings-based geoBAM requires a dA matrix!')}
-  w_test <- apply(w,2, function(x){sum(x, na.rm=T)})  #make sure at least 3 observations for width sd calculation for priors
-  if(any(w_test<2)){
+ # w_test <- apply(w,2, function(x){sum(x, na.rm=T)})  #make sure at least 3 observations for width sd calculation for priors
+#  if(any(w_test<2)){
+#    stop('Need at least 3 non-NA width observations to calculate some priors!')}
+  w_test <- apply(w,2, function(x){sum(x > 0, na.rm=T)})  #make sure at least 3 observations for width sd calculation for priors
+  if(any(w_test<3)){
     stop('Need at least 3 non-NA width observations to calculate some priors!')}
 
   manning_ready <- !is.null(s) && !is.null(dA)
